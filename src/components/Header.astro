@@ -1,0 +1,616 @@
+---
+// Header.astro — Sticky pill header + full-screen mobile menu for RKKM Law
+import HamburgerMenu from './HamburgerMenu.astro';
+---
+
+<header class="header">
+
+  <!-- ── Top bar (desktop + mobile) ─────────────────── -->
+  <div class="header__bar">
+
+    <div class="header__logo">Logo</div>
+
+    <nav class="header__nav">
+      <a href="/" class="header__nav-link">Home</a>
+      <a href="/about" class="header__nav-link">About</a>
+      <a href="/team" class="header__nav-link">Our Team</a>
+      <a href="/services" class="header__nav-link">Services</a>
+      <a href="/contact" class="header__nav-link">Contact</a>
+    </nav>
+
+    <a href="/contact" class="header__cta">Schedule a Consultation</a>
+
+    <div class="header__hamburger-wrap">
+      <HamburgerMenu size="64px" color="transparent" id="header-hamburger" />
+    </div>
+
+  </div>
+
+  <!-- ── Full-screen mobile menu ─────────────────────── -->
+  <div class="header__menu" aria-hidden="true">
+
+    <!-- Logo in the top-left of the menu -->
+    <div class="header__menu-logo">Logo</div>
+
+    <!-- In-menu hamburger: mirrors the bar hamburger and acts as the close trigger -->
+    <div class="header__menu-hamburger">
+      <HamburgerMenu size="64px" color="transparent" id="header-hamburger-close" />
+    </div>
+
+    <nav class="header__menu-nav">
+      <a href="/" class="header__menu-link">
+        <span class="header__menu-num">01</span>
+        <span class="header__menu-text">Home</span>
+      </a>
+      <a href="/about" class="header__menu-link">
+        <span class="header__menu-num">02</span>
+        <span class="header__menu-text">About</span>
+      </a>
+      <a href="/team" class="header__menu-link">
+        <span class="header__menu-num">03</span>
+        <span class="header__menu-text">Our Team</span>
+      </a>
+      <a href="/services" class="header__menu-link">
+        <span class="header__menu-num">04</span>
+        <span class="header__menu-text">Services</span>
+      </a>
+      <a href="/contact" class="header__menu-link">
+        <span class="header__menu-num">05</span>
+        <span class="header__menu-text">Contact</span>
+      </a>
+    </nav>
+
+    <div class="header__menu-footer">
+      <p class="header__menu-tagline">
+        Trusted Counsel for Life's<br />Most Complex Matters.
+      </p>
+      <a href="/contact" class="header__menu-cta">Schedule a Consultation</a>
+    </div>
+
+  </div>
+
+</header>
+
+<style>
+  /* ============================================================
+     BASE BAR — fixed, transparent at top
+  ============================================================ */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 32px 80px 0;
+    transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+
+  .header__bar {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+    transition:
+      background    0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-radius 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow    0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      padding       0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      max-width     0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+  }
+
+  /* ============================================================
+     SCROLLED — navy frosted pill
+  ============================================================ */
+  .header--scrolled {
+    padding: 16px 40px;
+  }
+
+  .header--scrolled .header__bar {
+    max-width: 860px;
+    background: rgba(28, 46, 74, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 9px;
+    padding: 10px 24px;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ============================================================
+     LOGO
+  ============================================================ */
+  .header__logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--stone-50);
+    text-decoration: none;
+    animation: hdrFadeDown 0.5s ease both;
+  }
+
+  /* ============================================================
+     DESKTOP NAV LINKS
+  ============================================================ */
+  .header__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .header__nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--stone-50);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .header__nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .header__nav-link:nth-child(1) { animation: hdrFadeDown 0.5s ease 0.08s both; }
+  .header__nav-link:nth-child(2) { animation: hdrFadeDown 0.5s ease 0.14s both; }
+  .header__nav-link:nth-child(3) { animation: hdrFadeDown 0.5s ease 0.20s both; }
+  .header__nav-link:nth-child(4) { animation: hdrFadeDown 0.5s ease 0.26s both; }
+  .header__nav-link:nth-child(5) { animation: hdrFadeDown 0.5s ease 0.32s both; }
+
+  /* ============================================================
+     CTA BUTTON
+  ============================================================ */
+  .header__cta {
+    width: 203px;
+    height: 41px;
+    background: #F0F0F0;
+    color: var(--stone-950);
+    border-radius: 9px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    animation: hdrFadeDown 0.5s ease 0.38s both;
+  }
+
+  .header__cta:hover {
+    opacity: 0.9;
+  }
+
+  /* ============================================================
+     HAMBURGER WRAPPER — hidden at desktop
+  ============================================================ */
+  .header__hamburger-wrap {
+    display: none;
+    align-items: center;
+    position: relative;
+    z-index: 10000;
+    animation: hdrFadeDown 0.5s ease 0.38s both;
+  }
+
+  /* ============================================================
+     LOAD ANIMATION
+  ============================================================ */
+  @keyframes hdrFadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header__logo,
+    .header__nav-link,
+    .header__cta,
+    .header__hamburger-wrap {
+      animation: none;
+    }
+  }
+
+  /* Hide the bar hamburger once the menu is open — the in-menu one takes over.
+     animation: none removes the hdrFadeDown fill (which holds opacity: 1)
+     so that opacity: 0 can actually take effect. */
+  .header--open .header__hamburger-wrap {
+    animation: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ============================================================
+     FULL-SCREEN MOBILE MENU — closed state
+  ============================================================ */
+  .header__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: radial-gradient(ellipse at 15% 60%, #243C60 0%, #1C2E4A 65%);
+    display: flex;
+    flex-direction: column;
+    padding: 100px 48px 52px;
+    clip-path: inset(0 0 100% 0);
+    /* Closing: snappy */
+    transition: clip-path 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* Opening: slightly slower for drama */
+  .header--open .header__menu {
+    clip-path: inset(0 0 0% 0);
+    pointer-events: auto;
+    transition: clip-path 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  /* ============================================================
+     IN-MENU LOGO (top-left)
+  ============================================================ */
+  .header__menu-logo {
+    position: absolute;
+    top: 28px;
+    left: 48px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--stone-50);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .header--open .header__menu-logo {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+
+  /* ============================================================
+     IN-MENU HAMBURGER (close trigger)
+  ============================================================ */
+  .header__menu-hamburger {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    /* Fades in after menu wipe starts so it feels like a handoff */
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .header--open .header__menu-hamburger {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+
+  /* ============================================================
+     MENU NAV LINKS
+  ============================================================ */
+  .header__menu-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .header__menu-link {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    text-decoration: none;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(250, 250, 249, 0.08);
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      gap       0.3s  ease;
+  }
+
+  .header__menu-link:first-child {
+    border-top: 1px solid rgba(250, 250, 249, 0.08);
+  }
+
+  .header__menu-link:hover {
+    gap: 24px;
+  }
+
+  /* Staggered entry */
+  .header--open .header__menu-link:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.28s; }
+  .header--open .header__menu-link:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+  .header--open .header__menu-link:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
+  .header--open .header__menu-link:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.49s; }
+  .header--open .header__menu-link:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.56s; }
+
+  .header__menu-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: rgba(250, 250, 249, 0.3);
+    flex-shrink: 0;
+    align-self: center;
+    transition: color 0.3s ease;
+  }
+
+  .header__menu-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 52px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: rgba(250, 250, 249, 0.75);
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  /* Underline grows left-to-right on hover */
+  .header__menu-text::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #FAFAF9;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header__menu-link:hover .header__menu-num {
+    color: rgba(250, 250, 249, 0.6);
+  }
+
+  .header__menu-link:hover .header__menu-text {
+    color: #FAFAF9;
+  }
+
+  .header__menu-link:hover .header__menu-text::after {
+    transform: scaleX(1);
+  }
+
+  /* ============================================================
+     MENU FOOTER
+  ============================================================ */
+  .header__menu-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    border-top: 1px solid rgba(250, 250, 249, 0.08);
+    margin-top: 32px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity   0.5s ease,
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header--open .header__menu-footer {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.65s;
+  }
+
+  .header__menu-tagline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(250, 250, 249, 0.35);
+    max-width: 180px;
+  }
+
+  .header__menu-cta {
+    flex-shrink: 0;
+    height: 41px;
+    padding: 0 22px;
+    background: #F0F0F0;
+    color: #1C2E4A;
+    border-radius: 9px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .header__menu-cta:hover {
+    opacity: 0.9;
+  }
+
+  /* ============================================================
+     1024px — tighten desktop nav
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .header {
+      padding: 24px 60px 0;
+    }
+
+    .header--scrolled {
+      padding: 12px 32px;
+    }
+
+    .header__nav {
+      gap: 20px;
+    }
+
+    .header__nav-link {
+      font-size: 14px;
+    }
+
+    .header__cta {
+      width: 170px;
+      font-size: 13px;
+    }
+  }
+
+  /* ============================================================
+     768px — switch to hamburger
+  ============================================================ */
+  @media (max-width: 768px) {
+    .header {
+      padding: 16px 24px 0;
+    }
+
+    .header--scrolled {
+      padding: 10px 16px;
+    }
+
+    .header__nav {
+      display: none;
+    }
+
+    .header__cta {
+      display: none;
+    }
+
+    .header__hamburger-wrap {
+      display: flex;
+    }
+
+    .header__menu {
+      padding: 96px 40px 48px;
+    }
+
+    .header__menu-logo {
+      left: 40px;
+    }
+
+    .header__menu-text {
+      font-size: 44px;
+    }
+  }
+
+  /* ============================================================
+     480px
+  ============================================================ */
+  @media (max-width: 480px) {
+    .header__menu {
+      padding: 88px 28px 40px;
+    }
+
+    .header__menu-logo {
+      left: 28px;
+      font-size: 20px;
+    }
+
+    .header__menu-text {
+      font-size: 36px;
+    }
+
+    .header__menu-link {
+      padding: 14px 0;
+    }
+
+    .header__menu-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  /* ============================================================
+     Reduced motion
+  ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    .header__menu {
+      transition: none;
+      clip-path: none;
+      opacity: 0;
+    }
+
+    .header--open .header__menu {
+      opacity: 1;
+    }
+
+    .header__menu-link,
+    .header__menu-footer {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const headerEl      = document.querySelector('.header')       as HTMLElement     | null;
+  const menuEl        = document.querySelector('.header__menu') as HTMLElement     | null;
+  const checkbox      = document.getElementById('header-hamburger')       as HTMLInputElement | null;
+  const closeCheckbox = document.getElementById('header-hamburger-close') as HTMLInputElement | null;
+
+  function openMenu() {
+    headerEl?.classList.add('header--open');
+    menuEl?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Set the in-menu hamburger to the arrow/close state
+    if (closeCheckbox) closeCheckbox.checked = true;
+  }
+
+  function closeMenu() {
+    headerEl?.classList.remove('header--open');
+    menuEl?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // Reset both hamburgers back to three-lines state
+    if (checkbox)      checkbox.checked      = false;
+    if (closeCheckbox) closeCheckbox.checked = false;
+  }
+
+  // Bar hamburger drives open/close
+  checkbox?.addEventListener('change', () => {
+    checkbox.checked ? openMenu() : closeMenu();
+  });
+
+  // In-menu hamburger: clicking it unchecks → close
+  closeCheckbox?.addEventListener('change', () => {
+    if (!closeCheckbox.checked) closeMenu();
+  });
+
+  // Close on menu link click
+  menuEl?.querySelectorAll('.header__menu-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on desktop nav link click (same-page anchor)
+  document.querySelectorAll('.header__nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && headerEl?.classList.contains('header--open')) {
+      closeMenu();
+    }
+  });
+
+  // ── Sticky pill on scroll ─────────────────────────────────
+  function onScroll() {
+    if (window.scrollY > 10) {
+      headerEl?.classList.add('header--scrolled');
+    } else {
+      headerEl?.classList.remove('header--scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

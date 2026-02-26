@@ -1,0 +1,109 @@
+---
+// HamburgerMenu.astro
+// Animated hamburger → back-arrow, extracted from CodePen by TaminoMartinius
+interface Props {
+  color?: string;   // Background fill of the circular button
+  size?: string;    // CSS dimension applied to wrapper, menu div, and label
+  id?: string;      // id for the checkbox (must be unique per page)
+}
+
+const {
+  color = "transparent",
+  size  = "48px",
+  id    = "hamburger-menu",
+} = Astro.props;
+---
+
+<div class="hamburger-wrap">
+  <div class="menu back menu--3">
+    <label for={id}>
+      <input type="checkbox" id={id} />
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="30" />
+        <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55" />
+        <path class="line--2" d="M0 50h80" />
+        <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45" />
+      </svg>
+    </label>
+  </div>
+</div>
+
+<style define:vars={{ color, size }}>
+  /* Size is pinned on every layer so flex / display changes can't collapse it */
+  .hamburger-wrap {
+    display: inline-block;
+    position: relative;
+    width:  var(--size);
+    height: var(--size);
+    flex-shrink: 0;
+  }
+
+  .menu--3 {
+    width:  var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    display: none;
+  }
+
+  label {
+    display: block;
+    cursor: pointer;
+    width:  var(--size);
+    height: var(--size);
+  }
+
+  svg {
+    width:  100%;
+    height: 100%;
+  }
+
+  circle {
+    fill: #fff3;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  label:hover circle {
+    opacity: 1;
+  }
+
+  path {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    --length: 24;
+    --offset: -38;
+    stroke-dasharray: var(--length) var(--total-length);
+    stroke-dashoffset: var(--offset);
+    transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .menu--3 .line--1,
+  .menu--3 .line--3 {
+    --total-length: 126.38166809082031;
+  }
+
+  .menu--3 .line--2 {
+    --total-length: 80;
+  }
+
+  /* Arrow state when checked */
+  .back input:checked + svg .line--1,
+  .back input:checked + svg .line--3 {
+    --length: 8.602325267;
+  }
+
+  .menu--3 input:checked + svg .line--1,
+  .menu--3 input:checked + svg .line--3 {
+    --offset: -109.1770175568;
+  }
+</style>
