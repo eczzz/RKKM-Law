@@ -355,11 +355,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- Progress bar -->
-      <div class="testimonials__progress" data-anim data-delay="3">
-        <div class="testimonials__progress-track">
-          <div class="testimonials__progress-fill"></div>
+      <!-- Mobile arrows + Progress bar -->
+      <div class="testimonials__controls" data-anim data-delay="3">
+        <button class="testimonials__arrow testimonials__arrow--prev" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="testimonials__progress">
+          <div class="testimonials__progress-track">
+            <div class="testimonials__progress-fill"></div>
+          </div>
         </div>
+        <button class="testimonials__arrow testimonials__arrow--next" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
 
     </div>
@@ -1375,6 +1383,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .testimonials__name { transition: color 0.35s ease; }
   .testimonials__card:hover .testimonials__name { color: #1C2E4A; }
 
+  .testimonials__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .testimonials__arrow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid #D6D3D1;
+    background: #FAFAF9;
+    color: #44403C;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .testimonials__arrow:active {
+    background: #E7E5E4;
+    border-color: #A8A29E;
+    color: #1C1917;
+  }
+
   .testimonials__progress {
     display: flex;
     align-items: center;
@@ -2228,6 +2264,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       overflow: hidden;
     }
 
+    .testimonials__arrow {
+      display: flex;
+    }
+
     .testimonials__card {
       width: calc(100vw - 48px);
       min-height: auto;
@@ -2589,6 +2629,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   applyPosition(virtualIndex, false);
   updateProgress(0);
 
+  // Mobile arrow buttons
+  document.querySelector('.testimonials__arrow--prev')?.addEventListener('click', () => step(-1));
+  document.querySelector('.testimonials__arrow--next')?.addEventListener('click', () => step(1));
+
   // Progress bar click
   document.querySelector('.testimonials__progress-track')?.addEventListener('click', (e) => {
     const me = e as MouseEvent;
@@ -2612,6 +2656,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const diff = dragStartX - (e as MouseEvent).clientX;
     if (Math.abs(diff) > 50) step(diff > 0 ? 1 : -1);
   });
+
+  // Touch swipe navigation
+  let touchStartX = 0;
+  testimonialsTrack?.addEventListener('touchstart', (e) => {
+    touchStartX = (e as TouchEvent).touches[0].clientX;
+  }, { passive: true });
+
+  testimonialsTrack?.addEventListener('touchend', (e) => {
+    const diff = touchStartX - (e as TouchEvent).changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) step(diff > 0 ? 1 : -1);
+  }, { passive: true });
 
   // Arrow key navigation
   document.addEventListener('keydown', (e) => {
