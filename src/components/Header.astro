@@ -15,6 +15,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
       <a href="/about" class="header__nav-link">About</a>
       <a href="/team" class="header__nav-link">Our Team</a>
       <a href="/services" class="header__nav-link">Services</a>
+      <a href="/current-clients" class="header__nav-link">Current Clients</a>
       <a href="/contact" class="header__nav-link">Contact</a>
     </nav>
 
@@ -57,8 +58,12 @@ import HamburgerMenu from './HamburgerMenu.astro';
         <span class="header__menu-num">04</span>
         <span class="header__menu-text">Services</span>
       </a>
-      <a href="/contact" class="header__menu-link">
+      <a href="/current-clients" class="header__menu-link">
         <span class="header__menu-num">05</span>
+        <span class="header__menu-text">Current Clients</span>
+      </a>
+      <a href="/contact" class="header__menu-link">
+        <span class="header__menu-num">06</span>
         <span class="header__menu-text">Contact</span>
       </a>
     </nav>
@@ -189,6 +194,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
   .header__nav-link:nth-child(3) { animation: hdrFadeDown 0.5s ease 0.20s both; }
   .header__nav-link:nth-child(4) { animation: hdrFadeDown 0.5s ease 0.26s both; }
   .header__nav-link:nth-child(5) { animation: hdrFadeDown 0.5s ease 0.32s both; }
+  .header__nav-link:nth-child(6) { animation: hdrFadeDown 0.5s ease 0.38s both; }
 
   /* ============================================================
      CTA BUTTON
@@ -373,6 +379,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
   .header--open .header__menu-link:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
   .header--open .header__menu-link:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.49s; }
   .header--open .header__menu-link:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.56s; }
+  .header--open .header__menu-link:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.63s; }
 
   .header__menu-num {
     font-family: 'Poppins', sans-serif;
