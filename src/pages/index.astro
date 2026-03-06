@@ -8,7 +8,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- Top half: gray with logo -->
     <div class="hero__top">
-      <img src="/images/rkkm-logo.webp" alt="RKKM Law" class="hero__logo" />
+      <div class="hero__logo-wrap">
+        <img src="/images/rkkm-logo.webp" alt="RKKM Law" class="hero__logo" />
+      </div>
     </div>
 
 
@@ -490,12 +492,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 40px;
   }
 
+  .hero__logo-wrap {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .hero__logo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(207, 181, 131, 0.0) 35%,
+      rgba(207, 181, 131, 0.25) 45%,
+      rgba(255, 223, 160, 0.4) 50%,
+      rgba(207, 181, 131, 0.25) 55%,
+      rgba(207, 181, 131, 0.0) 65%,
+      transparent 65%,
+      transparent 100%
+    );
+    transform: translateX(-120%);
+    transition: none;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+
+  .hero__logo-wrap:hover::after {
+    transform: translateX(120%);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
   .hero__logo {
     max-width: 360px;
     max-height: 200px;
     object-fit: contain;
+    display: block;
     opacity: 0;
     animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero__logo-wrap:hover .hero__logo {
+    filter: brightness(1.08) contrast(1.05);
   }
 
 
