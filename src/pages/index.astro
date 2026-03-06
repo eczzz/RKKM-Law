@@ -495,35 +495,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hero__logo-wrap {
     position: relative;
     display: inline-block;
-    overflow: hidden;
+    padding: 24px 32px;
     cursor: pointer;
   }
 
-  .hero__logo-wrap::after {
+  .hero__logo-wrap::after,
+  .hero__logo-wrap::before {
     content: '';
+    width: 20px;
+    height: 20px;
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      105deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(255, 255, 255, 0.0) 35%,
-      rgba(207, 181, 131, 0.35) 44%,
-      rgba(255, 223, 160, 0.5) 50%,
-      rgba(207, 181, 131, 0.35) 56%,
-      rgba(255, 255, 255, 0.0) 65%,
-      transparent 65%,
-      transparent 100%
-    );
-    transform: translateX(-120%);
-    transition: none;
-    pointer-events: none;
-    mix-blend-mode: screen;
+    border: 0px solid transparent;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .hero__logo-wrap:hover::after {
-    transform: translateX(120%);
-    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  .hero__logo-wrap::after {
+    top: 0;
+    left: 0;
+    border-top: 1px solid #1C1917;
+    border-left: 1px solid #1C1917;
+  }
+
+  .hero__logo-wrap::before {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid #1C1917;
+    border-right: 1px solid #1C1917;
+  }
+
+  .hero__logo-wrap:hover::after,
+  .hero__logo-wrap:hover::before {
+    width: 100%;
+    height: 100%;
   }
 
   .hero__logo {
@@ -533,11 +536,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: block;
     opacity: 0;
     animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .hero__logo-wrap:hover .hero__logo {
-    filter: brightness(1.08) contrast(1.05);
   }
 
 
