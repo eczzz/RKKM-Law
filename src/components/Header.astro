@@ -8,7 +8,9 @@ import HamburgerMenu from './HamburgerMenu.astro';
   <!-- ── Top bar (desktop + mobile) ─────────────────── -->
   <div class="header__bar">
 
-    <!-- Logo element removed per client request -->
+    <a href="/" class="header__logo-link">
+      <img src="/images/rkkm-logo-white.webp" alt="RKKM Law" class="header__logo" />
+    </a>
 
     <nav class="header__nav">
       <a href="/" class="header__nav-link">Home</a>
@@ -138,7 +140,33 @@ import HamburgerMenu from './HamburgerMenu.astro';
   /* ============================================================
      LOGO
   ============================================================ */
-  /* Logo element removed per client request */
+  .header__logo-link {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    margin-right: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header--scrolled .header__logo-link {
+    opacity: 1;
+    pointer-events: auto;
+    width: 80px;
+    margin-right: 24px;
+  }
+
+  .header__logo {
+    height: 24px;
+    width: 80px;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+    flex-shrink: 0;
+  }
 
   /* ============================================================
      DESKTOP NAV LINKS
