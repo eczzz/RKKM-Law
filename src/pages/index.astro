@@ -440,7 +440,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="contact__icon-box">
               <i class="contact__icon fa-solid fa-phone"></i>
             </div>
-            <span class="contact__info-text">+720 123 4567</span>
+            <a href="tel:+7201234567" class="contact__info-text contact__info-link">+720 123 4567</a>
           </div>
 
           <div class="contact__info-row">
@@ -1685,6 +1685,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 300;
     font-size: 18px;
     line-height: 27px;
+    color: #FFFFFF;
+  }
+
+  .contact__info-link {
+    text-decoration: none;
     color: #FFFFFF;
   }
 
