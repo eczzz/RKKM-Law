@@ -485,7 +485,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #D5D3CF;
+    background: #FFFFFF;
     padding: 80px 80px 40px;
     min-height: 45vh;
   }
@@ -501,12 +501,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .hero__gradient {
     height: 120px;
-    background: linear-gradient(to bottom, #D5D3CF 0%, #E6E5E2 35%, #F5F4F2 65%, #FFFFFF 100%);
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FDFDFB 35%, #FBFAF8 65%, #FAFAF9 100%);
     flex-shrink: 0;
   }
 
   .hero__bottom {
-    background: #FFFFFF;
+    background: #FAFAF9;
     padding: 0 80px 80px;
   }
 
@@ -1729,9 +1729,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 768px) {
     .hero { min-height: auto; }
-    .hero__top { padding: 100px 24px 32px; min-height: 35vh; background: #D5D3CF; }
+    .hero__top { padding: 100px 24px 32px; min-height: 35vh; }
     .hero__bottom { padding: 0 24px 40px; }
-    .hero__gradient { height: 80px; background: linear-gradient(to bottom, #D5D3CF 0%, #E6E5E2 35%, #F5F4F2 65%, #FFFFFF 100%); }
+    .hero__gradient { height: 80px; }
     .hero__logo { max-width: 120px; max-height: 120px; }
     .hero__headline { font-size: 36px; max-width: 100%; }
     .hero__body { width: 100%; font-size: 15px; }
