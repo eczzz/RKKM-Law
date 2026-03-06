@@ -20,14 +20,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="hero__tagline-bar">
           <span class="hero__tagline">If you've been referred to us, we're ready to listen.</span>
         </div>
-        <h1 class="hero__headline">
-          Trusted Counsel for Life's Most Complex Family Law Matters.
-        </h1>
-        <p class="hero__body">
-          <span class="hero__body-lead">We make complex issues manageable.</span>
-          <span class="hero__body-sub"> Kukreja McFarlane Law brings decades of experience
-          to the families, individuals, and executives who demand both discretion and results.</span>
-        </p>
+        <div class="hero__text-row">
+          <h1 class="hero__headline">
+            Trusted Counsel for Life's Most Complex Family Law Matters.
+          </h1>
+          <p class="hero__body">
+            <span class="hero__body-lead">We make complex issues manageable.</span>
+            <span class="hero__body-sub"> Kukreja McFarlane Law brings decades of experience
+            to the families, individuals, and executives who demand both discretion and results.</span>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -483,22 +485,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #E8E6E3;
+    background: #D5D3CF;
     padding: 80px 80px 40px;
     min-height: 45vh;
   }
 
   .hero__logo {
-    max-width: 280px;
-    max-height: 280px;
+    max-width: 168px;
+    max-height: 168px;
     object-fit: contain;
+    border-radius: 50%;
     opacity: 0;
     animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
 
   .hero__gradient {
     height: 120px;
-    background: linear-gradient(to bottom, #E8E6E3 0%, #F2F1EF 35%, #FAFAF9 65%, #FFFFFF 100%);
+    background: linear-gradient(to bottom, #D5D3CF 0%, #E6E5E2 35%, #F5F4F2 65%, #FFFFFF 100%);
     flex-shrink: 0;
   }
 
@@ -515,6 +518,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     max-width: 1280px;
     margin: 0 auto;
     width: 100%;
+  }
+
+  .hero__text-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    gap: 40px;
   }
 
   .hero__tagline-bar {
@@ -1704,20 +1716,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 768px) {
     .hero { min-height: auto; }
-    .hero__top { padding: 100px 24px 32px; min-height: 35vh; }
+    .hero__top { padding: 100px 24px 32px; min-height: 35vh; background: #D5D3CF; }
     .hero__bottom { padding: 0 24px 40px; }
-    .hero__gradient { height: 80px; }
-    .hero__logo { max-width: 200px; max-height: 200px; }
+    .hero__gradient { height: 80px; background: linear-gradient(to bottom, #D5D3CF 0%, #E6E5E2 35%, #F5F4F2 65%, #FFFFFF 100%); }
+    .hero__logo { max-width: 120px; max-height: 120px; }
     .hero__headline { font-size: 36px; max-width: 100%; }
     .hero__body { width: 100%; font-size: 15px; }
     .hero__tagline { font-size: 14px; }
+    .hero__text-row { flex-direction: column; align-items: flex-start; gap: 24px; }
   }
 
   @media (max-width: 480px) {
     .hero__top { padding: 80px 16px 24px; }
     .hero__bottom { padding: 0 16px 32px; }
     .hero__gradient { height: 60px; }
-    .hero__logo { max-width: 160px; max-height: 160px; }
+    .hero__logo { max-width: 100px; max-height: 100px; }
     .hero__headline { font-size: 28px; }
     .hero__body { font-size: 14px; line-height: 22px; }
     .hero__tagline { font-size: 13px; }
