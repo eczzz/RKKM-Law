@@ -21,7 +21,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
 
     <a href="/contact" class="header__cta">
       Schedule a Consultation
-      <span class="header__cta-arrow">↗</span>
+      <svg class="header__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
 
     <div class="header__hamburger-wrap">
@@ -252,9 +252,11 @@ import HamburgerMenu from './HamburgerMenu.astro';
   }
 
   .header__cta-arrow {
-    font-size: 14px;
+    width: 14px;
+    height: 14px;
     color: #1C1917;
     display: inline-block;
+    flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 

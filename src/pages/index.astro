@@ -89,7 +89,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <a href="/about" class="about__link" data-anim data-delay="2">
               Learn More
-              <span class="about__link-arrow">↗</span>
+              <svg class="about__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
         </div>
@@ -137,7 +137,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2 class="team__heading" data-anim data-delay="1">The Attorneys<br />Behind Your Case.</h2>
         <a href="/team" class="team__link" data-anim data-delay="2">
           Our Team
-          <span class="team__link-arrow">↗</span>
+          <svg class="team__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
@@ -228,7 +228,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         <a href="/services" class="services__link" data-anim data-delay="2">
           Learn More
-          <span class="services__link-arrow">↗</span>
+          <svg class="services__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
@@ -386,7 +386,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         <a href="/contact" class="cta-banner__link" data-anim data-delay="2">
           Schedule a Consultation
-          <span class="cta-banner__link-arrow">↗</span>
+          <svg class="cta-banner__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
@@ -417,7 +417,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="contact__submit" data-anim data-delay="4">
           Request A Consultation
-          <span class="contact__submit-arrow">↗</span>
+          <svg class="contact__submit-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
       </div>
@@ -755,9 +755,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .about__link-arrow {
-    font-size: 14px;
+    width: 14px;
+    height: 14px;
     color: #1C2E4A;
     display: inline-block;
+    flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -1115,9 +1117,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .services__link-arrow {
-    font-size: 20px;
+    width: 14px;
+    height: 14px;
     color: #F0F0F0;
     display: inline-block;
+    flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -1491,9 +1495,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .cta-banner__link-arrow {
-    font-size: 14px;
+    width: 14px;
+    height: 14px;
     color: #F0F0F0;
     display: inline-block;
+    flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -1611,9 +1617,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .contact__submit-arrow {
-    font-size: 14px;
+    width: 14px;
+    height: 14px;
     color: #1C2E4A;
     display: inline-block;
+    flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
