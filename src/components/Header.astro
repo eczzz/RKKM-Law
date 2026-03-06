@@ -8,7 +8,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
   <!-- ── Top bar (desktop + mobile) ─────────────────── -->
   <div class="header__bar">
 
-    <div class="header__logo">Logo</div>
+    <!-- Logo element removed per client request -->
 
     <nav class="header__nav">
       <a href="/" class="header__nav-link">Home</a>
@@ -138,21 +138,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
   /* ============================================================
      LOGO
   ============================================================ */
-  .header__logo {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    color: #1C1917;
-    text-decoration: none;
-    animation: hdrFadeDown 0.5s ease both;
-    transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 220px;
-    flex-shrink: 0;
-  }
-
-  .header--scrolled .header__logo {
-    color: var(--stone-50);
-  }
+  /* Logo element removed per client request */
 
   /* ============================================================
      DESKTOP NAV LINKS
@@ -242,9 +228,7 @@ import HamburgerMenu from './HamburgerMenu.astro';
     white-space: nowrap;
     transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     animation: hdrFadeDown 0.5s ease 0.38s both;
-    width: 220px;
     flex-shrink: 0;
-    justify-content: flex-end;
   }
 
   .header--scrolled .header__cta {
