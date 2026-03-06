@@ -11,8 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <img src="/images/placeholder-logo.webp" alt="Kukreja McFarlane Law" class="hero__logo" />
     </div>
 
-    <!-- Gradient transition -->
-    <div class="hero__gradient"></div>
+
 
     <!-- Bottom half: white with text -->
     <div class="hero__bottom">
@@ -498,11 +497,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
   }
 
-  .hero__gradient {
-    height: 60px;
-    background: linear-gradient(to bottom, #E0DFDD 0%, #EAEAE8 35%, #F2F2F1 65%, #FAFAF9 100%);
-    flex-shrink: 0;
-  }
+
 
   .hero__bottom {
     background: #FAFAF9;
@@ -1730,7 +1725,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .hero { min-height: auto; }
     .hero__top { padding: 100px 24px 32px; min-height: 40vh; }
     .hero__bottom { padding: 0 24px 40px; }
-    .hero__gradient { height: 80px; }
+
     .hero__logo { max-width: 120px; max-height: 120px; }
     .hero__headline { font-size: 36px; max-width: 100%; }
     .hero__body { width: 100%; font-size: 15px; }
@@ -1741,7 +1736,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   @media (max-width: 480px) {
     .hero__top { padding: 80px 16px 24px; }
     .hero__bottom { padding: 0 16px 32px; }
-    .hero__gradient { height: 60px; }
+
     .hero__logo { max-width: 100px; max-height: 100px; }
     .hero__headline { font-size: 28px; }
     .hero__body { font-size: 14px; line-height: 22px; }
