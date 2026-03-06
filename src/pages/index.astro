@@ -477,19 +477,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     display: flex;
     flex-direction: column;
-    background: #FAFAF9;
+    background: transparent;
   }
 
   .hero__top {
-    flex: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #E0DFDD;
     padding: 120px 80px 60px;
-    min-height: 45vh;
-    border-bottom: 1px solid #78716C;
-    margin-bottom: 40px;
+    height: 50vh;
+    z-index: 0;
   }
 
   .hero__logo-wrap {
@@ -541,8 +543,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   .hero__bottom {
+    position: relative;
+    z-index: 1;
     background: #FAFAF9;
     padding: 0 80px 40px;
+    margin-top: 50vh;
+    border-top: 1px solid #78716C;
   }
 
   .hero__content {
@@ -620,6 +626,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     background: #FAFAF9;
     padding: 40px 80px;
+    position: relative;
+    z-index: 1;
   }
 
   .achievements__row {
@@ -709,6 +717,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 40px 80px;
     min-height: 755px;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
   }
 
   .about__inner {
@@ -1087,6 +1097,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: #1C2E4A;
     padding: 40px 80px;
     min-height: 700px;
+    position: relative;
+    z-index: 1;
   }
 
   .services__inner {
@@ -1333,6 +1345,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     background: #F5F5F4;
     padding: 56px 80px;
+    position: relative;
+    z-index: 1;
   }
 
   .representation__inner {
@@ -1444,6 +1458,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: relative;
     isolation: isolate;
     overflow: hidden;
+    z-index: 1;
   }
 
   .cta-banner__bg {
@@ -1549,6 +1564,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     background: #F5F5F4;
     padding: 56px 80px;
+    position: relative;
+    z-index: 1;
   }
 
   .contact__inner {
@@ -1749,14 +1766,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   ============================================================ */
 
   @media (max-width: 1200px) {
-    .hero__top { padding: 80px 60px 40px; }
+    .hero__top { padding: 80px 60px 40px; height: 50vh; }
     .hero__bottom { padding: 0 60px 60px; }
     .hero__headline { font-size: 60px; max-width: 680px; }
     .hero__body { width: 420px; }
   }
 
   @media (max-width: 1024px) {
-    .hero__top { padding: 80px 40px 40px; }
+    .hero__top { padding: 80px 40px 40px; height: 50vh; }
     .hero__bottom { padding: 0 40px 48px; }
     .hero__headline { font-size: 52px; max-width: 560px; }
     .hero__body { width: 100%; font-size: 16px; }
@@ -1764,7 +1781,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 768px) {
     .hero { min-height: auto; }
-    .hero__top { padding: 100px 24px 32px; min-height: 40vh; }
+    .hero__top { padding: 100px 24px 32px; height: 45vh; }
     .hero__bottom { padding: 0 24px 40px; }
 
     .hero__logo { max-width: 260px; max-height: 140px; }
@@ -1775,7 +1792,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @media (max-width: 480px) {
-    .hero__top { padding: 80px 16px 24px; }
+    .hero__top { padding: 80px 16px 24px; height: 40vh; }
     .hero__bottom { padding: 0 16px 32px; }
 
     .hero__logo { max-width: 200px; max-height: 110px; }
