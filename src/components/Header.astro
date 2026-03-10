@@ -18,6 +18,10 @@ const { theme = 'light' } = Astro.props;
       <img src="/images/rkkm-logo-white.webp" alt="RKKM Law" class="header__logo" />
     </a>
 
+    <a href="/" class={`header__mobile-logo-link${theme === 'light' ? ' header__mobile-logo-link--hidden' : ''}`}>
+      <img src="/images/rkkm-logo.webp" alt="RKKM Law" class="header__mobile-logo" />
+    </a>
+
     <nav class="header__nav">
       <a href="/" class="header__nav-link">Home</a>
       <a href="/about" class="header__nav-link">About</a>
@@ -174,6 +178,32 @@ const { theme = 'light' } = Astro.props;
     object-position: left center;
     display: block;
     flex-shrink: 0;
+  }
+
+  /* ============================================================
+     MOBILE-ONLY LOGO (before scroll)
+  ============================================================ */
+  .header__mobile-logo-link {
+    display: none;
+    flex-shrink: 0;
+    margin-right: auto;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header__mobile-logo-link--hidden {
+    display: none !important;
+  }
+
+  .header--scrolled .header__mobile-logo-link {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .header__mobile-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   /* ============================================================
@@ -661,6 +691,11 @@ const { theme = 'light' } = Astro.props;
 
     .header__hamburger-wrap {
       display: flex;
+      margin-left: auto;
+    }
+
+    .header__mobile-logo-link {
+      display: block;
     }
 
     .header__menu {
