@@ -42,7 +42,9 @@ const { theme = 'light' } = Astro.props;
   <div class="header__menu" aria-hidden="true">
 
     <!-- Logo in the top-left of the menu -->
-    <div class="header__menu-logo">Logo</div>
+    <a href="/" class="header__menu-logo">
+      <img src="/images/rkkm-logo-white.webp" alt="RKKM Law" class="header__menu-logo-img" />
+    </a>
 
     <!-- In-menu hamburger: mirrors the bar hamburger and acts as the close trigger -->
     <div class="header__menu-hamburger">
@@ -433,12 +435,17 @@ const { theme = 'light' } = Astro.props;
     position: absolute;
     top: 28px;
     left: 48px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    color: var(--stone-50);
     opacity: 0;
     transition: opacity 0.35s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .header__menu-logo-img {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   .header--open .header__menu-logo {
@@ -679,7 +686,6 @@ const { theme = 'light' } = Astro.props;
 
     .header__menu-logo {
       left: 28px;
-      font-size: 20px;
     }
 
     .header__menu-text {

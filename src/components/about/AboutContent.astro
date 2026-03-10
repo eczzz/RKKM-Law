@@ -5,9 +5,10 @@
 <section class="about-content" id="about-content">
   <div class="about-content__inner">
 
-    <!-- Left column: eyebrow + body copy -->
+    <!-- Left column: eyebrow + body copy + CTA -->
     <div class="about-content__left">
       <span class="about-content__eyebrow" data-anim>About Us</span>
+
       <div class="about-content__copy" data-anim data-delay="1">
         <p class="about-content__body">
           We founded Kukreja McFarlane Law on a simple belief: that clients navigating
@@ -21,17 +22,36 @@
           and uncompromising in our commitment to the outcomes our clients deserve.
         </p>
       </div>
-    </div>
 
-    <!-- Right column: image + CTA link -->
-    <div class="about-content__right">
-      <div class="about-content__image-wrap">
-        <div class="about-content__image" data-anim></div>
-      </div>
-      <a href="/contact" class="about-content__cta" data-anim data-delay="1">
+      <a href="/contact" class="about-content__cta" data-anim data-delay="2">
         Schedule A Consultation
         <svg class="about-content__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+    </div>
+
+    <!-- Vertical divider -->
+    <div class="about-content__divider"></div>
+
+    <!-- Right column: image + key points -->
+    <div class="about-content__right">
+      <div class="about-content__image-wrap" data-anim>
+        <div class="about-content__image"></div>
+      </div>
+
+      <div class="about-content__points">
+        <div class="about-content__point" data-anim data-delay="1">
+          <div class="about-content__point-arrow"></div>
+          <span class="about-content__point-text">Exclusively focused on high-stakes family law</span>
+        </div>
+        <div class="about-content__point" data-anim data-delay="2">
+          <div class="about-content__point-arrow"></div>
+          <span class="about-content__point-text">Decades of courtroom experience across Colorado</span>
+        </div>
+        <div class="about-content__point" data-anim data-delay="3">
+          <div class="about-content__point-arrow"></div>
+          <span class="about-content__point-text">Trusted by executives, business owners, and public figures</span>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -41,39 +61,36 @@
   .about-content {
     width: 100%;
     background: #F5F5F4;
-    padding: 40px 80px;
+    padding: 64px 80px;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .about-content__inner {
     width: 100%;
     max-width: 1280px;
-    height: 675px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    position: relative;
+    align-items: stretch;
   }
 
   /* ---- Left column ---- */
   .about-content__left {
-    width: 483px;
+    width: 50%;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 13px;
-    flex-shrink: 0;
+    padding-right: 64px;
+    justify-content: space-between;
   }
 
   .about-content__eyebrow {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 21px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #78716C;
@@ -88,62 +105,28 @@
   .about-content__copy {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    width: 483px;
+    gap: 20px;
   }
 
   .about-content__body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 140%;
-    letter-spacing: -0.03em;
-    color: #0C0A09;
-  }
-
-  /* ---- Right column ---- */
-  .about-content__right {
-    position: absolute;
-    left: 623px;
-    top: 0;
-    width: 657px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0;
-  }
-
-  .about-content__image-wrap {
-    width: 655px;
-    height: 392px;
-    overflow: hidden;
-    margin-top: 3rem;
-  }
-
-  .about-content__image {
-    width: 100%;
-    height: 100%;
-    background: url('/About-RKKM-Law-firm-v2.webp') center / cover no-repeat;
-    background-color: #D6D3D1;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .about-content__image-wrap:hover .about-content__image {
-    transform: scale(1.04);
+    font-size: 16px;
+    line-height: 170%;
+    letter-spacing: -0.02em;
+    color: #44403C;
   }
 
   .about-content__cta {
-    margin-top: 81px;
+    margin-top: auto;
+    align-self: flex-end;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     padding: 0 16px;
     gap: 24px;
     border-bottom: 1px solid #1C2E4A;
     width: fit-content;
-    align-self: flex-start;
-    margin-left: 24px;
     cursor: pointer;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
@@ -172,58 +155,152 @@
     transform: translate(3px, -3px);
   }
 
+  /* ---- Vertical divider ---- */
+  .about-content__divider {
+    width: 1px;
+    background: #78716C;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* ---- Right column ---- */
+  .about-content__right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 64px;
+    gap: 40px;
+  }
+
+  .about-content__image-wrap {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .about-content__image {
+    width: 100%;
+    height: 100%;
+    background: url('/About-RKKM-Law-firm-v2.webp') center / cover no-repeat;
+    background-color: #D6D3D1;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-content__image-wrap:hover .about-content__image {
+    transform: scale(1.04);
+  }
+
+  /* ---- Arrow bullet points ---- */
+  .about-content__points {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .about-content__point {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .about-content__point-arrow {
+    width: 40px;
+    height: 2px;
+    background-color: #A5B4A0;
+    flex-shrink: 0;
+    position: relative;
+    transform-origin: left center;
+    will-change: transform;
+    transition:
+      background-color 0.35s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-content__point-arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #A5B4A0;
+    transition: border-left-color 0.35s ease;
+  }
+
+  .about-content__point:hover .about-content__point-arrow {
+    transform: scaleX(1.35);
+    background-color: #1C2E4A;
+  }
+
+  .about-content__point:hover .about-content__point-arrow::after {
+    border-left-color: #1C2E4A;
+  }
+
+  .about-content__point-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.35s ease;
+  }
+
+  .about-content__point:hover .about-content__point-text {
+    color: #1C2E4A;
+  }
+
   /* ---- Responsive ---- */
-  @media (max-width: 1400px) {
-    .about-content { padding: 40px 60px; }
-
-    .about-content__left { width: 420px; }
-    .about-content__copy { width: 420px; }
-    .about-content__body { font-size: 20px; }
-
-    .about-content__right { left: 500px; width: auto; right: 0; }
-    .about-content__image-wrap { width: 100%; }
+  @media (max-width: 1200px) {
+    .about-content { padding: 56px 60px; }
+    .about-content__left { padding-right: 48px; }
+    .about-content__right { padding-left: 48px; }
   }
 
   @media (max-width: 1024px) {
-    .about-content { padding: 40px 40px; }
+    .about-content { padding: 48px 40px; }
 
     .about-content__inner {
       flex-direction: column;
-      height: auto;
-      gap: 40px;
+      gap: 48px;
     }
 
-    .about-content__left { width: 100%; }
-    .about-content__copy { width: 100%; }
-    .about-content__body { font-size: 20px; }
-
-    .about-content__right {
-      position: static;
+    .about-content__left {
       width: 100%;
-      align-items: flex-start;
-    }
-
-    .about-content__image-wrap {
-      width: 100%;
-      height: 340px;
+      padding-right: 0;
     }
 
     .about-content__cta {
-      margin-top: 32px;
+      margin-top: 24px;
       align-self: flex-start;
+    }
+
+    .about-content__divider {
+      width: 100%;
+      height: 1px;
+      align-self: auto;
+    }
+
+    .about-content__right {
+      width: 100%;
+      padding-left: 0;
+    }
+
+    .about-content__image-wrap {
+      height: 340px;
     }
   }
 
   @media (max-width: 768px) {
-    .about-content { padding: 32px 24px; }
-    .about-content__body { font-size: 18px; }
+    .about-content { padding: 40px 24px; }
     .about-content__image-wrap { height: 280px; }
   }
 
   @media (max-width: 480px) {
-    .about-content { padding: 24px 16px; }
-    .about-content__body { font-size: 16px; }
+    .about-content { padding: 32px 16px; }
     .about-content__image-wrap { height: 220px; }
-    .about-content__cta { margin-top: 24px; }
+    .about-content__point-arrow { width: 28px; }
   }
 </style>
