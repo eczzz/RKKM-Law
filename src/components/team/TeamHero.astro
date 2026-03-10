@@ -1,0 +1,174 @@
+---
+// TeamHero.astro — Hero banner for the Team page
+---
+
+<section class="team-hero">
+  <div class="team-hero__tagline-row">
+    <span class="team-hero__tagline">If you've been referred to us, we're ready to listen.</span>
+  </div>
+
+  <div class="team-hero__bottom">
+    <h1 class="team-hero__headline">The People Behind Your Case.</h1>
+    <a href="#team-content" class="team-hero__link">
+      Learn More
+      <svg class="team-hero__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .team-hero {
+    width: 100%;
+    height: 448px;
+    background: #E0DFDD;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 80px;
+    box-sizing: border-box;
+  }
+
+  .team-hero__tagline-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 0;
+    gap: 8px;
+    width: 100%;
+    border-bottom: 1px solid #78716C;
+    margin-top: 116px;
+  }
+
+  .team-hero__tagline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: -0.03em;
+    color: #78716C;
+  }
+
+  .team-hero__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    flex-grow: 1;
+    padding-bottom: calc(40px + 4rem);
+    max-width: 1280px;
+  }
+
+  .team-hero__headline {
+    width: 690px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #000000;
+  }
+
+  .team-hero__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #000000;
+    width: fit-content;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #000000;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+  }
+
+  .team-hero__link:hover {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .team-hero__link-arrow {
+    width: 14px;
+    height: 14px;
+    color: #000000;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .team-hero__link:hover .team-hero__link-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Animations ---- */
+  @keyframes teamFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .team-hero__tagline-row {
+    animation: teamFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .team-hero__headline {
+    animation: teamFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  .team-hero__link {
+    animation: teamFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .team-hero { padding: 0 60px; }
+    .team-hero__headline { font-size: 60px; width: 580px; }
+  }
+
+  @media (max-width: 1024px) {
+    .team-hero { padding: 0 40px; }
+    .team-hero__headline { font-size: 52px; width: 500px; }
+  }
+
+  @media (max-width: 768px) {
+    .team-hero {
+      padding: 0 24px;
+      height: auto;
+      min-height: 380px;
+    }
+    .team-hero__tagline-row { margin-top: 100px; }
+    .team-hero__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      padding-bottom: 32px;
+    }
+    .team-hero__headline {
+      font-size: 36px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .team-hero { padding: 0 16px; min-height: 340px; }
+    .team-hero__tagline-row { margin-top: 88px; }
+    .team-hero__headline { font-size: 28px; }
+    .team-hero__tagline { font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .team-hero__tagline-row,
+    .team-hero__headline,
+    .team-hero__link {
+      animation: none;
+    }
+  }
+</style>
