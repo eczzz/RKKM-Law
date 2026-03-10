@@ -1,0 +1,312 @@
+---
+// AboutWhy.astro — "Why RKKM" section for the About page
+---
+
+<section class="about-why">
+  <div class="about-why__inner">
+
+    <!-- Left column -->
+    <div class="about-why__left">
+      <span class="about-why__eyebrow" data-anim>Why RKKM</span>
+      <p class="about-why__headline" data-anim data-delay="1">
+        When the stakes are this high, who you choose matters. Kukreja McFarlane Law was built for clients who already know that.
+      </p>
+    </div>
+
+    <a href="/contact" class="about-why__link" data-anim data-delay="2">
+      Request A Consultation
+      <svg class="about-why__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <!-- Vertical divider -->
+    <div class="about-why__divider"></div>
+
+    <!-- Right column -->
+    <div class="about-why__right">
+
+      <div class="about-why__item about-why__item--1" data-anim>
+        <div class="about-why__arrow"></div>
+        <div class="about-why__item-text">
+          <strong>Specialized</strong><br />We practice one area of law. That focus translates directly into deeper expertise and better outcomes for our clients.
+        </div>
+      </div>
+
+      <div class="about-why__item about-why__item--2" data-anim data-delay="1">
+        <div class="about-why__arrow"></div>
+        <div class="about-why__item-text">
+          <strong>Trial-Ready</strong><br />When your case requires a courtroom, you want attorneys who are seasoned litigators, not attorneys experiencing trial work for the first time.
+        </div>
+      </div>
+
+      <div class="about-why__item about-why__item--3" data-anim data-delay="2">
+        <div class="about-why__arrow"></div>
+        <div class="about-why__item-text">
+          <strong>Discreet</strong><br />We understand that privacy is not a preference for our clients — it is a requirement. Every matter is handled with absolute confidentiality.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-why {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 40px 80px;
+    min-height: 698px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-why__inner {
+    width: 100%;
+    max-width: 1280px;
+    height: 675px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ---- Left column ---- */
+  .about-why__left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 438px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .about-why__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-why__eyebrow:hover {
+    color: #1C2E4A;
+    letter-spacing: 0.14em;
+  }
+
+  .about-why__headline {
+    width: 438px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: -0.03em;
+    color: #0C0A09;
+  }
+
+  .about-why__link {
+    position: absolute;
+    top: calc(262px + 3rem);
+    left: calc(200px + 3rem);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #1C2E4A;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.3s ease;
+  }
+
+  .about-why__link:hover {
+    color: #1C2E4A;
+  }
+
+  .about-why__link-arrow {
+    width: 14px;
+    height: 14px;
+    color: #1C2E4A;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-why__link:hover .about-why__link-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Vertical divider ---- */
+  .about-why__divider {
+    position: absolute;
+    left: 690px;
+    top: -35px;
+    width: 1px;
+    height: 675px;
+    background: #78716C;
+  }
+
+  /* ---- Right column ---- */
+  .about-why__right {
+    position: absolute;
+    left: 690px;
+    top: 0;
+    width: 590px;
+    height: 675px;
+  }
+
+  /* ---- Items ---- */
+  .about-why__item {
+    position: absolute;
+    left: 0;
+    width: 590px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .about-why__item--1 { top: 52px; }
+  .about-why__item--2 { top: 262px; }
+  .about-why__item--3 { top: 447px; }
+
+  .about-why__arrow {
+    position: relative;
+    top: 52px;
+    left: 38px;
+    width: 52px;
+    height: 2px;
+    background-color: #A5B4A0;
+    flex-shrink: 0;
+    transform-origin: left center;
+    will-change: transform;
+    transition:
+      background-color 0.35s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-why__arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #A5B4A0;
+    transition: border-left-color 0.35s ease;
+  }
+
+  .about-why__item:hover .about-why__arrow {
+    transform: scaleX(1.35);
+    background-color: #1C2E4A;
+  }
+
+  .about-why__item:hover .about-why__arrow::after {
+    border-left-color: #1C2E4A;
+  }
+
+  .about-why__item-text {
+    position: absolute;
+    left: 114px;
+    top: 0;
+    width: 477px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  .about-why__item-text strong {
+    font-weight: 500;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1400px) {
+    .about-why { padding: 40px 60px; }
+    .about-why__divider { left: 520px; }
+    .about-why__right { left: 520px; width: auto; right: 0; }
+    .about-why__item { width: auto; right: 0; }
+    .about-why__item-text { width: auto; right: 0; }
+  }
+
+  @media (max-width: 1200px) {
+    .about-why { padding: 40px 40px; }
+
+    .about-why__inner {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .about-why__left {
+      position: static;
+      width: 100%;
+    }
+
+    .about-why__headline { width: 100%; }
+
+    .about-why__link {
+      position: static;
+      margin-top: 24px;
+    }
+
+    .about-why__divider { display: none; }
+
+    .about-why__right {
+      position: static;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .about-why__item {
+      position: static;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .about-why__arrow {
+      position: static;
+      margin-top: 14px;
+    }
+
+    .about-why__item-text {
+      position: static;
+      width: auto;
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 968px) {
+    .about-why { padding: 32px 24px; }
+    .about-why__headline { font-size: 20px; }
+    .about-why__item-text { font-size: 18px; }
+  }
+
+  @media (max-width: 480px) {
+    .about-why { padding: 24px 16px; }
+    .about-why__headline { font-size: 18px; }
+    .about-why__item-text { font-size: 16px; }
+    .about-why__arrow { width: 32px; }
+  }
+</style>

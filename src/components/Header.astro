@@ -1,9 +1,15 @@
 ---
 // Header.astro — Sticky pill header + full-screen mobile menu for RKKM Law
 import HamburgerMenu from './HamburgerMenu.astro';
+
+interface Props {
+  theme?: 'light' | 'dark';
+}
+
+const { theme = 'light' } = Astro.props;
 ---
 
-<header class="header">
+<header class={`header${theme === 'dark' ? ' header--dark' : ''}`}>
 
   <!-- ── Top bar (desktop + mobile) ─────────────────── -->
   <div class="header__bar">
@@ -287,6 +293,60 @@ import HamburgerMenu from './HamburgerMenu.astro';
 
   .header__cta:hover .header__cta-arrow {
     transform: translate(3px, -3px);
+  }
+
+  /* ============================================================
+     DARK THEME — dark text on light backgrounds (e.g. About page)
+  ============================================================ */
+  .header--dark .header__nav-link {
+    color: #78716C;
+  }
+
+  .header--dark .header__nav-link:hover {
+    color: #0C0A09;
+  }
+
+  .header--dark .header__nav-link::after {
+    background: #0C0A09;
+  }
+
+  .header--dark .header__cta {
+    color: #0C0A09;
+    border-bottom-color: #0C0A09;
+  }
+
+  .header--dark .header__cta:hover {
+    color: rgba(12, 10, 9, 0.6);
+  }
+
+  .header--dark .header__cta-arrow {
+    color: #0C0A09;
+  }
+
+  /* Dark theme + scrolled: revert to light text on navy pill */
+  .header--dark.header--scrolled .header__nav-link {
+    color: rgba(250, 250, 249, 0.7);
+  }
+
+  .header--dark.header--scrolled .header__nav-link:hover {
+    color: #FAFAF9;
+  }
+
+  .header--dark.header--scrolled .header__nav-link::after {
+    background: var(--stone-50);
+  }
+
+  .header--dark.header--scrolled .header__cta {
+    color: #FFFFFF;
+    border-bottom-color: #FFFFFF;
+  }
+
+  .header--dark.header--scrolled .header__cta:hover {
+    color: rgba(250, 250, 249, 0.75);
+  }
+
+  .header--dark.header--scrolled .header__cta-arrow {
+    color: #FFFFFF;
   }
 
   /* ============================================================

@@ -1,0 +1,187 @@
+---
+// AboutQuote.astro — Navy quote banner for the About page
+---
+
+<section class="about-quote">
+  <div class="about-quote__inner">
+
+    <blockquote class="about-quote__text" data-anim>
+      "People might discount the need for a real trial attorney in family law —
+      but the reality is that most people's first and only experience with the
+      justice system is through family law. The need for a skilled trial attorney
+      in your family law case is just as important as an other area of the law."
+    </blockquote>
+
+    <div class="about-quote__right-group" data-anim data-delay="1">
+      <span class="about-quote__attribution">
+        — Kyle McFarlane, Founding Partner
+      </span>
+      <a href="/contact" class="about-quote__cta">
+        Schedule A Consultation
+        <svg class="about-quote__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <p class="about-quote__tagline" data-anim data-delay="1">
+      RKKM Law represents clients who<br />cannot afford the wrong outcome. If<br />you've been referred to us, we're ready<br />to listen.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .about-quote {
+    width: 100%;
+    background: #1C2E4A;
+    padding: 0 80px 56px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-quote__inner {
+    width: 100%;
+    max-width: 1280px;
+    height: 536px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-quote__text {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 140%;
+    letter-spacing: -0.03em;
+    color: #FAFAF9;
+  }
+
+  .about-quote__right-group {
+    position: absolute;
+    bottom: calc(40px + 2rem);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6rem;
+  }
+
+  .about-quote__attribution {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #FAFAF9;
+  }
+
+  .about-quote__tagline {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 280px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 200%;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+  }
+
+  .about-quote__cta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #F0F0F0;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+  }
+
+  .about-quote__cta:hover {
+    color: rgba(240, 240, 240, 0.7);
+  }
+
+  .about-quote__cta-arrow {
+    width: 14px;
+    height: 14px;
+    color: #F0F0F0;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-quote__cta:hover .about-quote__cta-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .about-quote { padding: 0 60px 56px; }
+    .about-quote__text { font-size: 30px; }
+  }
+
+  @media (max-width: 1024px) {
+    .about-quote { padding: 0 40px 48px; }
+
+    .about-quote__inner {
+      height: auto;
+      position: static;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+      padding-top: 64px;
+    }
+
+    .about-quote__text {
+      position: static;
+      width: 100%;
+      font-size: 28px;
+    }
+
+    .about-quote__right-group {
+      position: static;
+    }
+
+    .about-quote__tagline {
+      position: static;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-quote { padding: 0 24px 40px; }
+    .about-quote__text { font-size: 24px; }
+
+    .about-quote__inner {
+      padding-top: 48px;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-quote { padding: 0 16px 32px; }
+    .about-quote__text { font-size: 20px; }
+    .about-quote__inner { padding-top: 40px; }
+  }
+</style>

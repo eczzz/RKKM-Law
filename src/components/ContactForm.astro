@@ -1,0 +1,313 @@
+---
+// ContactForm.astro — Reusable contact form + info panel section
+---
+
+<section class="contact">
+  <div class="contact__inner">
+
+    <!-- Left column: form -->
+    <div class="contact__left">
+
+      <div class="contact__header">
+        <span class="contact__eyebrow" data-anim>Get In Touch</span>
+        <h2 class="contact__heading" data-anim data-delay="1">Contact Us</h2>
+        <p class="contact__subtext" data-anim data-delay="2">Your matter is confidential. Reach out to schedule a consultation and one of our attorneys will be in touch shortly.</p>
+      </div>
+
+      <div class="contact__fields" data-anim data-delay="3">
+        <input class="contact__input" type="text" placeholder="Full Name*" />
+        <input class="contact__input" type="text" placeholder="Phone Number*" />
+        <input class="contact__input" type="email" placeholder="Email Address*" />
+        <input class="contact__input" type="text" placeholder="Message*" />
+      </div>
+
+      <div class="contact__submit" data-anim data-delay="4">
+        Request A Consultation
+        <svg class="contact__submit-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+    </div>
+
+    <!-- Right column: contact info panel -->
+    <div class="contact__right" data-anim data-delay="2">
+
+      <h3 class="contact__info-heading">Contact Information</h3>
+
+      <div class="contact__info-rows">
+
+        <div class="contact__info-row">
+          <div class="contact__icon-box">
+            <i class="contact__icon fa-solid fa-envelope"></i>
+          </div>
+          <span class="contact__info-text">info@rkkmlaw.com</span>
+        </div>
+
+        <div class="contact__info-row">
+          <div class="contact__icon-box">
+            <i class="contact__icon fa-solid fa-phone"></i>
+          </div>
+          <a href="tel:+7201234567" class="contact__info-text contact__info-link">+720 123 4567</a>
+        </div>
+
+        <div class="contact__info-row">
+          <div class="contact__icon-box">
+            <i class="contact__icon fa-solid fa-location-dot"></i>
+          </div>
+          <span class="contact__info-text">Office Address TBD Denver, CO 80205</span>
+        </div>
+
+        <div class="contact__info-row">
+          <div class="contact__icon-box">
+            <i class="contact__icon fa-solid fa-clock"></i>
+          </div>
+          <span class="contact__info-text">Monday - Friday; 8:00am - 5:00pm</span>
+        </div>
+
+      </div>
+
+      <div class="contact__divider"></div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 56px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 140px;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Left column */
+  .contact__left {
+    width: 400px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+  }
+
+  .contact__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .contact__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+  }
+  .contact__eyebrow:hover { color: #1C2E4A; letter-spacing: 0.14em; }
+
+  .contact__heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  .contact__subtext {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #57534E;
+  }
+
+  .contact__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 400px;
+    margin-bottom: 40px;
+  }
+
+  .contact__input {
+    display: block;
+    width: 100%;
+    padding: 17px 0px;
+    border: none;
+    border-bottom: 1px solid #D6D6D6;
+    background: transparent;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #1C1917;
+  }
+
+  .contact__input::placeholder {
+    color: #828282;
+  }
+
+  .contact__submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 0px 16px;
+    border-bottom: 1px solid #1C2E4A;
+    width: fit-content;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.3s ease;
+  }
+
+  .contact__submit:hover { color: #1C2E4A; }
+
+  .contact__submit-arrow {
+    width: 14px;
+    height: 14px;
+    color: #1C2E4A;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .contact__submit:hover .contact__submit-arrow { transform: translate(3px, -3px); }
+
+  .contact__input { transition: border-bottom-color 0.3s ease; }
+  .contact__input:focus { border-bottom-color: #1C2E4A; }
+
+  .contact__info-row { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .contact__info-row:hover { transform: translateX(4px); }
+  .contact__icon-box { transition: background-color 0.35s ease; }
+  .contact__info-row:hover .contact__icon-box { background-color: rgba(255, 255, 255, 0.12); }
+
+  /* Right column */
+  .contact__right {
+    flex-grow: 1;
+    background: #1C2E4A;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+    min-height: 460px;
+  }
+
+  .contact__info-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+  }
+
+  .contact__info-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: auto;
+  }
+
+  .contact__info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .contact__icon-box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact__icon {
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+
+  .contact__info-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+  }
+
+  .contact__info-link {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+
+  .contact__divider {
+    width: 100%;
+    border-top: 1px solid #FFFFFF;
+    opacity: 0.3;
+    margin-top: auto;
+    padding-top: 40px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1440px) {
+    .contact__inner { gap: 80px; }
+    .contact__left { flex: 0 1 36%; width: auto; min-width: 0; }
+    .contact__fields { width: 100%; }
+  }
+
+  @media (max-width: 1200px) {
+    .contact { padding: 48px 60px; }
+    .contact__inner { gap: 56px; }
+    .contact__heading { font-size: 28px; }
+  }
+
+  @media (max-width: 1024px) {
+    .contact { padding: 48px 40px; }
+    .contact__inner { flex-direction: column; gap: 40px; }
+    .contact__left { width: 100%; flex: none; }
+    .contact__fields { width: 100%; }
+    .contact__right { width: 100%; min-height: auto; }
+    .contact__info-rows { margin-bottom: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .contact { padding: 40px 24px; }
+    .contact__heading { font-size: 24px; }
+    .contact__right { padding: 32px; }
+    .contact__info-text { font-size: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .contact { padding: 32px 16px; }
+    .contact__right { padding: 24px; }
+    .contact__info-rows { gap: 20px; }
+    .contact__info-text { font-size: 14px; }
+  }
+</style>

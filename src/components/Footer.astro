@@ -10,7 +10,9 @@
 
       <!-- Brand column -->
       <div class="footer__brand">
-        <span class="footer__logo">Logo</span>
+        <a href="/" class="footer__logo-link">
+          <img src="/images/rkkm-logo-white.webp" alt="RKKM Law" class="footer__logo" />
+        </a>
         <p class="footer__tagline">
           Trusted Counsel for Life's<br />Most Complex Family Law Matters.
         </p>
@@ -82,13 +84,16 @@
   }
 
   /* ── Brand ─────────────────────── */
-  .footer__logo {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    color: #FFFFFF;
+  .footer__logo-link {
     display: block;
     margin-bottom: 16px;
+  }
+
+  .footer__logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   .footer__tagline {
@@ -307,7 +312,7 @@
     }
 
     .footer__logo {
-      font-size: 20px;
+      height: 24px;
     }
 
     .footer__copyright {

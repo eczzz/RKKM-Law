@@ -1,0 +1,328 @@
+---
+// AboutApproach.astro — "Our Approach" section for the About page
+---
+
+<section class="about-approach">
+  <div class="about-approach__inner">
+
+    <!-- Left column -->
+    <div class="about-approach__left">
+      <span class="about-approach__eyebrow" data-anim>Our Approach</span>
+      <h2 class="about-approach__headline" data-anim data-delay="1">A Different Kind of Firm.</h2>
+      <p class="about-approach__body" data-anim data-delay="1">
+        We don't measure success in volume. We measure it in outcomes; for clients who came to us because someone they trust said we were the right call.
+      </p>
+    </div>
+
+    <a href="/contact" class="about-approach__link" data-anim data-delay="2">
+      Schedule a Consultation
+      <svg class="about-approach__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <!-- Vertical divider -->
+    <div class="about-approach__divider"></div>
+
+    <!-- Right column: awards -->
+    <div class="about-approach__right">
+
+      <div class="about-approach__row about-approach__row--1" data-anim>
+        <div class="about-approach__arrow"></div>
+        <p class="about-approach__award"><strong>Best Lawyers In America</strong> <span>Family Law — 2024, 2025 &amp; 2026</span></p>
+      </div>
+
+      <div class="about-approach__row about-approach__row--2" data-anim data-delay="1">
+        <div class="about-approach__arrow"></div>
+        <p class="about-approach__award"><strong>Colorado Super Lawyers</strong> <span>Multiple Partners — 2017 - 2025</span></p>
+      </div>
+
+      <div class="about-approach__row about-approach__row--3" data-anim data-delay="2">
+        <div class="about-approach__arrow"></div>
+        <p class="about-approach__award"><strong>Martindale-Hubbell</strong> <span>Distinguished Peer Review Rating — 2005 to Present</span></p>
+      </div>
+
+      <div class="about-approach__row about-approach__row--4" data-anim data-delay="3">
+        <div class="about-approach__arrow"></div>
+        <p class="about-approach__award"><strong>5280 Magazine Top Lawyers</strong> <span>Family Law &amp; Divorce — 2025 &amp; 2026</span></p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-approach {
+    width: 100%;
+    background: #1C2E4A;
+    padding: 40px 80px;
+    min-height: 446px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-approach__inner {
+    width: 100%;
+    max-width: 1280px;
+    height: 366px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ---- Left column ---- */
+  .about-approach__left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 438px;
+    height: 268px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-approach__eyebrow {
+    position: absolute;
+    top: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F0F0F0;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-approach__eyebrow:hover {
+    color: #FFFFFF;
+    letter-spacing: 0.14em;
+  }
+
+  .about-approach__headline {
+    position: absolute;
+    top: 64px;
+    width: 438px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #F0F0F0;
+  }
+
+  .about-approach__body {
+    position: absolute;
+    top: 110px;
+    width: 438px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: -0.03em;
+    color: #F0F0F0;
+  }
+
+  .about-approach__link {
+    position: absolute;
+    top: 316px;
+    left: 219px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #F0F0F0;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+  }
+
+  .about-approach__link:hover {
+    color: rgba(240, 240, 240, 0.7);
+  }
+
+  .about-approach__link-arrow {
+    width: 14px;
+    height: 14px;
+    color: #F0F0F0;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-approach__link:hover .about-approach__link-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Vertical divider ---- */
+  .about-approach__divider {
+    position: absolute;
+    left: 514px;
+    top: 29px;
+    width: 1px;
+    height: 290px;
+    background: #78716C;
+  }
+
+  /* ---- Right column ---- */
+  .about-approach__right {
+    position: absolute;
+    left: 626px;
+    top: 0;
+    width: 654px;
+    height: 300px;
+  }
+
+  .about-approach__row {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    width: 654px;
+    height: 50px;
+  }
+
+  .about-approach__row--1 { top: 53px; }
+  .about-approach__row--2 { top: 109px; }
+  .about-approach__row--3 { top: 165px; }
+  .about-approach__row--4 { top: 221px; }
+
+  .about-approach__arrow {
+    width: 52px;
+    height: 2px;
+    background-color: #A5B4A0;
+    flex-shrink: 0;
+    margin-right: 24px;
+    position: relative;
+    transform-origin: left center;
+    will-change: transform;
+    transition:
+      background-color 0.35s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-approach__arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #A5B4A0;
+    transition: border-left-color 0.35s ease;
+  }
+
+  .about-approach__row:hover .about-approach__arrow {
+    transform: scaleX(1.35);
+    background-color: #FFFFFF;
+  }
+
+  .about-approach__row:hover .about-approach__arrow::after {
+    border-left-color: #FFFFFF;
+  }
+
+  .about-approach__award {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 50px;
+    text-transform: capitalize;
+    color: #F0F0F0;
+    white-space: nowrap;
+  }
+
+  .about-approach__award span {
+    font-weight: 400;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1400px) {
+    .about-approach { padding: 40px 60px; }
+    .about-approach__divider { left: 460px; }
+    .about-approach__right { left: 520px; width: auto; right: 0; }
+    .about-approach__row { width: auto; }
+    .about-approach__award { font-size: 14px; }
+  }
+
+  @media (max-width: 1200px) {
+    .about-approach { padding: 40px 40px; }
+
+    .about-approach__inner {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .about-approach__left {
+      position: static;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-approach__eyebrow,
+    .about-approach__headline,
+    .about-approach__body {
+      position: static;
+      width: 100%;
+    }
+
+    .about-approach__link {
+      position: static;
+      margin-top: 24px;
+    }
+
+    .about-approach__divider { display: none; }
+
+    .about-approach__right {
+      position: static;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about-approach__row {
+      position: static;
+      width: 100%;
+    }
+
+    .about-approach__award {
+      white-space: normal;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 968px) {
+    .about-approach { padding: 32px 24px; }
+    .about-approach__body { font-size: 20px; }
+    .about-approach__award { font-size: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .about-approach { padding: 24px 16px; }
+    .about-approach__body { font-size: 18px; }
+    .about-approach__headline { font-size: 28px; }
+    .about-approach__award { font-size: 13px; }
+    .about-approach__arrow { width: 32px; }
+  }
+</style>

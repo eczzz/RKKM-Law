@@ -7,11 +7,13 @@ import Header from '../components/Header.astro';
 interface Props {
   title?: string;
   description?: string;
+  headerTheme?: 'light' | 'dark';
 }
 
 const {
   title = "RKKM Law — Trusted Counsel for Life's Most Complex Family Law Matters",
   description = 'RKKM Law brings decades of experience to the families, individuals, and executives who demand both discretion and results.',
+  headerTheme = 'light',
 } = Astro.props;
 ---
 
@@ -26,7 +28,7 @@ const {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   </head>
   <body>
-    <Header />
+    <Header theme={headerTheme} />
     <slot />
     <Footer />
   </body>
