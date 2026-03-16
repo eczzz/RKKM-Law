@@ -37,36 +37,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================ -->
-  <!-- SECTION 1 — ACHIEVEMENTS BAR                                 -->
-  <!-- ============================================================ -->
-  <section class="achievements">
-    <div class="achievements__row">
-
-      <div class="stat-card stat-card--grow" data-anim>
-        <span class="stat-card__value">40+ Years</span>
-        <span class="stat-card__label">Combined Experience</span>
-      </div>
-
-      <div class="stat-card stat-card--grow" data-anim data-delay="1">
-        <span class="stat-card__value">3</span>
-        <span class="stat-card__label">Colorado Super Lawyers</span>
-      </div>
-
-      <div class="stat-card stat-card--grow" data-anim data-delay="2">
-        <span class="stat-card__value">100%</span>
-        <span class="stat-card__label">Family Law Focus</span>
-      </div>
-
-      <div class="stat-card stat-card--fixed" data-anim data-delay="3">
-        <span class="stat-card__value">2024-26</span>
-        <span class="stat-card__label">Best Lawyers of America</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- SECTION 2 — ABOUT US                                         -->
+  <!-- SECTION 1 — ABOUT US                                         -->
   <!-- ============================================================ -->
   <section class="about">
     <div class="about__inner">
@@ -120,6 +91,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="about__bullet-text">Discreet, personalized counsel from day one</span>
         </div>
 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2 — ACHIEVEMENTS BAR                                 -->
+  <!-- ============================================================ -->
+  <section class="achievements">
+    <div class="achievements__row">
+
+      <div class="stat-card stat-card--grow" data-anim>
+        <span class="stat-card__value">40+ Years</span>
+        <span class="stat-card__label">Combined Experience</span>
+      </div>
+
+      <div class="stat-card stat-card--grow" data-anim data-delay="1">
+        <span class="stat-card__value">3</span>
+        <span class="stat-card__label">Colorado Super Lawyers</span>
+      </div>
+
+      <div class="stat-card stat-card--grow" data-anim data-delay="2">
+        <span class="stat-card__value">100%</span>
+        <span class="stat-card__label">Family Law Focus</span>
+      </div>
+
+      <div class="stat-card stat-card--fixed" data-anim data-delay="3">
+        <span class="stat-card__value">2024-26</span>
+        <span class="stat-card__label">Best Lawyers of America</span>
       </div>
 
     </div>
@@ -581,11 +581,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .hero__tagline {
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    color: #78716C;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.01em;
+    color: #1C2E4A;
     font-style: italic;
     margin-top: 20px;
   }
@@ -1465,18 +1465,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .cta-banner__bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/home-page-mid-cta-bg-v2.webp');
-    background-size: cover;
-    background-position: center;
+    background: #D6DDD3;
     z-index: 0;
   }
 
   .cta-banner__overlay {
-    position: absolute;
-    inset: 0;
-    background: #0C0A09;
-    opacity: 0.3;
-    z-index: 1;
+    display: none;
   }
 
   .cta-banner__content {
@@ -1505,7 +1499,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 46px;
     line-height: 110%;
     letter-spacing: -0.03em;
-    color: #FAFAF9;
+    color: #1C2E4A;
   }
 
   .cta-banner__bottom {
@@ -1523,8 +1517,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.02em;
-    color: #FAFAF9;
-    opacity: 0.8;
+    color: #44403C;
+    opacity: 1;
   }
 
   .cta-banner__link {
@@ -1533,7 +1527,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     gap: 24px;
     padding: 0px 16px;
-    border-bottom: 1px solid #F0F0F0;
+    border-bottom: 1px solid #1C2E4A;
     width: fit-content;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
@@ -1542,20 +1536,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 3rem;
     line-height: 21px;
     letter-spacing: -0.02em;
-    color: #F0F0F0;
+    color: #1C1917;
   }
 
   .cta-banner__link-arrow {
     width: 14px;
     height: 14px;
-    color: #F0F0F0;
+    color: #1C2E4A;
     display: inline-block;
     flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .cta-banner__link { transition: color 0.3s ease; }
-  .cta-banner__link:hover { color: #FFFFFF; }
+  .cta-banner__link:hover { color: #1C2E4A; }
   .cta-banner__link:hover .cta-banner__link-arrow { transform: translate(3px, -3px); }
 
   /* ============================================================
