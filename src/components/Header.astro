@@ -1,5 +1,5 @@
 ---
-// Header.astro — Sticky pill header + full-screen mobile menu for RKKM Law
+// Header.astro — Sticky pill header + full-screen mobile menu for KM Law
 import HamburgerMenu from './HamburgerMenu.astro';
 
 interface Props {
@@ -15,11 +15,11 @@ const { theme = 'light' } = Astro.props;
   <div class="header__bar">
 
     <a href="/" class="header__logo-link">
-      <img src="/images/rkkm-logo-white.webp" alt="RKKM Law" class="header__logo" />
+      <img src="/images/rkkm-logo-white.webp" alt="KM Law" class="header__logo" />
     </a>
 
-    <a href="/" class={`header__mobile-logo-link${theme === 'light' ? ' header__mobile-logo-link--hidden' : ''}`}>
-      <img src="/images/rkkm-logo.webp" alt="RKKM Law" class="header__mobile-logo" />
+    <a href="/" class="header__mobile-logo-link header__mobile-logo-link--show-mobile-only">
+      <img src="/images/km-logo.webp" alt="KM Law" class="header__mobile-logo" />
     </a>
 
     <nav class="header__nav">
@@ -47,7 +47,7 @@ const { theme = 'light' } = Astro.props;
 
     <!-- Logo in the top-left of the menu -->
     <a href="/" class="header__menu-logo">
-      <img src="/images/rkkm-logo-white.webp" alt="RKKM Law" class="header__menu-logo-img" />
+      <img src="/images/rkkm-logo-white.webp" alt="KM Law" class="header__menu-logo-img" />
     </a>
 
     <!-- In-menu hamburger: mirrors the bar hamburger and acts as the close trigger -->
@@ -110,7 +110,7 @@ const { theme = 'light' } = Astro.props;
 
   .header__bar {
     width: 100%;
-    max-width: 100%;
+    max-width: 1600px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -140,8 +140,8 @@ const { theme = 'light' } = Astro.props;
   }
 
   .header--scrolled .header__bar {
-    max-width: 1280px;
-    background: rgba(28, 46, 74, 0.92);
+    max-width: 1600px;
+    background: rgba(27, 59, 73, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 0;
@@ -194,16 +194,27 @@ const { theme = 'light' } = Astro.props;
     display: none !important;
   }
 
+  .header__mobile-logo-link--show-mobile-only {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .header__mobile-logo-link--show-mobile-only {
+      display: flex;
+    }
+  }
+
   .header--scrolled .header__mobile-logo-link {
     opacity: 0;
     pointer-events: none;
   }
 
   .header__mobile-logo {
-    height: 24px;
+    height: 32px;
     width: auto;
     object-fit: contain;
     display: block;
+    mix-blend-mode: darken;
   }
 
   /* ============================================================
@@ -289,12 +300,13 @@ const { theme = 'light' } = Astro.props;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.02em;
-    color: #1C1917;
+    color: #FFFFFF;
     cursor: pointer;
     white-space: nowrap;
     transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     animation: hdrFadeDown 0.5s ease 0.38s both;
     flex-shrink: 0;
+    border-bottom-color: #FFFFFF;
   }
 
   .header--scrolled .header__cta {
@@ -303,7 +315,7 @@ const { theme = 'light' } = Astro.props;
   }
 
   .header__cta:hover {
-    color: rgba(28, 25, 23, 0.6);
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .header--scrolled .header__cta:hover {
@@ -313,7 +325,7 @@ const { theme = 'light' } = Astro.props;
   .header__cta-arrow {
     width: 14px;
     height: 14px;
-    color: #1C1917;
+    color: #FFFFFF;
     display: inline-block;
     flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -398,6 +410,12 @@ const { theme = 'light' } = Astro.props;
     transition: stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  @media (max-width: 768px) {
+    .header__hamburger-wrap :global(path) {
+      stroke: #1C1917;
+    }
+  }
+
   .header--scrolled .header__hamburger-wrap :global(path) {
     stroke: #ffffff;
   }
@@ -439,7 +457,7 @@ const { theme = 'light' } = Astro.props;
     position: fixed;
     inset: 0;
     z-index: 9998;
-    background: radial-gradient(ellipse at 15% 60%, #243C60 0%, #1C2E4A 65%);
+    background: radial-gradient(ellipse at 15% 60%, #243C60 0%, #1B3B49 65%);
     display: flex;
     flex-direction: column;
     padding: 100px 48px 52px;
@@ -627,7 +645,7 @@ const { theme = 'light' } = Astro.props;
     height: 41px;
     padding: 0 22px;
     background: #F0F0F0;
-    color: #1C2E4A;
+    color: #1B3B49;
     border-radius: 9px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;

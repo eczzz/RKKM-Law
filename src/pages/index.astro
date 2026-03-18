@@ -3,28 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
-  <!-- Hero Section: Split layout — logo top, text bottom -->
+  <!-- Hero Section: Split layout — logo + headline left on cream, image right with overlaid copy -->
   <section class="hero">
+    <div class="hero__container">
 
-    <!-- Top half: gray with logo -->
-    <div class="hero__top">
-      <div class="hero__logo-wrap">
-        <img src="/images/rkkm-logo.webp" alt="RKKM Law" class="hero__logo" />
-      </div>
-    </div>
-
-
-
-    <!-- Bottom half: white with text -->
-    <div class="hero__bottom">
-      <div class="hero__content">
-        <div class="hero__tagline-bar">
-          <span class="hero__tagline">If you've been referred to us, we're ready to listen.</span>
+      <!-- Left column: logo + headline on cream -->
+      <div class="hero__left">
+        <div class="hero__logo-wrap">
+          <img src="/images/km-logo.webp" alt="KM Law" class="hero__logo" />
         </div>
-        <div class="hero__text-row">
-          <h1 class="hero__headline">
-            Trusted Counsel for Life's Most Complex Family Law Matters.
-          </h1>
+        <h1 class="hero__headline">
+          Trusted Counsel for Life's Most Complex Family Law Matters.
+        </h1>
+      </div>
+
+      <!-- Right column: full-height image with overlaid supporting copy -->
+      <div class="hero__right">
+        <!-- TODO: Replace with actual Cherry Creek North photo from client -->
+        <img src="/images/hero-cherry-creek.webp" alt="Cherry Creek North, Denver" class="hero__image" />
+        <div class="hero__overlay-text">
           <p class="hero__body">
             <span class="hero__body-lead">We make complex issues manageable.</span>
             <span class="hero__body-sub"> Kukreja McFarlane Law brings decades of experience
@@ -32,8 +29,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
       </div>
-    </div>
 
+    </div>
   </section>
 
   <!-- ============================================================ -->
@@ -113,8 +110,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="stat-card stat-card--grow" data-anim data-delay="2">
-        <span class="stat-card__value">100%</span>
-        <span class="stat-card__label">Family Law Focus</span>
+        <span class="stat-card__value">5280</span>
+        <span class="stat-card__label">Magazine Top Lawyers</span>
       </div>
 
       <div class="stat-card stat-card--fixed" data-anim data-delay="3">
@@ -223,7 +220,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="services__left">
         <span class="services__eyebrow" data-anim>Services</span>
         <p class="services__body" data-anim data-delay="1">
-          RKKM Law handles the full spectrum of family law matters — from complex
+          KM Law handles the full spectrum of family law matters — from complex
           asset division to high-conflict custody — with the discretion and rigor
           your situation demands.
         </p>
@@ -314,50 +311,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 5 — REPRESENTATION MATTERS                           -->
-  <!-- ============================================================ -->
-  <section class="representation">
-    <div class="representation__inner">
-
-      <!-- Section header -->
-      <div class="representation__header">
-        <span class="representation__eyebrow" data-anim>Representation Matters</span>
-        <h2 class="representation__heading" data-anim data-delay="1">The Cases We Handle</h2>
-        <p class="representation__subtext" data-anim data-delay="2">Our firm is retained for matters where the stakes — financial, reputational, and personal — demand the highest level of counsel. While we protect the identities of every client, the nature of our work speaks for itself.</p>
-      </div>
-
-      <!-- Matter cards grid -->
-      <div class="representation__grid">
-
-        <div class="representation__card" data-anim>
-          <span class="representation__card-eyebrow">High-Asset Dissolution</span>
-          <h3 class="representation__card-title">$40M+ Marital Estate Division</h3>
-          <p class="representation__card-desc">Represented a tech executive in the dissolution of a marriage involving multiple business entities, stock options, deferred compensation, and out-of-state real property holdings.</p>
-        </div>
-
-        <div class="representation__card" data-anim data-delay="1">
-          <span class="representation__card-eyebrow">Executive Custody Dispute</span>
-          <h3 class="representation__card-title">International Relocation &amp; Parenting</h3>
-          <p class="representation__card-desc">Secured a favorable parenting plan for a C-suite client whose former spouse sought to relocate internationally with minor children, involving coordination across multiple jurisdictions.</p>
-        </div>
-
-        <div class="representation__card" data-anim data-delay="2">
-          <span class="representation__card-eyebrow">Business Owner Divorce</span>
-          <h3 class="representation__card-title">Closely-Held Business Valuation</h3>
-          <p class="representation__card-desc">Protected the ownership interest and operational continuity of a multi-generational family business during a contested divorce involving complex forensic accounting.</p>
-        </div>
-
-        <div class="representation__card" data-anim data-delay="3">
-          <span class="representation__card-eyebrow">Public Figure Matter</span>
-          <h3 class="representation__card-title">Discreet Resolution Under Public Scrutiny</h3>
-          <p class="representation__card-desc">Guided a well-known Colorado professional through a high-profile dissolution, managing media exposure while achieving an expedient and confidential settlement.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
+  {/* SECTION 5 : REPRESENTATION MATTERS removed from homepage. Content preserved in src/components/RepresentationMatters.astro for Services page. */}
 
   <!-- ============================================================ -->
   <!-- SECTION 6 — MID-PAGE CTA BANNER                             -->
@@ -394,142 +348,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 7 — CONTACT US                                       -->
-  <!-- ============================================================ -->
-  <section class="contact">
-    <div class="contact__inner">
-
-      <!-- Left column: form -->
-      <div class="contact__left">
-
-        <div class="contact__header">
-          <span class="contact__eyebrow" data-anim>Get In Touch</span>
-          <h2 class="contact__heading" data-anim data-delay="1">Contact Us</h2>
-          <p class="contact__subtext" data-anim data-delay="2">Your matter is confidential. Reach out to schedule a consultation and one of our attorneys will be in touch shortly.</p>
-        </div>
-
-        <div class="contact__fields" data-anim data-delay="3">
-          <input class="contact__input" type="text" placeholder="Full Name*" />
-          <input class="contact__input" type="text" placeholder="Phone Number*" />
-          <input class="contact__input" type="email" placeholder="Email Address*" />
-          <input class="contact__input" type="text" placeholder="Message*" />
-        </div>
-
-        <div class="contact__submit" data-anim data-delay="4">
-          Request A Consultation
-          <svg class="contact__submit-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-      </div>
-
-      <!-- Right column: contact info panel -->
-      <div class="contact__right" data-anim data-delay="2">
-
-        <h3 class="contact__info-heading">Contact Information</h3>
-
-        <div class="contact__info-rows">
-
-          <div class="contact__info-row">
-            <div class="contact__icon-box">
-              <i class="contact__icon fa-solid fa-envelope"></i>
-            </div>
-            <span class="contact__info-text">info@rkkmlaw.com</span>
-          </div>
-
-          <div class="contact__info-row">
-            <div class="contact__icon-box">
-              <i class="contact__icon fa-solid fa-phone"></i>
-            </div>
-            <a href="tel:+7201234567" class="contact__info-text contact__info-link">+720 123 4567</a>
-          </div>
-
-          <div class="contact__info-row">
-            <div class="contact__icon-box">
-              <i class="contact__icon fa-solid fa-location-dot"></i>
-            </div>
-            <span class="contact__info-text">Office Address TBD Denver, CO 80205</span>
-          </div>
-
-          <div class="contact__info-row">
-            <div class="contact__icon-box">
-              <i class="contact__icon fa-solid fa-clock"></i>
-            </div>
-            <span class="contact__info-text">Monday - Friday; 8:00am - 5:00pm</span>
-          </div>
-
-        </div>
-
-        <div class="contact__divider"></div>
-
-      </div>
-
-    </div>
-  </section>
+  {/* SECTION 7 : CONTACT US removed from homepage. Content preserved in src/components/ContactSection.astro for Contact page. */}
 
 </BaseLayout>
 
 <style>
   /* ============================================================
-     HERO
+     HERO — Split: logo + headline left (cream), image right with overlaid copy
   ============================================================ */
   .hero {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: transparent;
+    background: #D8CFC0;
+    position: relative;
+    z-index: 1;
   }
 
-  .hero__top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  .hero__container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #E0DFDD;
-    padding: 120px 80px 60px;
-    height: 50vh;
-    z-index: 0;
+    flex-direction: row;
+    max-height: 75vh;
+  }
+
+  /* Left column: cream bg, logo top, headline bottom */
+  .hero__left {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 40px 48px;
+    padding-left: max(80px, calc((100vw - 1600px) / 2));
+    min-width: 0;
   }
 
   .hero__logo-wrap {
     position: relative;
     display: inline-block;
-    padding: 24px 32px;
+    padding: 0;
     cursor: pointer;
+    align-self: flex-start;
   }
 
-  .hero__logo-wrap::after,
-  .hero__logo-wrap::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    border: 0px solid transparent;
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
 
-  .hero__logo-wrap::after {
-    top: 0;
-    left: 0;
-    border-top: 2px solid #1C1917;
-    border-left: 2px solid #1C1917;
-  }
-
-  .hero__logo-wrap::before {
-    bottom: 0;
-    right: 0;
-    border-bottom: 2px solid #1C1917;
-    border-right: 2px solid #1C1917;
-  }
-
-  .hero__logo-wrap:hover::after,
-  .hero__logo-wrap:hover::before {
-    width: 100%;
-    height: 100%;
-  }
 
   .hero__logo {
     max-width: 360px;
@@ -538,86 +397,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: block;
     opacity: 0;
     animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-  }
+    mix-blend-mode: darken;
 
-
-
-  .hero__bottom {
-    position: relative;
-    z-index: 1;
-    background: #FAFAF9;
-    padding: 0 80px 40px;
-    margin-top: 50vh;
-    border-top: 1px solid #78716C;
-  }
-
-  .hero__content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-    max-width: 1280px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .hero__text-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    gap: 40px;
-  }
-
-  .hero__tagline-bar {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #D6D3D1;
-    width: 100%;
-  }
-
-  .hero__tagline {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    letter-spacing: 0.01em;
-    color: #1C2E4A;
-    font-style: italic;
-    margin-top: 20px;
   }
 
   .hero__headline {
-    max-width: 819px;
+    max-width: 600px;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    font-size: 70px;
+    font-size: 58px;
     line-height: 110%;
     letter-spacing: -0.03em;
     color: #1C1917;
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  /* Right column: full-height image with overlay text */
+  .hero__right {
+    flex: 0 0 50%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0;
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    filter: brightness(0.6);
+  }
+
+  .hero__overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 40px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
   }
 
   .hero__body {
-    width: 480px;
+    max-width: 520px;
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 17px;
+    line-height: 26px;
     letter-spacing: -0.02em;
-    color: #44403C;
-    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .hero__body-lead {
     font-weight: 600;
-    color: #1C1917;
+    color: #FFFFFF;
   }
 
   .hero__body-sub {
     font-weight: 300;
-    color: #78716C;
+    color: rgba(255, 255, 255, 0.85);
   }
 
   /* ============================================================
@@ -636,7 +475,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     flex-direction: row;
     align-items: flex-start;
     gap: 24px;
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     width: 100%;
   }
@@ -661,7 +500,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     left: 0;
     width: 100%;
     height: 1px;
-    background: #1C2E4A;
+    background: #1B3B49;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
@@ -686,7 +525,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 40px;
     line-height: 110%;
     letter-spacing: -0.03em;
-    color: #1C2E4A;
+    color: #1B3B49;
     display: inline-block;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -706,7 +545,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .stat-card:hover .stat-card__label {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   /* ============================================================
@@ -723,7 +562,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .about__inner {
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -731,9 +570,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: stretch;
   }
 
-  /* Left column */
+  /* Left column — width tracks hero 50/50 split, capped at 640px (half of 1280 max-width) */
   .about__left {
-    width: 872px;
+    width: min(calc(50vw - 80px), 800px);
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
@@ -758,12 +597,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
     color: #78716C;
   }
-  .about__eyebrow:hover { color: #1C2E4A; letter-spacing: 0.14em; }
+  .about__eyebrow:hover { color: #1B3B49; letter-spacing: 0.14em; }
 
   .about__copy-row {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 24px;
     width: 100%;
   }
@@ -784,7 +623,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     gap: 24px;
     padding: 0px 16px;
-    border-bottom: 1px solid #1C2E4A;
+    border-bottom: 1px solid #1B3B49;
     width: fit-content;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
@@ -797,13 +636,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .about__link:hover {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   .about__link-arrow {
     width: 14px;
     height: 14px;
-    color: #1C2E4A;
+    color: #1B3B49;
     display: inline-block;
     flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -815,7 +654,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* Right column */
   .about__right {
-    width: 408px;
+    flex: 1;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -843,7 +682,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     position: relative;
     height: 2px;
-    background-color: #A5B4A0;
+    background-color: #597B60;
     transform-origin: left center;
     will-change: transform;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
@@ -851,7 +690,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .about__bullet:hover .about__bullet-arrow {
     transform: scaleX(1.38);
-    background-color: #1C2E4A;
+    background-color: #1B3B49;
   }
 
   .about__bullet-arrow::after {
@@ -862,12 +701,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: translateY(-50%);
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 7px solid #A5B4A0;
+    border-left: 7px solid #597B60;
     transition: border-left-color 0.35s ease;
   }
 
   .about__bullet:hover .about__bullet-arrow::after {
-    border-left-color: #1C2E4A;
+    border-left-color: #1B3B49;
   }
 
   .about__bullet-text {
@@ -883,7 +722,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .about__bullet:hover .about__bullet-text {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   /* ============================================================
@@ -897,7 +736,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .team__inner {
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -926,7 +765,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: #78716C;
     margin-bottom: 8px;
   }
-  .team__eyebrow:hover { color: #1C2E4A; letter-spacing: 0.14em; }
+  .team__eyebrow:hover { color: #1B3B49; letter-spacing: 0.14em; }
 
   .team__heading {
     font-family: 'Poppins', sans-serif;
@@ -946,7 +785,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     gap: 24px;
     padding: 0px 16px;
-    border-bottom: 1px solid #1C2E4A;
+    border-bottom: 1px solid #1B3B49;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -958,7 +797,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .team__link-arrow {
     font-size: 14px;
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   /* Row 1 — 3 larger cards */
@@ -1017,7 +856,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .team__card:hover .team__name {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   .team__link {
@@ -1025,7 +864,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .team__link:hover {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   .team__link-arrow {
@@ -1095,7 +934,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   ============================================================ */
   .services {
     width: 100%;
-    background: #1C2E4A;
+    background: #1B3B49;
     padding: 40px 80px;
     min-height: 700px;
     position: relative;
@@ -1108,7 +947,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     justify-content: space-between;
     align-items: flex-start;
     gap: 167px;
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     width: 100%;
     min-height: 620px;
@@ -1215,7 +1054,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 52px;
     flex-shrink: 0;
     height: 2px;
-    background-color: #A5B4A0;
+    background-color: #597B60;
     margin-right: 24px;
     position: relative;
     transform-origin: left center;
@@ -1230,7 +1069,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: translateY(-50%);
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 7px solid #A5B4A0;
+    border-left: 7px solid #597B60;
   }
 
   /* Text block */
@@ -1299,14 +1138,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     width: 1px;
     height: 24px;
-    background: #A5B4A0;
+    background: #597B60;
   }
 
   .services__plus-h {
     position: absolute;
     width: 24px;
     height: 1px;
-    background: #A5B4A0;
+    background: #597B60;
   }
 
   .services__arrow {
@@ -1354,7 +1193,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     flex-direction: column;
     gap: 48px;
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     width: 100%;
   }
@@ -1377,7 +1216,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: #78716C;
     transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .representation__eyebrow:hover { color: #1C2E4A; letter-spacing: 0.14em; }
+  .representation__eyebrow:hover { color: #1B3B49; letter-spacing: 0.14em; }
 
   .representation__heading {
     font-family: 'Poppins', sans-serif;
@@ -1424,7 +1263,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 18px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #A5B4A0;
+    color: #99AD8C;
   }
 
   .representation__card-title {
@@ -1438,7 +1277,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .representation__card:hover .representation__card-title {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   .representation__card-desc {
@@ -1465,7 +1304,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .cta-banner__bg {
     position: absolute;
     inset: 0;
-    background: #D6DDD3;
+    background: #ADBFA2;
     z-index: 0;
   }
 
@@ -1477,7 +1316,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     height: 295px;
     display: flex;
@@ -1499,7 +1338,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 46px;
     line-height: 110%;
     letter-spacing: -0.03em;
-    color: #1C2E4A;
+    color: #1C1917;
   }
 
   .cta-banner__bottom {
@@ -1527,7 +1366,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     gap: 24px;
     padding: 0px 16px;
-    border-bottom: 1px solid #1C2E4A;
+    border-bottom: 1px solid #1B3B49;
     width: fit-content;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
@@ -1542,14 +1381,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .cta-banner__link-arrow {
     width: 14px;
     height: 14px;
-    color: #1C2E4A;
+    color: #1B3B49;
     display: inline-block;
     flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .cta-banner__link { transition: color 0.3s ease; }
-  .cta-banner__link:hover { color: #1C2E4A; }
+  .cta-banner__link:hover { color: #1B3B49; }
   .cta-banner__link:hover .cta-banner__link-arrow { transform: translate(3px, -3px); }
 
   /* ============================================================
@@ -1568,7 +1407,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     flex-direction: row;
     align-items: flex-start;
     gap: 140px;
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
     width: 100%;
   }
@@ -1599,7 +1438,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
     color: #78716C;
   }
-  .contact__eyebrow:hover { color: #1C2E4A; letter-spacing: 0.14em; }
+  .contact__eyebrow:hover { color: #1B3B49; letter-spacing: 0.14em; }
 
   .contact__heading {
     font-family: 'Poppins', sans-serif;
@@ -1652,7 +1491,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     gap: 24px;
     padding: 0px 16px;
-    border-bottom: 1px solid #1C2E4A;
+    border-bottom: 1px solid #1B3B49;
     width: fit-content;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
@@ -1666,18 +1505,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .contact__submit-arrow {
     width: 14px;
     height: 14px;
-    color: #1C2E4A;
+    color: #1B3B49;
     display: inline-block;
     flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .contact__submit { transition: color 0.3s ease; }
-  .contact__submit:hover { color: #1C2E4A; }
+  .contact__submit:hover { color: #1B3B49; }
   .contact__submit:hover .contact__submit-arrow { transform: translate(3px, -3px); }
 
   .contact__input { transition: border-bottom-color 0.3s ease; }
-  .contact__input:focus { border-bottom-color: #1C2E4A; }
+  .contact__input:focus { border-bottom-color: #1B3B49; }
 
   .contact__info-row { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
   .contact__info-row:hover { transform: translateX(4px); }
@@ -1687,7 +1526,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* Right column */
   .contact__right {
     flex-grow: 1;
-    background: #1C2E4A;
+    background: #1B3B49;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -1761,39 +1600,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   ============================================================ */
 
   @media (max-width: 1200px) {
-    .hero__top { padding: 80px 60px 40px; height: 50vh; }
-    .hero__bottom { padding: 0 60px 60px; }
-    .hero__headline { font-size: 60px; max-width: 680px; }
-    .hero__body { width: 420px; }
+    .hero__left { padding: 100px 48px 48px 60px; }
+    .hero__headline { font-size: 50px; }
   }
 
   @media (max-width: 1024px) {
-    .hero__top { padding: 80px 40px 40px; height: 50vh; }
-    .hero__bottom { padding: 0 40px 48px; }
-    .hero__headline { font-size: 52px; max-width: 560px; }
-    .hero__body { width: 100%; font-size: 16px; }
+    .hero__left { padding: 80px 40px 40px; }
+    .hero__headline { font-size: 44px; }
+    .hero__body { font-size: 16px; }
   }
 
   @media (max-width: 768px) {
-    .hero { min-height: auto; }
-    .hero__top { padding: 100px 24px 32px; height: 45vh; }
-    .hero__bottom { padding: 0 24px 40px; }
+    .hero__container { flex-direction: column; max-height: none; }
+    .hero__left { flex: none; padding: 90px 24px 24px; padding-left: 24px; }
+    .hero__logo-wrap { display: none; }
+    .hero__right { flex: none; height: 200px; }
 
-    .hero__logo { max-width: 260px; max-height: 140px; }
-    .hero__headline { font-size: 36px; max-width: 100%; }
-    .hero__body { width: 100%; font-size: 15px; }
-    .hero__tagline { font-size: 14px; }
-    .hero__text-row { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .hero__logo { max-width: 180px; max-height: 120px; }
+    .hero__headline { font-size: 30px; max-width: 100%; margin-top: 20px; }
+    .hero__body { font-size: 14px; max-width: 100%; }
+    .hero__overlay-text { padding: 24px 20px; }
   }
 
   @media (max-width: 480px) {
-    .hero__top { padding: 80px 16px 24px; height: 40vh; }
-    .hero__bottom { padding: 0 16px 32px; }
+    .hero__left { padding: 80px 16px 20px; padding-left: 16px; }
+    .hero__right { height: 180px; }
 
-    .hero__logo { max-width: 200px; max-height: 110px; }
-    .hero__headline { font-size: 28px; }
-    .hero__body { font-size: 14px; line-height: 22px; }
-    .hero__tagline { font-size: 13px; }
+    .hero__logo { max-width: 150px; max-height: 100px; }
+    .hero__headline { font-size: 26px; margin-top: 16px; }
+    .hero__body { font-size: 13px; line-height: 20px; }
+    .hero__overlay-text { padding: 20px 16px; }
   }
 
   /* ============================================================
@@ -1902,9 +1738,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* ---- 1440px — percentage widths so columns scale with container ---- */
   @media (max-width: 1440px) {
     .about__left {
-      flex: 0 1 68%;
-      width: auto;
+      width: calc(50vw - 80px);
+      flex-shrink: 0;
       min-width: 0;
+      padding-right: 40px;
     }
 
     .about__text-col {
@@ -2404,10 +2241,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   @keyframes heroFadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero__tagline-bar {
-    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
   }
 
   .hero__headline {

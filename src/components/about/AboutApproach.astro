@@ -53,7 +53,7 @@
 <style>
   .about-approach {
     width: 100%;
-    background: #1C2E4A;
+    background: #1B3B49;
     padding: 40px 80px;
     min-height: 446px;
     box-sizing: border-box;
@@ -64,7 +64,7 @@
 
   .about-approach__inner {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1600px;
     height: 366px;
     margin: 0 auto;
     position: relative;
@@ -75,7 +75,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 438px;
+    width: 50%;
+    padding-right: 40px;
     height: 268px;
     display: flex;
     flex-direction: column;
@@ -169,7 +170,7 @@
   /* ---- Vertical divider ---- */
   .about-approach__divider {
     position: absolute;
-    left: 514px;
+    left: 50%;
     top: 29px;
     width: 1px;
     height: 290px;
@@ -179,10 +180,11 @@
   /* ---- Right column ---- */
   .about-approach__right {
     position: absolute;
-    left: 626px;
+    left: 50%;
     top: 0;
-    width: 654px;
+    width: 50%;
     height: 300px;
+    padding-left: 40px;
   }
 
   .about-approach__row {
@@ -203,7 +205,7 @@
   .about-approach__arrow {
     width: 52px;
     height: 2px;
-    background-color: #A5B4A0;
+    background-color: #99AD8C;
     flex-shrink: 0;
     margin-right: 24px;
     position: relative;
@@ -222,7 +224,7 @@
     transform: translateY(-50%);
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 7px solid #A5B4A0;
+    border-left: 6px solid #597B60;
     transition: border-left-color 0.35s ease;
   }
 
@@ -253,8 +255,8 @@
   /* ---- Responsive ---- */
   @media (max-width: 1400px) {
     .about-approach { padding: 40px 60px; }
-    .about-approach__divider { left: 460px; }
-    .about-approach__right { left: 520px; width: auto; right: 0; }
+    .about-approach__divider { left: 50%; }
+    .about-approach__right { left: 50%; width: 50%; }
     .about-approach__row { width: auto; }
     .about-approach__award { font-size: 14px; }
   }

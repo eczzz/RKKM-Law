@@ -3,10 +3,9 @@
 ---
 
 <section class="team-hero">
-  <div class="team-hero__tagline-row">
-    <span class="team-hero__tagline">If you've been referred to us, we're ready to listen.</span>
+  <div class="team-hero__mobile-logo">
+    <img src="/images/km-logo.webp" alt="KM Law" class="team-hero__logo-img" />
   </div>
-
   <div class="team-hero__bottom">
     <h1 class="team-hero__headline">The People Behind&nbsp;Your&nbsp;Case.</h1>
     <a href="#team-content" class="team-hero__link">
@@ -20,12 +19,12 @@
   .team-hero {
     width: 100%;
     height: 520px;
-    background: #E0DFDD;
+    background: #D8CFC0;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding: 0 80px;
+    padding: 0 max(80px, calc((100vw - 1600px) / 2));
     box-sizing: border-box;
   }
 
@@ -48,7 +47,7 @@
     font-size: 20px;
     line-height: 140%;
     letter-spacing: 0.01em;
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   .team-hero__bottom {
@@ -59,7 +58,7 @@
     width: 100%;
     flex-grow: 1;
     padding-bottom: calc(40px + 4rem);
-    max-width: 1280px;
+    max-width: 1600px;
   }
 
   .team-hero__headline {
@@ -109,6 +108,18 @@
     transform: translate(3px, -3px);
   }
 
+  /* Mobile logo — hidden on desktop */
+  .team-hero__mobile-logo {
+    display: none;
+  }
+
+  .team-hero__logo-img {
+    max-width: 150px;
+    max-height: 100px;
+    object-fit: contain;
+    mix-blend-mode: darken;
+  }
+
   /* ---- Animations ---- */
   @keyframes teamFadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -143,26 +154,30 @@
       padding: 0 24px;
       height: auto;
       min-height: 380px;
+      justify-content: flex-end;
     }
-    .team-hero__tagline-row { margin-top: 120px; }
+    .team-hero__mobile-logo {
+      display: none;
+    }
     .team-hero__bottom {
       flex-direction: column;
       align-items: flex-start;
       gap: 24px;
-      padding-top: 32px;
+      flex-grow: 0;
+      padding-top: 24px;
       padding-bottom: 32px;
     }
     .team-hero__headline {
-      font-size: 36px;
+      font-size: 30px;
       width: 100%;
     }
   }
 
   @media (max-width: 480px) {
     .team-hero { padding: 0 16px; min-height: 340px; }
-    .team-hero__tagline-row { margin-top: 108px; }
-    .team-hero__headline { font-size: 28px; }
-    .team-hero__tagline { font-size: 13px; }
+    .team-hero__mobile-logo { padding-top: 80px; }
+    .team-hero__bottom { padding-top: 20px; }
+    .team-hero__headline { font-size: 26px; }
   }
 
   @media (prefers-reduced-motion: reduce) {

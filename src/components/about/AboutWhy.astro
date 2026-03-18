@@ -1,5 +1,5 @@
 ---
-// AboutWhy.astro — "Why RKKM" section for the About page
+// AboutWhy.astro — "Why KM" section for the About page
 ---
 
 <section class="about-why">
@@ -7,7 +7,7 @@
 
     <!-- Left column -->
     <div class="about-why__left">
-      <span class="about-why__eyebrow" data-anim>Why RKKM</span>
+      <span class="about-why__eyebrow" data-anim>Why KM Law</span>
       <p class="about-why__headline" data-anim data-delay="1">
         When the stakes are this high, who you choose matters. Kukreja McFarlane Law was built for clients who already know that.
       </p>
@@ -64,7 +64,7 @@
 
   .about-why__inner {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1600px;
     height: 675px;
     margin: 0 auto;
     position: relative;
@@ -75,7 +75,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 438px;
+    width: 50%;
+    padding-right: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -94,7 +95,7 @@
   }
 
   .about-why__eyebrow:hover {
-    color: #1C2E4A;
+    color: #1B3B49;
     letter-spacing: 0.14em;
   }
 
@@ -118,7 +119,7 @@
     align-items: center;
     padding: 0 16px;
     gap: 24px;
-    border-bottom: 1px solid #1C2E4A;
+    border-bottom: 1px solid #1B3B49;
     width: fit-content;
     cursor: pointer;
     text-decoration: none;
@@ -132,13 +133,13 @@
   }
 
   .about-why__link:hover {
-    color: #1C2E4A;
+    color: #1B3B49;
   }
 
   .about-why__link-arrow {
     width: 14px;
     height: 14px;
-    color: #1C2E4A;
+    color: #1B3B49;
     display: inline-block;
     flex-shrink: 0;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -151,19 +152,19 @@
   /* ---- Vertical divider ---- */
   .about-why__divider {
     position: absolute;
-    left: 690px;
-    top: -35px;
+    left: 50%;
+    top: 0;
+    bottom: 0;
     width: 1px;
-    height: 675px;
     background: #78716C;
   }
 
   /* ---- Right column ---- */
   .about-why__right {
     position: absolute;
-    left: 690px;
+    left: 50%;
     top: 0;
-    width: 590px;
+    width: 50%;
     height: 675px;
   }
 
@@ -187,7 +188,7 @@
     left: 38px;
     width: 52px;
     height: 2px;
-    background-color: #A5B4A0;
+    background-color: #99AD8C;
     flex-shrink: 0;
     transform-origin: left center;
     will-change: transform;
@@ -204,17 +205,17 @@
     transform: translateY(-50%);
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 7px solid #A5B4A0;
+    border-left: 6px solid #597B60;
     transition: border-left-color 0.35s ease;
   }
 
   .about-why__item:hover .about-why__arrow {
     transform: scaleX(1.35);
-    background-color: #1C2E4A;
+    background-color: #1B3B49;
   }
 
   .about-why__item:hover .about-why__arrow::after {
-    border-left-color: #1C2E4A;
+    border-left-color: #1B3B49;
   }
 
   .about-why__item-text {
@@ -223,22 +224,27 @@
     top: 0;
     width: 477px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 110%;
-    letter-spacing: -0.03em;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: -0.02em;
     color: #1C1917;
   }
 
   .about-why__item-text strong {
     font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.03em;
+    line-height: 110%;
+    display: block;
+    margin-bottom: 8px;
   }
 
   /* ---- Responsive ---- */
   @media (max-width: 1400px) {
     .about-why { padding: 40px 60px; }
-    .about-why__divider { left: 520px; }
-    .about-why__right { left: 520px; width: auto; right: 0; }
+    .about-why__divider { left: 50%; }
+    .about-why__right { left: 50%; width: 50%; }
     .about-why__item { width: auto; right: 0; }
     .about-why__item-text { width: auto; right: 0; }
   }

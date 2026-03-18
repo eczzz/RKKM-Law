@@ -15,6 +15,10 @@
   --stone-50: #FAFAF9;
   --stone-950: #0C0A09;
   --white: #FFFFFF;
+  /* KM Brand Palette */
+  --rkkm-navy: #1B3B49;      /* TODO: Update to confirmed dark blue hex from client */
+  --rkkm-sage: #99AD8C;
+  --rkkm-cream: #D8CFC0;
 }
 
 /* === Base Styles === */
