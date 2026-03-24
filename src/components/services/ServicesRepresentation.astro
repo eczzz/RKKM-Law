@@ -1,0 +1,436 @@
+---
+// ServicesRepresentation.astro — Persuasion layer: why representation matters
+---
+
+<section class="sr">
+  <div class="sr__inner">
+
+    <!-- Header -->
+    <div class="sr__header">
+      <span class="sr__eyebrow" data-anim>Why Representation Matters</span>
+      <h2 class="sr__headline" data-anim data-delay="1">
+        In High-Stakes Family Law, the Difference Is Who's in Your Corner.
+      </h2>
+    </div>
+
+    <!-- Asymmetric card grid -->
+    <div class="sr__grid">
+
+      <div class="sr__card sr__card--wide" data-anim data-delay="1">
+        <div class="sr__card-accent"></div>
+        <div class="sr__card-body">
+          <span class="sr__card-category">Asset Protection</span>
+          <h3 class="sr__card-title">Protecting What You've Built</h3>
+          <p class="sr__card-desc">
+            When decades of wealth are on the table, the difference between adequate and
+            exceptional counsel can mean millions. We understand complex financial structures
+            because we've navigated them — repeatedly, successfully, discreetly.
+          </p>
+        </div>
+      </div>
+
+      <div class="sr__card sr__card--narrow" data-anim data-delay="2">
+        <div class="sr__card-accent"></div>
+        <div class="sr__card-body">
+          <span class="sr__card-category">Custody &amp; Parenting</span>
+          <h3 class="sr__card-title">Your Children Deserve Stability</h3>
+          <p class="sr__card-desc">
+            Custody disputes affect your children's lives for decades. We bring both legal
+            strategy and genuine understanding of family dynamics to every parenting matter —
+            because the outcome isn't just a court order, it's your child's future.
+          </p>
+        </div>
+      </div>
+
+      <div class="sr__card sr__card--narrow" data-anim data-delay="2">
+        <div class="sr__card-accent"></div>
+        <div class="sr__card-body">
+          <span class="sr__card-category">Confidentiality</span>
+          <h3 class="sr__card-title">Preserving Your Privacy</h3>
+          <p class="sr__card-desc">
+            For executives, business owners, and public figures, a family law matter can
+            become public in ways that damage careers and reputations. We build every strategy
+            with discretion as a foundational principle, not an afterthought.
+          </p>
+        </div>
+      </div>
+
+      <div class="sr__card sr__card--wide" data-anim data-delay="3">
+        <div class="sr__card-accent"></div>
+        <div class="sr__card-body">
+          <span class="sr__card-category">Mediation &amp; ADR</span>
+          <h3 class="sr__card-title">Resolution Without Destruction</h3>
+          <p class="sr__card-desc">
+            Not every dispute belongs in a courtroom. When confidential, efficient resolution
+            serves your interests better than litigation, we have the training and temperament
+            to get there — without sacrificing your position.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Structural accent: a subtle sage line that threads through the section -->
+  <div class="sr__thread" data-anim data-delay="3"></div>
+</section>
+
+<style>
+  /* ============================================================
+     SERVICES REPRESENTATION — The persuasion layer
+  ============================================================ */
+  .sr {
+    width: 100%;
+    background: #0C0A09;
+    padding: 140px max(80px, calc((100vw - 1600px) / 2)) 120px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sr__inner {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  /* ---- Header ---- */
+  .sr__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 720px;
+  }
+
+  .sr__eyebrow {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #99AD8C;
+  }
+
+  .sr__headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #FAFAF9;
+    margin: 0;
+  }
+
+  /* ---- Asymmetric grid: 12-col base ---- */
+  .sr__grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 20px;
+  }
+
+  /* Flip proportions on second row */
+  .sr__card:nth-child(3) { order: 3; }
+  .sr__card:nth-child(4) { order: 4; }
+
+  .sr__grid > .sr__card--wide:last-child {
+    grid-column: auto;
+  }
+
+  /* On the second row, narrow comes first, wide second */
+  /* Grid auto-flow handles this via source order + the grid-template swap */
+
+  /* ---- Card base ---- */
+  .sr__card {
+    position: relative;
+    background: rgba(27, 59, 73, 0.35);
+    border-radius: 0;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+    transition:
+      opacity          0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform        0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sr__card:hover {
+    background: rgba(27, 59, 73, 0.6);
+    transform: translateY(-3px);
+  }
+
+  /* ---- Sage accent bar (left edge) ---- */
+  .sr__card-accent {
+    width: 3px;
+    flex-shrink: 0;
+    background: rgba(153, 173, 140, 0.3);
+    transition: background-color 0.4s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sr__card:hover .sr__card-accent {
+    background: #99AD8C;
+    width: 4px;
+  }
+
+  /* ---- Card body ---- */
+  .sr__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 44px 48px;
+  }
+
+  .sr__card-category {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(153, 173, 140, 0.6);
+    transition: color 0.35s ease;
+  }
+
+  .sr__card:hover .sr__card-category {
+    color: #99AD8C;
+  }
+
+  .sr__card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #FAFAF9;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  .sr__card-desc {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.75;
+    letter-spacing: -0.005em;
+    color: rgba(216, 207, 192, 0.55);
+    margin: 0;
+    max-width: 480px;
+    transition: color 0.35s ease;
+  }
+
+  .sr__card:hover .sr__card-desc {
+    color: rgba(216, 207, 192, 0.8);
+  }
+
+  /* ---- Thread accent (bottom decorative line) ---- */
+  .sr__thread {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(153, 173, 140, 0.25) 25%,
+      rgba(153, 173, 140, 0.25) 75%,
+      transparent 100%
+    );
+  }
+
+  /* ============================================================
+     RESPONSIVE — 1200px
+  ============================================================ */
+  @media (max-width: 1200px) {
+    .sr {
+      padding: 120px 60px 96px;
+    }
+
+    .sr__headline {
+      font-size: 42px;
+    }
+
+    .sr__card-body {
+      padding: 36px 40px;
+    }
+
+    .sr__card-title {
+      font-size: 22px;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — 1024px
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .sr {
+      padding: 96px 40px 80px;
+    }
+
+    .sr__inner {
+      gap: 64px;
+    }
+
+    .sr__headline {
+      font-size: 36px;
+      max-width: 100%;
+    }
+
+    .sr__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .sr__card-body {
+      padding: 32px 36px;
+    }
+
+    .sr__card-title {
+      font-size: 20px;
+    }
+
+    .sr__card-desc {
+      font-size: 14.5px;
+      max-width: 100%;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — 768px : single column stack
+  ============================================================ */
+  @media (max-width: 768px) {
+    .sr {
+      padding: 72px 24px 64px;
+    }
+
+    .sr__inner {
+      gap: 48px;
+    }
+
+    .sr__headline {
+      font-size: 28px;
+      line-height: 1.18;
+    }
+
+    .sr__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    /* Accent bar: slightly bolder so it reads as intentional, not vestigial */
+    .sr__card-accent {
+      width: 4px;
+    }
+
+    .sr__card-body {
+      padding: 28px 28px;
+    }
+
+    .sr__card-title {
+      font-size: 19px;
+    }
+
+    .sr__card-desc {
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — 480px : small phones (375px target)
+  ============================================================ */
+  @media (max-width: 480px) {
+    .sr {
+      padding: 56px 20px 48px;
+    }
+
+    .sr__inner {
+      gap: 40px;
+    }
+
+    .sr__eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+    }
+
+    .sr__headline {
+      font-size: 24px;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+    }
+
+    .sr__grid {
+      gap: 16px;
+    }
+
+    .sr__card-body {
+      padding: 24px 24px;
+      gap: 14px;
+    }
+
+    .sr__card-title {
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .sr__card-desc {
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .sr__card-category {
+      font-size: 9.5px;
+    }
+  }
+
+  /* ============================================================
+     TOUCH — active states & hover suppression
+  ============================================================ */
+  @media (pointer: coarse) {
+    .sr__card {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Disable hover lift on touch — it sticks and feels broken on scroll */
+    .sr__card:hover {
+      transform: none;
+    }
+
+    .sr__card:active {
+      background: rgba(27, 59, 73, 0.6);
+      transform: scale(0.985);
+      transition-duration: 0.12s;
+    }
+
+    .sr__card:active .sr__card-accent {
+      background: #99AD8C;
+      width: 5px;
+    }
+
+    .sr__card:active .sr__card-category {
+      color: #99AD8C;
+    }
+
+    .sr__card:active .sr__card-desc {
+      color: rgba(216, 207, 192, 0.8);
+    }
+  }
+
+  /* ============================================================
+     REDUCED MOTION
+  ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    .sr__card,
+    .sr__card-accent,
+    .sr__card-category,
+    .sr__card-title,
+    .sr__card-desc {
+      transition: none;
+    }
+
+    .sr__card:active {
+      transform: none;
+    }
+  }
+</style>

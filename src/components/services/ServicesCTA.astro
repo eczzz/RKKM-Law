@@ -1,0 +1,327 @@
+---
+// ServicesCTA.astro — Closing CTA for the Services page
+---
+
+<section class="sc">
+  <div class="sc__inner">
+
+    <!-- Sage rule — a quiet structural element that anchors the top -->
+    <div class="sc__rule" data-anim></div>
+
+    <h2 class="sc__headline" data-anim data-delay="1">
+      Your Case Deserves<br />Focused Counsel.
+    </h2>
+
+    <p class="sc__subtext" data-anim data-delay="2">
+      Schedule a confidential consultation with our team. We'll discuss your situation,
+      answer your questions, and help you understand your options — with no obligation.
+    </p>
+
+    <div class="sc__actions" data-anim data-delay="3">
+      <a href="/contact" class="sc__link">
+        Schedule a Consultation
+        <svg class="sc__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <span class="sc__divider"></span>
+
+      <a href="tel:3035551234" class="sc__phone">
+        Call (303) 555-1234
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ============================================================
+     SERVICES CTA — Calm closing section after dense content
+  ============================================================ */
+  .sc {
+    width: 100%;
+    background: #D8CFC0;
+    padding: 160px max(80px, calc((100vw - 1600px) / 2)) 140px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sc__inner {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* ---- Sage rule at top ---- */
+  .sc__rule {
+    width: 64px;
+    height: 2px;
+    background: #99AD8C;
+    margin-bottom: 56px;
+  }
+
+  /* ---- Headline ---- */
+  .sc__headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 60px;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    color: #1B3B49;
+    margin: 0 0 40px;
+    max-width: 680px;
+  }
+
+  /* ---- Subtext ---- */
+  .sc__subtext {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: -0.005em;
+    color: #44403C;
+    margin: 0 0 56px;
+    max-width: 520px;
+  }
+
+  /* ---- Actions row ---- */
+  .sc__actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  /* ---- Primary CTA link (underline + arrow) ---- */
+  .sc__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 4px 10px;
+    border-bottom: 1.5px solid #1B3B49;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    color: #1B3B49;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .sc__link:hover {
+    color: #99AD8C;
+    border-bottom-color: #99AD8C;
+  }
+
+  .sc__link-arrow {
+    width: 14px;
+    height: 14px;
+    color: inherit;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sc__link:hover .sc__link-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Divider between actions ---- */
+  .sc__divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(27, 59, 73, 0.2);
+  }
+
+  /* ---- Phone link ---- */
+  .sc__phone {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    color: rgba(27, 59, 73, 0.55);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .sc__phone:hover {
+    color: #1B3B49;
+  }
+
+  /* ============================================================
+     RESPONSIVE — 1200px
+  ============================================================ */
+  @media (max-width: 1200px) {
+    .sc {
+      padding: 140px 60px 120px;
+    }
+
+    .sc__headline {
+      font-size: 50px;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — 1024px
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .sc {
+      padding: 112px 40px 96px;
+    }
+
+    .sc__rule {
+      margin-bottom: 44px;
+    }
+
+    .sc__headline {
+      font-size: 42px;
+      margin-bottom: 32px;
+    }
+
+    .sc__subtext {
+      margin-bottom: 44px;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — 768px
+  ============================================================ */
+  @media (max-width: 768px) {
+    .sc {
+      padding: 88px 24px 80px;
+    }
+
+    .sc__rule {
+      width: 48px;
+      margin-bottom: 36px;
+    }
+
+    .sc__headline {
+      font-size: 34px;
+      line-height: 1.12;
+      margin-bottom: 24px;
+    }
+
+    .sc__subtext {
+      font-size: 15px;
+      margin-bottom: 40px;
+      max-width: 100%;
+    }
+
+    .sc__actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .sc__link {
+      font-size: 15px;
+      padding: 14px 4px;
+      border-bottom-width: 2px;
+      min-height: 48px;
+      box-sizing: border-box;
+    }
+
+    .sc__divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(27, 59, 73, 0.12);
+    }
+
+    .sc__phone {
+      font-size: 15px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — 480px
+  ============================================================ */
+  @media (max-width: 480px) {
+    .sc {
+      padding: 72px 20px 64px;
+    }
+
+    .sc__rule {
+      width: 40px;
+      margin-bottom: 32px;
+    }
+
+    .sc__headline {
+      font-size: 30px;
+      line-height: 1.13;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .sc__subtext {
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .sc__actions {
+      gap: 20px;
+    }
+
+    .sc__link {
+      font-size: 15px;
+      gap: 16px;
+      padding: 16px 4px;
+      min-height: 52px;
+    }
+
+    .sc__phone {
+      font-size: 15px;
+      color: rgba(27, 59, 73, 0.65);
+      min-height: 52px;
+      justify-content: center;
+      padding: 8px 0;
+    }
+
+    .sc__divider {
+      margin: 4px 0;
+    }
+  }
+
+  /* ============================================================
+     TOUCH — active states
+  ============================================================ */
+  @media (pointer: coarse) {
+    .sc__link,
+    .sc__phone {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .sc__link:active {
+      color: #99AD8C;
+      border-bottom-color: #99AD8C;
+    }
+
+    .sc__link:active .sc__link-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    .sc__phone:active {
+      color: #1B3B49;
+    }
+  }
+
+  /* ============================================================
+     REDUCED MOTION
+  ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    .sc__link,
+    .sc__link-arrow,
+    .sc__phone {
+      transition: none;
+    }
+  }
+</style>
