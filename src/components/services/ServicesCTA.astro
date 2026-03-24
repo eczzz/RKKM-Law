@@ -5,9 +5,6 @@
 <section class="sc">
   <div class="sc__inner">
 
-    <!-- Sage rule — a quiet structural element that anchors the top -->
-    <div class="sc__rule" data-anim></div>
-
     <h2 class="sc__headline" data-anim data-delay="1">
       Your Case Deserves<br />Focused Counsel.
     </h2>
@@ -21,12 +18,6 @@
       <a href="/contact" class="sc__link">
         Schedule a Consultation
         <svg class="sc__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <span class="sc__divider"></span>
-
-      <a href="tel:3035551234" class="sc__phone">
-        Call (303) 555-1234
       </a>
     </div>
 
@@ -67,10 +58,10 @@
   /* ---- Headline ---- */
   .sc__headline {
     font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 60px;
     line-height: 1.08;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
     color: #1B3B49;
     margin: 0 0 40px;
     max-width: 680px;
@@ -82,7 +73,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.75;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.02em;
     color: #44403C;
     margin: 0 0 56px;
     max-width: 520px;
@@ -101,21 +92,20 @@
     align-items: center;
     gap: 20px;
     padding: 0 4px 10px;
-    border-bottom: 1.5px solid #1B3B49;
+    border-bottom: 1px solid #1B3B49;
     cursor: pointer;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 1;
-    letter-spacing: -0.015em;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
     color: #1B3B49;
     transition: color 0.3s ease, border-color 0.3s ease;
   }
 
   .sc__link:hover {
-    color: #99AD8C;
-    border-bottom-color: #99AD8C;
+    color: rgba(27, 59, 73, 0.6);
   }
 
   .sc__link-arrow {
@@ -214,17 +204,13 @@
 
     .sc__actions {
       flex-direction: column;
-      align-items: stretch;
+      align-items: flex-start;
       gap: 24px;
-      width: 100%;
     }
 
     .sc__link {
-      font-size: 15px;
-      padding: 14px 4px;
-      border-bottom-width: 2px;
-      min-height: 48px;
-      box-sizing: border-box;
+      font-size: 14px;
+      width: fit-content;
     }
 
     .sc__divider {
@@ -272,10 +258,8 @@
     }
 
     .sc__link {
-      font-size: 15px;
+      font-size: 14px;
       gap: 16px;
-      padding: 16px 4px;
-      min-height: 52px;
     }
 
     .sc__phone {
@@ -301,8 +285,7 @@
     }
 
     .sc__link:active {
-      color: #99AD8C;
-      border-bottom-color: #99AD8C;
+      color: rgba(27, 59, 73, 0.6);
     }
 
     .sc__link:active .sc__link-arrow {
