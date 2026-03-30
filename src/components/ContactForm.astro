@@ -18,7 +18,7 @@
         <input class="contact__input" type="text" placeholder="Full Name*" />
         <input class="contact__input" type="text" placeholder="Phone Number*" />
         <input class="contact__input" type="email" placeholder="Email Address*" />
-        <input class="contact__input" type="text" placeholder="Message*" />
+        <textarea class="contact__input contact__textarea" placeholder="Message*" rows="5"></textarea>
       </div>
 
       <div class="contact__submit" data-anim data-delay="4">
@@ -95,6 +95,7 @@
   .contact__left {
     flex: 1;
     min-width: 0;
+    max-width: 540px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -147,7 +148,7 @@
   .contact__input {
     display: block;
     width: 100%;
-    padding: 17px 0px;
+    padding: 22px 0px;
     border: none;
     border-bottom: 1px solid #D6D6D6;
     background: transparent;
@@ -158,6 +159,12 @@
     line-height: 18px;
     letter-spacing: 0.02em;
     color: #1C1917;
+  }
+
+  .contact__textarea {
+    resize: vertical;
+    min-height: 120px;
+    border-bottom: 1px solid #D6D6D6;
   }
 
   .contact__input::placeholder {
