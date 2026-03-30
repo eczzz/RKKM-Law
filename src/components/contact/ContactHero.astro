@@ -1,0 +1,144 @@
+---
+// ContactHero.astro — Hero banner for the Contact page
+---
+
+<section class="contact-hero">
+  <div class="contact-hero__mobile-logo">
+    <img src="/images/km-logo.webp" alt="KM Law" class="contact-hero__logo-img" />
+  </div>
+  <div class="contact-hero__bottom">
+    <h1 class="contact-hero__headline">Get In Touch With Our Team.</h1>
+  </div>
+</section>
+
+<style>
+  .contact-hero {
+    width: 100%;
+    height: 520px;
+    background: #D8CFC0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 max(80px, calc((100vw - 1600px) / 2));
+    box-sizing: border-box;
+  }
+
+  .contact-hero__tagline-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 0;
+    gap: 8px;
+    width: 100%;
+    border-bottom: 1px solid #78716C;
+    margin-top: 148px;
+  }
+
+  .contact-hero__tagline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0.01em;
+    color: #1B3B49;
+  }
+
+  .contact-hero__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    flex-grow: 1;
+    padding-bottom: calc(40px + 4rem);
+    max-width: 1600px;
+  }
+
+  .contact-hero__headline {
+    width: 690px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #000000;
+  }
+
+  /* Mobile logo — hidden on desktop */
+  .contact-hero__mobile-logo {
+    display: none;
+  }
+
+  .contact-hero__logo-img {
+    max-width: 150px;
+    max-height: 100px;
+    object-fit: contain;
+    mix-blend-mode: darken;
+  }
+
+  /* ---- Animations ---- */
+  @keyframes contactFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .contact-hero__tagline-row {
+    animation: contactFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .contact-hero__headline {
+    animation: contactFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .contact-hero { padding: 0 60px; }
+    .contact-hero__headline { font-size: 60px; width: 580px; }
+  }
+
+  @media (max-width: 1024px) {
+    .contact-hero { padding: 0 40px; }
+    .contact-hero__headline { font-size: 52px; width: 500px; }
+  }
+
+  @media (max-width: 768px) {
+    .contact-hero {
+      padding: 0 24px;
+      height: auto;
+      min-height: 380px;
+      justify-content: flex-end;
+    }
+    .contact-hero__mobile-logo {
+      display: none;
+    }
+    .contact-hero__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      flex-grow: 0;
+      padding-top: 24px;
+      padding-bottom: 32px;
+    }
+    .contact-hero__headline {
+      font-size: 30px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-hero { padding: 0 16px; min-height: 340px; }
+    .contact-hero__mobile-logo { padding-top: 80px; }
+    .contact-hero__bottom { padding-top: 20px; }
+    .contact-hero__headline { font-size: 26px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-hero__tagline-row,
+    .contact-hero__headline {
+      animation: none;
+    }
+  }
+</style>
