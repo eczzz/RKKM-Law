@@ -28,46 +28,7 @@
 
     </div>
 
-    <!-- Right column: contact info panel -->
-    <div class="contact__right" data-anim data-delay="2">
 
-      <h3 class="contact__info-heading">Contact Information</h3>
-
-      <div class="contact__info-rows">
-
-        <div class="contact__info-row">
-          <div class="contact__icon-box">
-            <i class="contact__icon fa-solid fa-envelope"></i>
-          </div>
-          <span class="contact__info-text">info@kmlaw.com</span>
-        </div>
-
-        <div class="contact__info-row">
-          <div class="contact__icon-box">
-            <i class="contact__icon fa-solid fa-phone"></i>
-          </div>
-          <a href="tel:+7201234567" class="contact__info-text contact__info-link">+720 123 4567</a>
-        </div>
-
-        <div class="contact__info-row">
-          <div class="contact__icon-box">
-            <i class="contact__icon fa-solid fa-location-dot"></i>
-          </div>
-          <span class="contact__info-text">Office Address TBD Denver, CO 80205</span>
-        </div>
-
-        <div class="contact__info-row">
-          <div class="contact__icon-box">
-            <i class="contact__icon fa-solid fa-clock"></i>
-          </div>
-          <span class="contact__info-text">Monday - Friday; 8:00am - 5:00pm</span>
-        </div>
-
-      </div>
-
-      <div class="contact__divider"></div>
-
-    </div>
 
   </div>
 </section>
@@ -205,83 +166,7 @@
   .contact__input { transition: border-bottom-color 0.3s ease; }
   .contact__input:focus { border-bottom-color: #1B3B49; }
 
-  .contact__info-row { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-  .contact__info-row:hover { transform: translateX(4px); }
-  .contact__icon-box { transition: background-color 0.35s ease; }
-  .contact__info-row:hover .contact__icon-box { background-color: rgba(255, 255, 255, 0.12); }
 
-  /* Right column */
-  .contact__right {
-    width: 380px;
-    flex-shrink: 0;
-    background: #1B3B49;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0px;
-    min-height: 460px;
-  }
-
-  .contact__info-heading {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 36px;
-    color: #FFFFFF;
-    margin-bottom: 24px;
-  }
-
-  .contact__info-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: auto;
-  }
-
-  .contact__info-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .contact__icon-box {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #FFFFFF;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .contact__icon {
-    font-size: 16px;
-    color: #FFFFFF;
-  }
-
-  .contact__info-text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 27px;
-    color: #FFFFFF;
-  }
-
-  .contact__info-link {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
-
-  .contact__divider {
-    width: 100%;
-    border-top: 1px solid #FFFFFF;
-    opacity: 0.3;
-    margin-top: auto;
-    padding-top: 40px;
-  }
 
   /* ---- Responsive ---- */
   @media (max-width: 1440px) {
@@ -297,24 +182,16 @@
 
   @media (max-width: 1024px) {
     .contact { padding: 48px 40px; }
-    .contact__inner { flex-direction: column; gap: 40px; }
-    .contact__left { width: 100%; flex: none; }
+    .contact__left { width: 100%; flex: none; max-width: none; }
     .contact__fields { width: 100%; }
-    .contact__right { width: 100%; min-height: auto; }
-    .contact__info-rows { margin-bottom: 40px; }
   }
 
   @media (max-width: 768px) {
     .contact { padding: 40px 24px; }
     .contact__heading { font-size: 24px; }
-    .contact__right { padding: 32px; }
-    .contact__info-text { font-size: 16px; }
   }
 
   @media (max-width: 480px) {
     .contact { padding: 32px 16px; }
-    .contact__right { padding: 24px; }
-    .contact__info-rows { gap: 20px; }
-    .contact__info-text { font-size: 14px; }
   }
 </style>

@@ -1,0 +1,163 @@
+---
+// ContactInfo.astro — Blue contact information panel (extracted from ContactForm)
+---
+
+<section class="contact-info">
+  <div class="contact-info__inner">
+    <div class="contact-info__panel" data-anim>
+
+      <h3 class="contact-info__heading">Contact Information</h3>
+
+      <div class="contact-info__rows">
+
+        <div class="contact-info__row">
+          <div class="contact-info__icon-box">
+            <i class="contact-info__icon fa-solid fa-envelope"></i>
+          </div>
+          <span class="contact-info__text">info@kmlaw.com</span>
+        </div>
+
+        <div class="contact-info__row">
+          <div class="contact-info__icon-box">
+            <i class="contact-info__icon fa-solid fa-phone"></i>
+          </div>
+          <a href="tel:+7201234567" class="contact-info__text contact-info__link">+720 123 4567</a>
+        </div>
+
+        <div class="contact-info__row">
+          <div class="contact-info__icon-box">
+            <i class="contact-info__icon fa-solid fa-location-dot"></i>
+          </div>
+          <span class="contact-info__text">Office Address TBD Denver, CO 80205</span>
+        </div>
+
+        <div class="contact-info__row">
+          <div class="contact-info__icon-box">
+            <i class="contact-info__icon fa-solid fa-clock"></i>
+          </div>
+          <span class="contact-info__text">Monday - Friday; 8:00am - 5:00pm</span>
+        </div>
+
+      </div>
+
+      <div class="contact-info__divider"></div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-info {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 0 80px 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-info__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .contact-info__panel {
+    background: #1B3B49;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+    min-height: 280px;
+  }
+
+  .contact-info__heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+  }
+
+  .contact-info__rows {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-bottom: auto;
+  }
+
+  .contact-info__row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .contact-info__row:hover { transform: translateX(4px); }
+
+  .contact-info__icon-box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.35s ease;
+  }
+
+  .contact-info__row:hover .contact-info__icon-box { background-color: rgba(255, 255, 255, 0.12); }
+
+  .contact-info__icon {
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+
+  .contact-info__text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+  }
+
+  .contact-info__link {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+
+  .contact-info__divider {
+    width: 100%;
+    border-top: 1px solid #FFFFFF;
+    opacity: 0.3;
+    margin-top: auto;
+    padding-top: 40px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .contact-info { padding: 0 60px 48px; }
+  }
+
+  @media (max-width: 1024px) {
+    .contact-info { padding: 0 40px 48px; }
+    .contact-info__rows { flex-direction: column; gap: 24px; }
+  }
+
+  @media (max-width: 768px) {
+    .contact-info { padding: 0 24px 40px; }
+    .contact-info__panel { padding: 32px; }
+    .contact-info__text { font-size: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .contact-info { padding: 0 16px 32px; }
+    .contact-info__panel { padding: 24px; min-height: auto; }
+    .contact-info__rows { gap: 20px; }
+    .contact-info__text { font-size: 14px; }
+  }
+</style>
