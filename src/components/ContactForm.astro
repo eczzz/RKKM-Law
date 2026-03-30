@@ -28,21 +28,21 @@
 
     </div>
 
-    <!-- Right column: map -->
-    <div class="contact__right" data-anim data-delay="2">
-      <iframe
-        class="contact__map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12271.392706856588!2d-104.9970305!3d39.7494058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78d2e79a031d%3A0x1039ddb42dc3a9ea!2sDenver%2C%20CO!5e0!3m2!1sen!2sus!4v1711828800000!5m2!1sen!2sus"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="KM Law — Denver, Colorado"
-      ></iframe>
-    </div>
-
   </div>
 
-  <!-- Full-width info bar -->
+  <!-- Map card -->
+  <div class="contact__map-card" data-anim data-delay="2">
+    <iframe
+      class="contact__map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12271.392706856588!2d-104.9970305!3d39.7494058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78d2e79a031d%3A0x1039ddb42dc3a9ea!2sDenver%2C%20CO!5e0!3m2!1sen!2sus!4v1711828800000!5m2!1sen!2sus"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="KM Law — Denver, Colorado"
+    ></iframe>
+  </div>
+
+  <!-- Info bar -->
   <div class="contact__info-bar" data-anim data-delay="3">
 
     <div class="contact__info-row">
@@ -210,17 +210,18 @@
   .contact__input { transition: border-bottom-color 0.3s ease; }
   .contact__input:focus { border-bottom-color: #1B3B49; }
 
-  /* Right column: map */
-  .contact__right {
-    flex: 1;
-    min-width: 0;
-    display: flex;
+  /* Map card */
+  .contact__map-card {
+    max-width: 1600px;
+    margin: 40px auto 0;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .contact__map {
     width: 100%;
-    height: 100%;
-    min-height: 400px;
+    height: 280px;
     border: none;
     display: block;
   }
@@ -299,8 +300,7 @@
     .contact__inner { flex-direction: column; gap: 40px; }
     .contact__left { width: 100%; flex: none; max-width: none; }
     .contact__fields { width: 100%; }
-    .contact__right { width: 100%; }
-    .contact__map { min-height: 300px; }
+    .contact__map { height: 260px; }
     .contact__info-bar { flex-direction: column; align-items: flex-start; }
   }
 
@@ -308,13 +308,13 @@
     .contact { padding: 40px 24px; }
     .contact__heading { font-size: 24px; }
     .contact__info-bar { padding: 28px 32px; }
-    .contact__map { min-height: 260px; }
+    .contact__map { height: 240px; }
   }
 
   @media (max-width: 480px) {
     .contact { padding: 32px 16px; }
     .contact__info-bar { padding: 24px; }
     .contact__info-text { font-size: 14px; }
-    .contact__map { min-height: 220px; }
+    .contact__map { height: 200px; }
   }
 </style>
