@@ -15,11 +15,11 @@ const { theme = 'light' } = Astro.props;
   <div class="header__bar">
 
     <a href="/" class="header__logo-link">
-      <img src="/images/rkkm-logo-white.webp" alt="KM Law" class="header__logo" />
+      <img src="/images/Main-Logo-KM-Law.webp" alt="KM Law" class="header__logo" />
     </a>
 
     <a href="/" class="header__mobile-logo-link header__mobile-logo-link--show-mobile-only">
-      <img src="/images/km-logo.webp" alt="KM Law" class="header__mobile-logo" />
+      <img src="/images/Main-Logo-KM-Law.webp" alt="KM Law" class="header__mobile-logo" />
     </a>
 
     <nav class="header__nav">
@@ -47,7 +47,7 @@ const { theme = 'light' } = Astro.props;
 
     <!-- Logo in the top-left of the menu -->
     <a href="/" class="header__menu-logo">
-      <img src="/images/rkkm-logo-white.webp" alt="KM Law" class="header__menu-logo-img" />
+      <img src="/images/Main-Logo-KM-Law.webp" alt="KM Law" class="header__menu-logo-img" />
     </a>
 
     <!-- In-menu hamburger: mirrors the bar hamburger and acts as the close trigger -->
@@ -86,7 +86,10 @@ const { theme = 'light' } = Astro.props;
       <p class="header__menu-tagline">
         Trusted Counsel for Life's<br />Most Complex Family Law Matters.
       </p>
-      <a href="/contact" class="header__menu-cta">Schedule a Consultation</a>
+      <a href="/contact" class="header__menu-cta">
+        Schedule a Consultation
+        <svg class="header__menu-cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
 
   </div>
@@ -234,7 +237,7 @@ const { theme = 'light' } = Astro.props;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: rgba(28, 25, 23, 0.6);
+    color: rgba(250, 250, 249, 0.7);
     text-decoration: none;
     position: relative;
     padding-bottom: 2px;
@@ -253,7 +256,7 @@ const { theme = 'light' } = Astro.props;
     left: 0;
     width: 100%;
     height: 1px;
-    background: #1C1917;
+    background: var(--stone-50);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
@@ -264,7 +267,7 @@ const { theme = 'light' } = Astro.props;
   }
 
   .header__nav-link:hover {
-    color: #1C1917;
+    color: #FAFAF9;
   }
 
   .header--scrolled .header__nav-link:hover {
@@ -340,31 +343,31 @@ const { theme = 'light' } = Astro.props;
   }
 
   /* ============================================================
-     DARK THEME — dark text on light backgrounds (e.g. About page)
+     DARK THEME — light text (matches scrolled state) site-wide
   ============================================================ */
   .header--dark .header__nav-link {
-    color: #78716C;
+    color: rgba(250, 250, 249, 0.7);
   }
 
   .header--dark .header__nav-link:hover {
-    color: #0C0A09;
+    color: #FAFAF9;
   }
 
   .header--dark .header__nav-link::after {
-    background: #0C0A09;
+    background: var(--stone-50);
   }
 
   .header--dark .header__cta {
-    color: #0C0A09;
-    border-bottom-color: #0C0A09;
+    color: #FFFFFF;
+    border-bottom-color: #FFFFFF;
   }
 
   .header--dark .header__cta:hover {
-    color: rgba(12, 10, 9, 0.6);
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .header--dark .header__cta-arrow {
-    color: #0C0A09;
+    color: #FFFFFF;
   }
 
   /* Dark theme + scrolled: revert to light text on navy pill */
@@ -404,15 +407,15 @@ const { theme = 'light' } = Astro.props;
     animation: hdrFadeDown 0.5s ease 0.38s both;
   }
 
-  /* Dark hamburger lines on light hero, white when scrolled */
+  /* White hamburger lines (matches scrolled state) site-wide */
   .header__hamburger-wrap :global(path) {
-    stroke: #1C1917;
+    stroke: #ffffff;
     transition: stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @media (max-width: 768px) {
     .header__hamburger-wrap :global(path) {
-      stroke: #1C1917;
+      stroke: #ffffff;
     }
   }
 
@@ -642,24 +645,40 @@ const { theme = 'light' } = Astro.props;
 
   .header__menu-cta {
     flex-shrink: 0;
-    height: 41px;
-    padding: 0 22px;
-    background: #F0F0F0;
-    color: #1B3B49;
-    border-radius: 9px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 0 16px;
+    border-bottom: 1px solid #FFFFFF;
+    width: fit-content;
+    background: none;
+    text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 13px;
-    text-decoration: none;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
     white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s ease;
+    transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .header__menu-cta:hover {
-    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .header__menu-cta-arrow {
+    width: 14px;
+    height: 14px;
+    color: #FFFFFF;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header__menu-cta:hover .header__menu-cta-arrow {
+    transform: translate(3px, -3px);
   }
 
   /* ============================================================
