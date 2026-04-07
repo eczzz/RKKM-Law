@@ -1,0 +1,185 @@
+---
+// TeamMemberPracticeAreas.astro — Quick-link block of services this attorney
+// handles. Each chip links to the matching anchor on /services.
+interface PracticeArea {
+  title: string;
+  href: string;
+}
+interface Props {
+  name: string;
+  areas: PracticeArea[];
+}
+const { name, areas } = Astro.props;
+---
+
+<section class="member-areas">
+  <div class="member-areas__inner">
+
+    <div class="member-areas__header">
+      <span class="member-areas__eyebrow" data-anim>Areas of Practice</span>
+      <h2 class="member-areas__heading" data-anim data-delay="1">What {name} Handles.</h2>
+    </div>
+
+    <div class="member-areas__grid">
+      {areas.map((area, i) => (
+        <div class="member-areas__chip-wrap" data-anim data-delay={String((i % 4) + 1)}>
+          <a href={area.href} class="member-areas__chip">
+            <span class="member-areas__chip-text">{area.title}</span>
+            <svg class="member-areas__chip-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .member-areas {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 40px 80px 64px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .member-areas__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .member-areas__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #78716C;
+    width: 100%;
+  }
+
+  .member-areas__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    margin-bottom: 8px;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-areas__eyebrow:hover {
+    color: #1B3B49;
+    letter-spacing: 0.14em;
+  }
+
+  .member-areas__heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  .member-areas__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  /* Wrapper carries the entry animation (data-anim/data-delay) so its
+     transition-delay never leaks onto the chip's hover transition. */
+  .member-areas__chip-wrap {
+    display: flex;
+  }
+
+  .member-areas__chip {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px;
+    background: #FAFAF9;
+    border: 1px solid rgba(120, 113, 108, 0.2);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-areas__chip:hover {
+    background: #1B3B49;
+    border-color: #1B3B49;
+    transform: translateY(-3px);
+  }
+
+  .member-areas__chip-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.2s ease;
+  }
+
+  .member-areas__chip:hover .member-areas__chip-text {
+    color: #FAFAF9;
+  }
+
+  .member-areas__chip-arrow {
+    width: 14px;
+    height: 14px;
+    color: #1B3B49;
+    flex-shrink: 0;
+    transition: color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-areas__chip:hover .member-areas__chip-arrow {
+    color: #FAFAF9;
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .member-areas { padding: 40px 60px 56px; }
+    .member-areas__grid { gap: 18px; }
+  }
+
+  @media (max-width: 1024px) {
+    .member-areas { padding: 40px 40px 48px; }
+
+    .member-areas__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .member-areas { padding: 32px 24px 40px; }
+    .member-areas__heading { font-size: 26px; }
+    .member-areas__chip { padding: 20px 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .member-areas { padding: 24px 16px 32px; }
+    .member-areas__heading { font-size: 24px; }
+
+    .member-areas__grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .member-areas__chip { padding: 18px 20px; }
+  }
+</style>

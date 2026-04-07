@@ -1,0 +1,309 @@
+---
+// TeamMemberBio.astro — Image + intro + bio copy section for an attorney profile.
+// Mirrors the AboutContent two-column pattern. All copy comes from props so the
+// page can be cloned for any team member.
+interface Props {
+  badge: string;
+  name: string;
+  role: string;
+  image: string;
+  imageAlt: string;
+  bio: string[];
+  linkedin?: string;
+}
+const { badge, name, role, image, imageAlt, bio, linkedin } = Astro.props;
+---
+
+<section class="member-bio" id="member-bio">
+  <div class="member-bio__inner">
+
+    <!-- Left column: portrait -->
+    <div class="member-bio__left">
+      <div class="member-bio__image-wrap" data-anim>
+        <img src={image} alt={imageAlt} class="member-bio__image" />
+      </div>
+    </div>
+
+    <!-- Vertical divider -->
+    <div class="member-bio__divider"></div>
+
+    <!-- Right column: badge + name + role + copy + CTA -->
+    <div class="member-bio__right">
+      <span class="member-bio__eyebrow" data-anim>{badge}</span>
+
+      <div class="member-bio__heading-row" data-anim data-delay="1">
+        <div class="member-bio__heading-text">
+          <h2 class="member-bio__name">{name}</h2>
+          <p class="member-bio__role">{role}</p>
+        </div>
+        {linkedin && (
+          <a
+            href={linkedin}
+            class="member-bio__social"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${name} on LinkedIn`}
+          >
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+        )}
+      </div>
+
+      <div class="member-bio__copy" data-anim data-delay="2">
+        {bio.map((para) => <p class="member-bio__body">{para}</p>)}
+      </div>
+
+      <a href="/contact" class="member-bio__cta" data-anim data-delay="3">
+        Schedule A Consultation
+        <svg class="member-bio__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .member-bio {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 64px 80px;
+    box-sizing: border-box;
+  }
+
+  .member-bio__inner {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  /* ---- Left column ---- */
+  .member-bio__left {
+    width: 45%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding-right: 64px;
+  }
+
+  .member-bio__image-wrap {
+    width: 100%;
+    height: 560px;
+    overflow: hidden;
+  }
+
+  .member-bio__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-bio__image-wrap:hover .member-bio__image {
+    transform: scale(1.04);
+  }
+
+  /* ---- Vertical divider ---- */
+  .member-bio__divider {
+    width: 1px;
+    background: #78716C;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* ---- Right column ---- */
+  .member-bio__right {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 64px;
+    gap: 13px;
+  }
+
+  .member-bio__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-bio__eyebrow:hover {
+    color: #1B3B49;
+    letter-spacing: 0.14em;
+  }
+
+  .member-bio__heading-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .member-bio__heading-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .member-bio__name {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  .member-bio__role {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: -0.02em;
+    color: #1B3B49;
+  }
+
+  .member-bio__social {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #1B3B49;
+    border-radius: 50%;
+    color: #1B3B49;
+    text-decoration: none;
+    font-size: 16px;
+    transition:
+      color 0.3s ease,
+      background 0.3s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-bio__social:hover {
+    background: #1B3B49;
+    color: #FAFAF9;
+    transform: translateY(-2px);
+  }
+
+  .member-bio__social i {
+    line-height: 1;
+  }
+
+  .member-bio__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .member-bio__body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 170%;
+    letter-spacing: -0.02em;
+    color: #44403C;
+  }
+
+  .member-bio__cta {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #1B3B49;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.3s ease;
+  }
+
+  .member-bio__cta:hover {
+    color: #1B3B49;
+  }
+
+  .member-bio__cta-arrow {
+    width: 14px;
+    height: 14px;
+    color: #1B3B49;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-bio__cta:hover .member-bio__cta-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .member-bio { padding: 56px 60px; }
+    .member-bio__left { padding-right: 48px; }
+    .member-bio__right { padding-left: 48px; }
+    .member-bio__image-wrap { height: 520px; }
+  }
+
+  @media (max-width: 1024px) {
+    .member-bio { padding: 48px 40px; }
+
+    .member-bio__inner {
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .member-bio__left {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    .member-bio__divider {
+      width: 100%;
+      height: 1px;
+      align-self: auto;
+    }
+
+    .member-bio__right {
+      width: 100%;
+      padding-left: 0;
+    }
+
+    .member-bio__image-wrap {
+      height: 460px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .member-bio { padding: 40px 24px; }
+    .member-bio__image-wrap { height: 380px; }
+    .member-bio__name { font-size: 32px; }
+  }
+
+  @media (max-width: 480px) {
+    .member-bio { padding: 32px 16px; }
+    .member-bio__image-wrap { height: 320px; }
+    .member-bio__name { font-size: 28px; }
+  }
+</style>

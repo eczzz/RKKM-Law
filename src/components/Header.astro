@@ -25,7 +25,15 @@ const { theme = 'light' } = Astro.props;
     <nav class="header__nav">
       <a href="/" class="header__nav-link">Home</a>
       <a href="/about" class="header__nav-link">About</a>
-      <a href="/team" class="header__nav-link">Our Team</a>
+      <div class="header__nav-item header__nav-item--has-dropdown">
+        <a href="/team" class="header__nav-link header__nav-link--parent">
+          Our Team
+          <svg class="header__nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="header__dropdown" role="menu">
+          <a href="/team/rajesh-kukreja" class="header__dropdown-link" role="menuitem">Rajesh (Raj) Kukreja</a>
+        </div>
+      </div>
       <a href="/services" class="header__nav-link">Services</a>
       <a href="/current-clients" class="header__nav-link">Client Page</a>
       <a href="/contact" class="header__nav-link">Contact</a>
@@ -64,10 +72,16 @@ const { theme = 'light' } = Astro.props;
         <span class="header__menu-num">02</span>
         <span class="header__menu-text">About</span>
       </a>
-      <a href="/team" class="header__menu-link">
+      <a href="/team" class="header__menu-link header__menu-link--has-sub">
         <span class="header__menu-num">03</span>
         <span class="header__menu-text">Our Team</span>
       </a>
+      <div class="header__menu-sublinks">
+        <a href="/team/rajesh-kukreja" class="header__menu-sublink">
+          <span class="header__menu-sublink-dash" aria-hidden="true"></span>
+          <span class="header__menu-sublink-text">Rajesh (Raj) Kukreja</span>
+        </a>
+      </div>
       <a href="/services" class="header__menu-link">
         <span class="header__menu-num">04</span>
         <span class="header__menu-text">Services</span>
@@ -278,12 +292,103 @@ const { theme = 'light' } = Astro.props;
     transform: scaleX(1);
   }
 
-  .header__nav-link:nth-child(1) { animation: hdrFadeDown 0.5s ease 0.08s both; }
-  .header__nav-link:nth-child(2) { animation: hdrFadeDown 0.5s ease 0.14s both; }
-  .header__nav-link:nth-child(3) { animation: hdrFadeDown 0.5s ease 0.20s both; }
-  .header__nav-link:nth-child(4) { animation: hdrFadeDown 0.5s ease 0.26s both; }
-  .header__nav-link:nth-child(5) { animation: hdrFadeDown 0.5s ease 0.32s both; }
-  .header__nav-link:nth-child(6) { animation: hdrFadeDown 0.5s ease 0.38s both; }
+  .header__nav > *:nth-child(1) { animation: hdrFadeDown 0.5s ease 0.08s both; }
+  .header__nav > *:nth-child(2) { animation: hdrFadeDown 0.5s ease 0.14s both; }
+  .header__nav > *:nth-child(3) { animation: hdrFadeDown 0.5s ease 0.20s both; }
+  .header__nav > *:nth-child(4) { animation: hdrFadeDown 0.5s ease 0.26s both; }
+  .header__nav > *:nth-child(5) { animation: hdrFadeDown 0.5s ease 0.32s both; }
+  .header__nav > *:nth-child(6) { animation: hdrFadeDown 0.5s ease 0.38s both; }
+
+  /* ============================================================
+     DROPDOWN — Our Team child menu (desktop)
+  ============================================================ */
+  .header__nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__nav-link--parent {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header__nav-caret {
+    width: 10px;
+    height: 6px;
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header__nav-item--has-dropdown:hover .header__nav-caret,
+  .header__nav-item--has-dropdown:focus-within .header__nav-caret {
+    transform: rotate(180deg);
+  }
+
+  .header__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 8px);
+    min-width: 240px;
+    padding: 12px 4px;
+    background: rgba(27, 59, 73, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity   0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 12px;
+  }
+
+  /* Invisible bridge so the dropdown doesn't close when moving the cursor across the gap */
+  .header__nav-item--has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 24px;
+    pointer-events: none;
+  }
+
+  .header__nav-item--has-dropdown:hover::after,
+  .header__nav-item--has-dropdown:focus-within::after {
+    pointer-events: auto;
+  }
+
+  .header__nav-item--has-dropdown:hover .header__dropdown,
+  .header__nav-item--has-dropdown:focus-within .header__dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+
+  .header__dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: rgba(250, 250, 249, 0.75);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+
+  .header__dropdown-link:hover {
+    color: #FAFAF9;
+    background: rgba(250, 250, 249, 0.06);
+  }
 
   /* ============================================================
      CTA BUTTON
@@ -554,13 +659,81 @@ const { theme = 'light' } = Astro.props;
     gap: 24px;
   }
 
-  /* Staggered entry */
-  .header--open .header__menu-link:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.28s; }
-  .header--open .header__menu-link:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
-  .header--open .header__menu-link:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
-  .header--open .header__menu-link:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.49s; }
-  .header--open .header__menu-link:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.56s; }
-  .header--open .header__menu-link:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.63s; }
+  /* Staggered entry — uses nth-of-type so the sublinks <div> doesn't break the count */
+  .header--open .header__menu-link:nth-of-type(1) { opacity: 1; transform: translateY(0); transition-delay: 0.28s; }
+  .header--open .header__menu-link:nth-of-type(2) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+  .header--open .header__menu-link:nth-of-type(3) { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
+  .header--open .header__menu-link:nth-of-type(4) { opacity: 1; transform: translateY(0); transition-delay: 0.49s; }
+  .header--open .header__menu-link:nth-of-type(5) { opacity: 1; transform: translateY(0); transition-delay: 0.56s; }
+  .header--open .header__menu-link:nth-of-type(6) { opacity: 1; transform: translateY(0); transition-delay: 0.63s; }
+
+  /* ============================================================
+     MENU SUB-LINKS — nested attorney pages under Our Team (mobile)
+     The parent link drops its bottom border so the sublinks visually
+     group with it as one Our Team block, divided from the next item
+     by the sublinks container's own bottom border.
+  ============================================================ */
+  .header__menu-link--has-sub {
+    border-bottom: none;
+  }
+
+  .header__menu-sublinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 22px 44px;
+    border-bottom: 1px solid rgba(250, 250, 249, 0.08);
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header--open .header__menu-sublinks {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.46s;
+  }
+
+  .header__menu-sublink {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 0;
+    text-decoration: none;
+    transition: gap 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header__menu-sublink-dash {
+    width: 22px;
+    height: 1px;
+    background: rgba(250, 250, 249, 0.4);
+    flex-shrink: 0;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+  }
+
+  .header__menu-sublink-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: rgba(250, 250, 249, 0.7);
+    transition: color 0.3s ease;
+  }
+
+  .header__menu-sublink:hover {
+    gap: 18px;
+  }
+
+  .header__menu-sublink:hover .header__menu-sublink-dash {
+    width: 30px;
+    background: #FAFAF9;
+  }
+
+  .header__menu-sublink:hover .header__menu-sublink-text {
+    color: #FAFAF9;
+  }
 
   .header__menu-num {
     font-family: 'Poppins', sans-serif;
@@ -575,7 +748,7 @@ const { theme = 'light' } = Astro.props;
 
   .header__menu-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 52px;
+    font-size: 40px;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -744,7 +917,7 @@ const { theme = 'light' } = Astro.props;
     }
 
     .header__menu-text {
-      font-size: 44px;
+      font-size: 32px;
     }
   }
 
@@ -761,7 +934,7 @@ const { theme = 'light' } = Astro.props;
     }
 
     .header__menu-text {
-      font-size: 36px;
+      font-size: 26px;
     }
 
     .header__menu-link {
@@ -831,13 +1004,13 @@ const { theme = 'light' } = Astro.props;
     if (!closeCheckbox.checked) closeMenu();
   });
 
-  // Close on menu link click
-  menuEl?.querySelectorAll('.header__menu-link').forEach(link => {
+  // Close on menu link click (includes nested attorney sublinks)
+  menuEl?.querySelectorAll('.header__menu-link, .header__menu-sublink').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Close on desktop nav link click (same-page anchor)
-  document.querySelectorAll('.header__nav-link').forEach(link => {
+  // Close on desktop nav link click (same-page anchor) — includes dropdown items
+  document.querySelectorAll('.header__nav-link, .header__dropdown-link').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 

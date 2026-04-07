@@ -1,0 +1,214 @@
+---
+// TeamMemberBadges.astro — Visual award/recognition row for an attorney profile.
+// Drop replacement images into /public/badges/ at the same paths to swap the
+// placeholders for real badge artwork.
+interface Badge {
+  name: string;
+  caption: string;
+  image: string;
+  href?: string;
+}
+interface Props {
+  groups: Badge[];
+}
+const { groups } = Astro.props;
+---
+
+<section class="member-badges">
+  <div class="member-badges__inner">
+
+    <div class="member-badges__header">
+      <span class="member-badges__eyebrow" data-anim>Honors &amp; Recognition</span>
+      <h2 class="member-badges__heading" data-anim data-delay="1">Awards That Reflect the Work.</h2>
+    </div>
+
+    <div class="member-badges__row">
+      {groups.map((badge, i) => {
+        const inner = (
+          <>
+            <div class="member-badges__image-wrap">
+              <img src={badge.image} alt={`${badge.name} — ${badge.caption}`} class="member-badges__image" />
+            </div>
+            <div class="member-badges__text">
+              <span class="member-badges__name">{badge.name}</span>
+              <span class="member-badges__caption">{badge.caption}</span>
+            </div>
+          </>
+        );
+        return badge.href ? (
+          <a href={badge.href} target="_blank" rel="noopener noreferrer" class="member-badges__item" data-anim data-delay={String((i % 4) + 1)}>
+            {inner}
+          </a>
+        ) : (
+          <div class="member-badges__item" data-anim data-delay={String((i % 4) + 1)}>
+            {inner}
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .member-badges {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 24px 80px 64px;
+    box-sizing: border-box;
+  }
+
+  .member-badges__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header — matches the credentials/team header pattern */
+  .member-badges__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #78716C;
+    width: 100%;
+  }
+
+  .member-badges__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    margin-bottom: 8px;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-badges__eyebrow:hover {
+    color: #1B3B49;
+    letter-spacing: 0.14em;
+  }
+
+  .member-badges__heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  /* Row of badges */
+  .member-badges__row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  .member-badges__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .member-badges__image-wrap {
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 220 / 260;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .member-badges__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: grayscale(0.15);
+    opacity: 0.92;
+    transition: filter 0.4s ease, opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  a.member-badges__item:hover {
+    transform: translateY(-3px);
+  }
+
+  .member-badges__item:hover .member-badges__image {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  .member-badges__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .member-badges__name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    color: #1B3B49;
+  }
+
+  .member-badges__caption {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: #57534E;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .member-badges { padding: 24px 60px 56px; }
+    .member-badges__row { gap: 28px; }
+  }
+
+  @media (max-width: 1024px) {
+    .member-badges { padding: 24px 40px 48px; }
+
+    .member-badges__row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .member-badges { padding: 24px 24px 40px; }
+    .member-badges__heading { font-size: 26px; }
+    .member-badges__row { gap: 36px 24px; }
+    .member-badges__image-wrap { max-width: 150px; }
+  }
+
+  @media (max-width: 480px) {
+    .member-badges { padding: 20px 16px 32px; }
+    .member-badges__heading { font-size: 24px; }
+
+    .member-badges__row {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 20px;
+    }
+
+    .member-badges__image-wrap { max-width: 130px; }
+    .member-badges__name { font-size: 13px; }
+    .member-badges__caption { font-size: 12px; }
+  }
+</style>
