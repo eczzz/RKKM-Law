@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TeamMemberHero from '../../components/team-member/TeamMemberHero.astro';
 import TeamMemberBio from '../../components/team-member/TeamMemberBio.astro';
-import TeamMemberBadges from '../../components/team-member/TeamMemberBadges.astro';
 import TeamMemberCredentials from '../../components/team-member/TeamMemberCredentials.astro';
 import TeamMemberPracticeAreas from '../../components/team-member/TeamMemberPracticeAreas.astro';
 import TeamCTA from '../../components/team/TeamCTA.astro';
@@ -14,14 +13,14 @@ import TeamCTA from '../../components/team/TeamCTA.astro';
 const member = {
   fullName: 'Rajesh (Raj) Kukreja',
   shortName: 'Raj',
-  role: 'Founding Partner',
+  role: 'Equity Member',
   badge: 'Our Team',
   image: '/raj-image.webp',
-  imageAlt: 'Rajesh (Raj) Kukreja, Founding Partner at KM Law',
+  imageAlt: 'Rajesh (Raj) Kukreja, Equity Member at KM Law',
   linkedin: 'https://www.linkedin.com/in/rajesh-kukreja-5b802539/',
   heroHeadline: 'Meet Raj.',
   bio: [
-    "Rajesh (Raj) Kukreja is a Founding Partner of Kukreja McFarlane Law and leads the firm's High-Asset Divorce and Complex Litigation practice. Raj represents individuals with high-net-worth and ultra-high-net-worth marital estates through dissolution of marriage and related matters. His work routinely involves the valuation of privately held companies and business interests, real estate holdings, trusts and beneficial interests, and the analysis of executive compensation issues — including restricted stock, deferred compensation, and stock options — as well as litigation regarding the enforceability of marital agreements.",
+    "Rajesh (Raj) Kukreja is an Equity Member and Founder of Kukreja McFarlane Law and represents individuals with high-net-worth and ultra-high-net-worth marital estates through dissolution of marriage and related matters. His work routinely involves the valuation of privately held companies and business interests, real estate holdings, trusts and beneficial interests, and the analysis of executive compensation issues — including restricted stock, deferred compensation, and stock options — as well as litigation regarding the enforceability of marital agreements.",
     "Raj has extensive experience with both trial work and alternative dispute resolution, including mediation and arbitration. He represents clients throughout Colorado, including the Front Range and the state's mountain communities.",
     "Raj also holds a Certificate in Family Law Mediation from Northwestern University in Chicago, Illinois. His practice has expanded to offer mediation and arbitration services, particularly as they relate to the division of high-net-worth and ultra-high-net-worth marital estates.",
   ],
@@ -65,9 +64,9 @@ const member = {
     {
       title: 'Education',
       items: [
-        'University of Denver Sturm College of Law, J.D.',
         'University of Virginia, B.A., Government',
-        'Northwestern University, Certificate in Family Law Mediation (2022)',
+        'University of Denver Sturm College of Law, J.D.',
+        'Northwestern University, Certificate in Family Law Mediation',
       ],
     },
     {
@@ -106,8 +105,6 @@ const member = {
     bio={member.bio}
     linkedin={member.linkedin}
   />
-
-  <TeamMemberBadges groups={member.badges} />
 
   <TeamMemberCredentials groups={member.credentials} />
 
