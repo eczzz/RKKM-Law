@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeamMemberHero from '../../components/team-member/TeamMemberHero.astro';
+import TeamMemberBio from '../../components/team-member/TeamMemberBio.astro';
+import TeamMemberCredentials from '../../components/team-member/TeamMemberCredentials.astro';
+import TeamMemberPracticeAreas from '../../components/team-member/TeamMemberPracticeAreas.astro';
+import TeamCTA from '../../components/team/TeamCTA.astro';
+
+// ---- TEMPLATE DATA ---------------------------------------------------------
+// To add a new attorney: copy this file, rename it, and replace the values in
+// the `member` object below. The components handle all rendering.
+const member = {
+  fullName: 'Kyle McFarlane',
+  shortName: 'Kyle',
+  role: 'Equity Member',
+  badge: 'Our Team',
+  image: '/kyle-image.webp',
+  imageAlt: 'Kyle McFarlane, Equity Member at KM Law',
+  linkedin: 'https://www.linkedin.com/in/kyle-mcfarlane-54385a7a/',
+  heroHeadline: 'Meet Kyle.',
+  bio: [
+    "Kyle McFarlane is an Equity Member and Founder of Kukreja McFarlane Law and a highly sought-after trial attorney known across Colorado for her fierce advocacy in high-stakes divorce and custody litigation. With a legal career built on deep trial experience, a commitment to excellence, and strategic precision, Kyle has become the go-to lawyer for clients navigating complex and emotionally charged family law matters — especially those involving substantial wealth, business interests, and contested parenting issues.",
+    "Kyle represents clients at the highest levels of professional and financial success, including C-suite executives, attorneys, business owners, and public figures. Her practice is sharply focused on high-asset divorce cases involving intricate financial disclosures, hidden assets, business valuations, and multi-jurisdictional issues. She is equally adept in navigating high-conflict custody disputes involving allegations of abuse, psychological evaluations, interstate custody, and international child abduction.",
+    "In practice, Kyle is known for her commanding presence, legal acuity, and no-nonsense approach to litigation. She thrives in contested hearings and complex settlement negotiations alike, earning the respect of judges, opposing counsel, and clients for her preparation and clarity.",
+  ],
+  practiceAreas: [
+    { title: 'High-Asset Divorce', href: '/services#high-asset-divorce' },
+    { title: 'Child Custody & Parenting', href: '/services#child-custody' },
+    { title: 'Spousal Support & Maintenance', href: '/services#spousal-support' },
+    { title: 'View All Services', href: '/services' },
+  ],
+  credentials: [
+    {
+      title: 'Bar Admissions',
+      items: [
+        'Colorado',
+      ],
+    },
+    {
+      title: 'Education',
+      items: [
+        'University of Denver, B.A., Sociology and Psychology',
+        'University of Denver Sturm College of Law, J.D.',
+      ],
+    },
+    {
+      title: 'Recognitions',
+      items: [
+        'Best Lawyers in America — Family Law, 2024 & 2025',
+        '5280 Magazine — Top Lawyers, Family Law/Divorce, 2025',
+        'Colorado Super Lawyers, 2025; Rising Stars, 2017–2023',
+        'Law Week Colorado — Barrister\'s Best, People\'s Choice for Best Family Law Lawyer, 2021',
+      ],
+    },
+    {
+      title: 'Professional Involvement',
+      items: [
+        'Colorado Bar Association — Family Law Section',
+        'Denver Bar Association',
+        'Denver Bar Association — Young Lawyers Division',
+        'National Association of Legal Advocacy Educators',
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${member.fullName} — KM Law`}
+  description={`${member.fullName}, ${member.role} at KM Law.`}
+  headerTheme="dark"
+>
+  <TeamMemberHero headline={member.heroHeadline} />
+
+  <TeamMemberBio
+    badge={member.badge}
+    name={member.fullName}
+    role={member.role}
+    image={member.image}
+    imageAlt={member.imageAlt}
+    bio={member.bio}
+    linkedin={member.linkedin}
+  />
+
+  <TeamMemberCredentials groups={member.credentials} />
+
+  <TeamMemberPracticeAreas name={member.shortName} areas={member.practiceAreas} />
+
+  <TeamCTA />
+</BaseLayout>
+
+<style is:global>
+  /* ---- Scroll-entry animations ---- */
+  [data-anim] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
+  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
+  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
+  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
+  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
+
+  /* Eyebrow transitions need to merge with data-anim */
+  .member-bio__eyebrow[data-anim],
+  .member-creds__eyebrow[data-anim] {
+    transition:
+      color          0.3s ease,
+      letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity        0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform      0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const animEls = document.querySelectorAll('[data-anim]');
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.add('is-visible');
+        animObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+  animEls.forEach(el => animObserver.observe(el));
+</script>

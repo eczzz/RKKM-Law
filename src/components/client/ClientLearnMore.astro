@@ -1,0 +1,293 @@
+---
+// ClientLearnMore.astro — Three "Learn More" cards linking to Team, Services, Contact.
+---
+
+<section class="cl">
+  <div class="cl__inner">
+
+    <div class="cl__header">
+      <span class="cl__eyebrow" data-anim>Explore</span>
+      <h2 class="cl__heading" data-anim data-delay="1">Learn More About&nbsp;KM&nbsp;Law.</h2>
+    </div>
+
+    <div class="cl__grid">
+
+      <!-- Card 1: Our Team -->
+      <a href="/team" class="cl__card cl__card--team" data-anim data-delay="1">
+        <div class="cl__card-inner">
+          <span class="cl__card-num" aria-hidden="true">01</span>
+          <div class="cl__card-content">
+            <h3 class="cl__card-title">Our Team</h3>
+            <p class="cl__card-text">Meet the attorneys behind your case. Decades of experience, one shared commitment to your outcome.</p>
+          </div>
+          <div class="cl__card-footer">
+            <span class="cl__card-link-text">View Our Team</span>
+            <svg class="cl__card-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Services -->
+      <a href="/services" class="cl__card cl__card--services" data-anim data-delay="2">
+        <div class="cl__card-inner">
+          <span class="cl__card-num" aria-hidden="true">02</span>
+          <div class="cl__card-content">
+            <h3 class="cl__card-title">Services</h3>
+            <p class="cl__card-text">High-asset divorce, custody disputes, mediation, and more. Explore the full scope of what we handle.</p>
+          </div>
+          <div class="cl__card-footer">
+            <span class="cl__card-link-text">View Services</span>
+            <svg class="cl__card-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: Contact -->
+      <a href="/contact" class="cl__card cl__card--contact" data-anim data-delay="3">
+        <div class="cl__card-inner">
+          <span class="cl__card-num" aria-hidden="true">03</span>
+          <div class="cl__card-content">
+            <h3 class="cl__card-title">Contact Us</h3>
+            <p class="cl__card-text">Questions about your case or need to reach your attorney? We're a phone call or email away.</p>
+          </div>
+          <div class="cl__card-footer">
+            <span class="cl__card-link-text">Get In Touch</span>
+            <svg class="cl__card-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .cl {
+    width: 100%;
+    background: #FAFAF9;
+    padding: 40px 80px 72px;
+    box-sizing: border-box;
+  }
+
+  .cl__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- Header ---- */
+  .cl__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #78716C;
+    width: 100%;
+  }
+
+  .cl__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    margin-bottom: 8px;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cl__eyebrow:hover {
+    color: #1B3B49;
+    letter-spacing: 0.14em;
+  }
+
+  .cl__heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  /* ---- Card Grid ---- */
+  .cl__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+    width: 100%;
+  }
+
+  /* ---- Card ---- */
+  .cl__card {
+    background: #1B3B49;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition:
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform  0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cl__card:hover {
+    box-shadow: 0 20px 56px rgba(27, 59, 73, 0.22);
+    transform: translateY(-5px);
+  }
+
+  .cl__card-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px 36px 36px;
+    min-height: 340px;
+  }
+
+  /* Large background number */
+  .cl__card-num {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 80px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: rgba(153, 173, 140, 0.15);
+    user-select: none;
+    transition: color 0.4s ease;
+  }
+
+  .cl__card:hover .cl__card-num {
+    color: rgba(153, 173, 140, 0.25);
+  }
+
+  /* Text content */
+  .cl__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cl__card-title {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #FAFAF9;
+  }
+
+  .cl__card-text {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    letter-spacing: -0.02em;
+    color: rgba(250, 250, 249, 0.6);
+  }
+
+  /* Footer link row */
+  .cl__card-footer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(250, 250, 249, 0.1);
+  }
+
+  .cl__card-link-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: rgba(250, 250, 249, 0.75);
+    transition: color 0.3s ease;
+  }
+
+  .cl__card:hover .cl__card-link-text {
+    color: #FAFAF9;
+  }
+
+  .cl__card-arrow {
+    width: 14px;
+    height: 14px;
+    color: rgba(250, 250, 249, 0.75);
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  }
+
+  .cl__card:hover .cl__card-arrow {
+    color: #FAFAF9;
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .cl { padding: 40px 60px 64px; }
+    .cl__grid { gap: 20px; }
+    .cl__card-inner { padding: 36px 32px 32px; min-height: 310px; }
+    .cl__card-num { font-size: 64px; }
+  }
+
+  @media (max-width: 1024px) {
+    .cl { padding: 40px 40px 56px; }
+
+    .cl__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .cl__card-inner {
+      min-height: auto;
+      padding: 32px 32px 28px;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .cl__card-num {
+      font-size: 56px;
+      flex-shrink: 0;
+    }
+
+    .cl__card-content {
+      flex: 1;
+    }
+
+    .cl__card-footer {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      flex-shrink: 0;
+    }
+
+    .cl__card-link-text {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cl { padding: 32px 24px 48px; }
+    .cl__heading { font-size: 26px; }
+    .cl__card-inner { padding: 28px 24px; gap: 24px; }
+    .cl__card-num { font-size: 44px; }
+    .cl__card-title { font-size: 20px; }
+    .cl__card-text { font-size: 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .cl { padding: 24px 16px 40px; }
+    .cl__heading { font-size: 24px; }
+    .cl__card-inner { padding: 24px 20px; gap: 20px; }
+    .cl__card-num { font-size: 36px; }
+    .cl__card-title { font-size: 18px; }
+  }
+</style>

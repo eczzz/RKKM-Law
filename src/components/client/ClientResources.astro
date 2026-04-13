@@ -1,0 +1,305 @@
+---
+// ClientResources.astro — Upload documents + pay invoice cards for the Client Page.
+// Uses large faded numbers (01, 02) instead of icons to match the site's visual language.
+---
+
+<section class="cr" id="client-resources">
+  <div class="cr__inner">
+
+    <div class="cr__header">
+      <span class="cr__eyebrow" data-anim>Client Resources</span>
+      <h2 class="cr__heading" data-anim data-delay="1">How Can We Help?</h2>
+    </div>
+
+    <div class="cr__grid">
+
+      <!-- Card 1: Share Documents -->
+      <div class="cr__card" data-anim data-delay="1">
+        <span class="cr__card-num" aria-hidden="true">01</span>
+        <div class="cr__card-body">
+          <h3 class="cr__card-title">Share Documents</h3>
+          <p class="cr__card-text">
+            Need to send us files? You can securely share documents, records, and
+            other materials with our team through our client portal or by emailing
+            them directly. We recommend using the portal for sensitive or large files.
+          </p>
+          <div class="cr__card-divider"></div>
+          <div class="cr__card-actions">
+            <a href="#" class="cr__card-cta">
+              Open Secure Portal
+              <svg class="cr__card-cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="mailto:info@kmlaw.com" class="cr__card-cta cr__card-cta--secondary">
+              Email info@kmlaw.com
+              <svg class="cr__card-cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <p class="cr__card-note">
+            Please include your full name and case reference in the subject line.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2: Pay an Invoice -->
+      <div class="cr__card" data-anim data-delay="2">
+        <span class="cr__card-num" aria-hidden="true">02</span>
+        <div class="cr__card-body">
+          <h3 class="cr__card-title">Pay an Invoice</h3>
+          <p class="cr__card-text">
+            Submit a secure payment toward your outstanding balance. We accept
+            Visa, Mastercard, Discover, and electronic checks. Payments can be
+            applied to any open invoice. If you have questions about your balance
+            or need a copy of a recent statement, don't hesitate to reach out to
+            our team.
+          </p>
+          <div class="cr__card-divider"></div>
+          <a href="/contact" class="cr__card-cta">
+            Make a Payment
+            <svg class="cr__card-cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="cr__card-note">
+            For billing questions, contact us at info@kmlaw.com.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .cr {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 64px 80px;
+    box-sizing: border-box;
+  }
+
+  .cr__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- Header ---- */
+  .cr__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #78716C;
+    width: 100%;
+  }
+
+  .cr__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    margin-bottom: 8px;
+    transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cr__eyebrow:hover {
+    color: #1B3B49;
+    letter-spacing: 0.14em;
+  }
+
+  .cr__heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  /* ---- Card Grid ---- */
+  .cr__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+    width: 100%;
+  }
+
+  /* ---- Card ---- */
+  .cr__card {
+    background: #FAFAF9;
+    border: 1px solid rgba(120, 113, 108, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 44px 40px;
+    transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cr__card:hover {
+    box-shadow: 0 16px 48px rgba(27, 59, 73, 0.08);
+    transform: translateY(-4px);
+  }
+
+  /* Large number */
+  .cr__card-num {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 80px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: rgba(153, 173, 140, 0.18);
+    user-select: none;
+    margin-bottom: 24px;
+    transition: color 0.4s ease;
+  }
+
+  .cr__card:hover .cr__card-num {
+    color: rgba(153, 173, 140, 0.3);
+  }
+
+  /* Card body */
+  .cr__card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .cr__card-title {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+    margin-bottom: 16px;
+  }
+
+  .cr__card-text {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 170%;
+    letter-spacing: -0.02em;
+    color: #44403C;
+  }
+
+  .cr__card-divider {
+    width: 40px;
+    height: 1px;
+    background: #99AD8C;
+    margin: 28px 0;
+  }
+
+  /* Actions row — stacked CTAs */
+  .cr__card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .cr__card-cta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #1B3B49;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.3s ease;
+  }
+
+  .cr__card-cta:hover {
+    color: #1B3B49;
+  }
+
+  .cr__card-cta--secondary {
+    border-bottom-color: #78716C;
+    color: #57534E;
+  }
+
+  .cr__card-cta--secondary:hover {
+    color: #1C1917;
+    border-bottom-color: #1B3B49;
+  }
+
+  .cr__card-cta-arrow {
+    width: 14px;
+    height: 14px;
+    color: #1B3B49;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cr__card-cta--secondary .cr__card-cta-arrow {
+    color: #78716C;
+  }
+
+  .cr__card-cta--secondary:hover .cr__card-cta-arrow {
+    color: #1B3B49;
+  }
+
+  .cr__card-cta:hover .cr__card-cta-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .cr__card-note {
+    margin: 16px 0 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 160%;
+    letter-spacing: -0.01em;
+    color: #78716C;
+    font-style: italic;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .cr { padding: 56px 60px; }
+    .cr__card { padding: 40px 36px; }
+    .cr__card-num { font-size: 64px; }
+  }
+
+  @media (max-width: 1024px) {
+    .cr { padding: 48px 40px; }
+
+    .cr__grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cr { padding: 40px 24px; }
+    .cr__heading { font-size: 26px; }
+    .cr__card { padding: 36px 28px; }
+    .cr__card-num { font-size: 52px; }
+    .cr__card-title { font-size: 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .cr { padding: 32px 16px; }
+    .cr__heading { font-size: 24px; }
+    .cr__card { padding: 32px 24px; }
+    .cr__card-num { font-size: 44px; }
+    .cr__card-title { font-size: 20px; }
+  }
+</style>

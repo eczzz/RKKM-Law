@@ -1,0 +1,161 @@
+---
+// ClientHero.astro — Navy hero for the Client Page, same pattern as About/Team/Contact heroes.
+---
+
+<section class="client-hero">
+  <div class="client-hero__bottom">
+    <h1 class="client-hero__headline">Your Client Portal.</h1>
+    <a href="#client-resources" class="client-hero__link">
+      Learn More
+      <svg class="client-hero__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .client-hero {
+    width: 100%;
+    height: 520px;
+    background: #1B3B49;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 max(80px, calc((100vw - 1600px) / 2));
+    box-sizing: border-box;
+  }
+
+  .client-hero__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    flex-grow: 1;
+    padding-bottom: calc(40px + 4rem);
+    max-width: 1600px;
+  }
+
+  .client-hero__headline {
+    width: 690px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+  }
+
+  .client-hero__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #FFFFFF;
+    width: fit-content;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+  }
+
+  .client-hero__link:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .client-hero__link-arrow {
+    width: 14px;
+    height: 14px;
+    color: #FFFFFF;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .client-hero__link:hover .client-hero__link-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ---- Animations ---- */
+  @keyframes clientHeroFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .client-hero__headline {
+    animation: clientHeroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  .client-hero__link {
+    animation: clientHeroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .client-hero { padding: 0 60px; }
+    .client-hero__headline { font-size: 60px; width: 580px; }
+  }
+
+  @media (max-width: 1024px) {
+    .client-hero { padding: 0 40px; }
+    .client-hero__headline { font-size: 52px; width: 500px; }
+  }
+
+  @media (max-width: 768px) {
+    .client-hero {
+      padding: 0 24px;
+      height: auto;
+      min-height: 380px;
+      justify-content: flex-end;
+    }
+    .client-hero__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      flex-grow: 0;
+      padding-top: 24px;
+      padding-bottom: 32px;
+    }
+    .client-hero__headline {
+      font-size: 30px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .client-hero { padding: 0 16px; min-height: 340px; }
+    .client-hero__bottom { padding-top: 20px; }
+    .client-hero__headline { font-size: 26px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-hero__headline,
+    .client-hero__link {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const link = document.querySelector('.client-hero__link') as HTMLAnchorElement | null;
+    if (link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const target = document.getElementById(href.substring(1));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+  });
+</script>
