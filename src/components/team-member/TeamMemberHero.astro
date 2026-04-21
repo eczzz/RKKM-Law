@@ -1,16 +1,19 @@
 ---
 // TeamMemberHero.astro — Simple navy hero for an individual attorney bio page.
 // Mirrors the AboutHero / TeamHero pattern. Pass `headline` per attorney.
+// `scrollTo` overrides the default anchor target (useful on shared pages where
+// the first bio section has a per-person id instead of the default #member-bio).
 interface Props {
   headline: string;
+  scrollTo?: string;
 }
-const { headline } = Astro.props;
+const { headline, scrollTo = '#member-bio' } = Astro.props;
 ---
 
 <section class="member-hero">
   <div class="member-hero__bottom">
     <h1 class="member-hero__headline">{headline}</h1>
-    <a href="#member-bio" class="member-hero__link">
+    <a href={scrollTo} class="member-hero__link">
       Learn More
       <svg class="member-hero__link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>

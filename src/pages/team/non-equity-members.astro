@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeamMemberHero from '../../components/team-member/TeamMemberHero.astro';
+import TeamMemberBio from '../../components/team-member/TeamMemberBio.astro';
+import TeamCTA from '../../components/team/TeamCTA.astro';
+
+// ---- NON-EQUITY MEMBERS ----------------------------------------------------
+// Each entry renders its own bio section. Replace placeholder bios / photos
+// with real content as it becomes available from the client.
+const members = [
+  {
+    id: 'kevin-keyes',
+    fullName: 'Kevin Keyes',
+    role: 'Non-Equity Member',
+    image: '/Kevin-image.webp',
+    imageAlt: 'Kevin Keyes, Non-Equity Member at KM Law',
+    linkedin: 'https://www.linkedin.com/in/kevin-keyes-60631939/',
+    bio: [
+      "Kevin Keyes is a Non-Equity Member of Kukreja McFarlane Law with a deep commitment to legal advocacy and a diverse background spanning various legal disciplines. Throughout his legal career he has demonstrated a dedication to providing comprehensive and effective representation to all clients.",
+      "Kevin earned his Juris Doctor from the University of Denver Sturm College of Law, where he was recognized as Outstanding Graduating Law Student by the Student Bar Association. He went on to obtain an LL.M. in Taxation from the University of Denver Sturm College of Law. Prior to his legal studies, Kevin completed a Bachelor of Arts in Theater from the University of Colorado in Boulder.",
+      "Kevin has extensive courtroom litigation experience, having served as a Deputy District Attorney for the 18th Judicial District in Colorado, where he managed a caseload of over 500 files and completed over 35 jury trials. He also served as a Staff Attorney for the Department of Veterans Affairs.",
+    ],
+  },
+  {
+    id: 'heather-broxterman',
+    fullName: 'Heather Broxterman',
+    role: 'Non-Equity Member',
+    image: '/images/female-placeholder.webp',
+    imageAlt: 'Heather Broxterman, Non-Equity Member at KM Law',
+    // TODO: Add Heather's LinkedIn URL when provided by client.
+    // linkedin: '',
+    // TODO: Replace with real bio content from client.
+    bio: [
+      "Heather Broxterman is a Non-Equity Member of Kukreja McFarlane Law, bringing experienced perspective to the firm's family law practice.",
+      "Bio content coming soon.",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Non-Equity Members — KM Law"
+  description="Meet the Non-Equity Members of Kukreja McFarlane Law."
+  headerTheme="dark"
+>
+  <TeamMemberHero headline="Non-Equity Members." scrollTo={`#${members[0].id}`} />
+
+  {members.map((m, i) => (
+    <TeamMemberBio
+      id={m.id}
+      name={m.fullName}
+      role={m.role}
+      image={m.image}
+      imageAlt={m.imageAlt}
+      bio={m.bio}
+      linkedin={m.linkedin}
+      showCta={i === members.length - 1}
+    />
+  ))}
+
+  <TeamCTA />
+</BaseLayout>
+
+<style is:global>
+  /* ---- Scroll-entry animations ---- */
+  [data-anim] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
+  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
+  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
+  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
+  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
+
+  /* Eyebrow transitions need to merge with data-anim */
+  .member-bio__eyebrow[data-anim] {
+    transition:
+      color          0.3s ease,
+      letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity        0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform      0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Offset anchor jumps so the fixed header doesn't cover the target */
+  .member-bio {
+    scroll-margin-top: 100px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const animEls = document.querySelectorAll('[data-anim]');
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.add('is-visible');
+        animObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+  animEls.forEach(el => animObserver.observe(el));
+</script>

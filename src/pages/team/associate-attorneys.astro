@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeamMemberHero from '../../components/team-member/TeamMemberHero.astro';
+import TeamMemberBio from '../../components/team-member/TeamMemberBio.astro';
+import TeamCTA from '../../components/team/TeamCTA.astro';
+
+// ---- ASSOCIATE ATTORNEYS ---------------------------------------------------
+// Each entry renders its own bio section. Replace placeholder bios / photos
+// with real content as it becomes available from the client.
+const members = [
+  {
+    id: 'allison-derschang',
+    fullName: 'Allison Derschang',
+    role: 'Associate Attorney',
+    image: '/images/female-placeholder.webp',
+    imageAlt: 'Allison Derschang, Associate Attorney at KM Law',
+    // TODO: Replace with real bio content from client.
+    bio: [
+      "Allison Derschang is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado.",
+      "Bio content coming soon.",
+    ],
+  },
+  {
+    id: 'patricia-martin',
+    fullName: 'Patricia Martin',
+    role: 'Associate Attorney',
+    image: '/images/female-placeholder.webp',
+    imageAlt: 'Patricia Martin, Associate Attorney at KM Law',
+    // TODO: Replace with real bio content from client.
+    bio: [
+      "Patricia Martin is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado.",
+      "Bio content coming soon.",
+    ],
+  },
+  {
+    id: 'kayla-quinn',
+    fullName: 'Kayla Quinn',
+    role: 'Associate Attorney',
+    image: '/images/female-placeholder.webp',
+    imageAlt: 'Kayla Quinn, Associate Attorney at KM Law',
+    // TODO: Replace with real bio content from client.
+    bio: [
+      "Kayla Quinn is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado.",
+      "Bio content coming soon.",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Associate Attorneys — KM Law"
+  description="Meet the Associate Attorneys of Kukreja McFarlane Law."
+  headerTheme="dark"
+>
+  <TeamMemberHero headline="Associate Attorneys." scrollTo={`#${members[0].id}`} />
+
+  {members.map((m, i) => (
+    <TeamMemberBio
+      id={m.id}
+      name={m.fullName}
+      role={m.role}
+      image={m.image}
+      imageAlt={m.imageAlt}
+      bio={m.bio}
+      showCta={i === members.length - 1}
+    />
+  ))}
+
+  <TeamCTA />
+</BaseLayout>
+
+<style is:global>
+  /* ---- Scroll-entry animations ---- */
+  [data-anim] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
+  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
+  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
+  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
+  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
+
+  /* Eyebrow transitions need to merge with data-anim */
+  .member-bio__eyebrow[data-anim] {
+    transition:
+      color          0.3s ease,
+      letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity        0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform      0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Offset anchor jumps so the fixed header doesn't cover the target */
+  .member-bio {
+    scroll-margin-top: 100px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const animEls = document.querySelectorAll('[data-anim]');
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.add('is-visible');
+        animObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+  animEls.forEach(el => animObserver.observe(el));
+</script>

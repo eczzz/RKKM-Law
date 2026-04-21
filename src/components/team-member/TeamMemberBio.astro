@@ -3,18 +3,30 @@
 // Mirrors the AboutContent two-column pattern. All copy comes from props so the
 // page can be cloned for any team member.
 interface Props {
-  badge: string;
+  badge?: string;
   name: string;
   role: string;
   image: string;
   imageAlt: string;
   bio: string[];
   linkedin?: string;
+  id?: string;
+  showCta?: boolean;
 }
-const { badge, name, role, image, imageAlt, bio, linkedin } = Astro.props;
+const {
+  badge,
+  name,
+  role,
+  image,
+  imageAlt,
+  bio,
+  linkedin,
+  id = 'member-bio',
+  showCta = true,
+} = Astro.props;
 ---
 
-<section class="member-bio" id="member-bio">
+<section class="member-bio" id={id}>
   <div class="member-bio__inner">
 
     <!-- Left column: portrait -->
@@ -29,7 +41,7 @@ const { badge, name, role, image, imageAlt, bio, linkedin } = Astro.props;
 
     <!-- Right column: badge + name + role + copy + CTA -->
     <div class="member-bio__right">
-      <span class="member-bio__eyebrow" data-anim>{badge}</span>
+      {badge && <span class="member-bio__eyebrow" data-anim>{badge}</span>}
 
       <div class="member-bio__heading-row" data-anim data-delay="1">
         <div class="member-bio__heading-text">
@@ -53,10 +65,12 @@ const { badge, name, role, image, imageAlt, bio, linkedin } = Astro.props;
         {bio.map((para) => <p class="member-bio__body">{para}</p>)}
       </div>
 
-      <a href="/contact" class="member-bio__cta" data-anim data-delay="3">
-        Schedule A Consultation
-        <svg class="member-bio__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      {showCta && (
+        <a href="/contact" class="member-bio__cta" data-anim data-delay="3">
+          Schedule A Consultation
+          <svg class="member-bio__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      )}
     </div>
 
   </div>
