@@ -3,36 +3,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamHero from '../components/team/TeamHero.astro';
 import TeamSection from '../components/team/TeamSection.astro';
 import TeamCTA from '../components/team/TeamCTA.astro';
+
+const description =
+  'Meet the attorneys behind Kukreja McFarlane Law — Equity Members, Non-Equity Members, Associate Attorneys, and the support staff serving Colorado clients.';
+
+// CollectionPage with the four Equity / Non-Equity attorneys as ListItems.
+// Each Person is referenced by @id so detail pages can extend the same record.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  url: 'https://www.rkkmlaw.com/team',
+  name: 'Our Team — KM Law',
+  description,
+  isPartOf: { '@id': 'https://www.rkkmlaw.com/#organization' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        item: {
+          '@type': 'Person',
+          '@id': 'https://www.rkkmlaw.com/team/rajesh-kukreja#person',
+          name: 'Rajesh (Raj) Kukreja',
+          jobTitle: 'Equity Member',
+          url: 'https://www.rkkmlaw.com/team/rajesh-kukreja',
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        item: {
+          '@type': 'Person',
+          '@id': 'https://www.rkkmlaw.com/team/kyle-mcfarlane#person',
+          name: 'Kyle McFarlane',
+          jobTitle: 'Equity Member',
+          url: 'https://www.rkkmlaw.com/team/kyle-mcfarlane',
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        item: {
+          '@type': 'Person',
+          name: 'Kevin Keyes',
+          jobTitle: 'Non-Equity Member',
+          url: 'https://www.rkkmlaw.com/team/non-equity-members#kevin-keyes',
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        item: {
+          '@type': 'Person',
+          name: 'Heather Sanders',
+          jobTitle: 'Non-Equity Member',
+          url: 'https://www.rkkmlaw.com/team/non-equity-members#heather-sanders',
+        },
+      },
+    ],
+  },
+};
 ---
 
-<BaseLayout title="Our Team — KM Law" headerTheme="dark">
+<BaseLayout title="Our Team — KM Law" description={description} headerTheme="dark" schema={schema}>
   <TeamHero />
   <TeamSection />
   <TeamCTA />
 </BaseLayout>
 
 <style is:global>
-  /* ---- Scroll-entry animations ---- */
-  [data-anim] {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-anim].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
-  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
-  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
-  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
-  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
-
-  /* Eyebrow transitions need to merge with data-anim */
+  /* Eyebrow transitions need to merge with data-anim. Base [data-anim] rules
+     and the IntersectionObserver live in BaseLayout. */
   .team__eyebrow[data-anim] {
     transition:
       color          0.3s ease,
@@ -40,26 +82,4 @@ import TeamCTA from '../components/team/TeamCTA.astro';
       opacity        0.65s cubic-bezier(0.16, 1, 0.3, 1),
       transform      0.65s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-anim] {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
 </style>
-
-<script>
-  const animEls = document.querySelectorAll('[data-anim]');
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).classList.add('is-visible');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-
-  animEls.forEach(el => animObserver.observe(el));
-</script>

@@ -1,8 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// LegalService schema is the canonical firm record for the whole site.
+// Other pages reference it via @id rather than duplicating the data.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  '@id': 'https://www.rkkmlaw.com/#organization',
+  name: 'Kukreja McFarlane Law',
+  alternateName: 'KM Law',
+  url: 'https://www.rkkmlaw.com',
+  logo: 'https://www.rkkmlaw.com/images/Main-Logo-KM-Law.webp',
+  image: 'https://www.rkkmlaw.com/images/km-law-firm-hero-v2.webp',
+  description:
+    'Kukreja McFarlane Law is a Denver-based family law firm representing executives, business owners, and high-net-worth individuals through high-asset divorce, complex custody, and sophisticated family law matters.',
+  areaServed: { '@type': 'State', name: 'Colorado' },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Denver',
+    addressRegion: 'CO',
+    postalCode: '80205',
+    addressCountry: 'US',
+  },
+  email: 'info@kmlaw.com',
+  priceRange: '$$$$',
+  knowsAbout: [
+    'Family Law',
+    'High-Asset Divorce',
+    'Child Custody',
+    'Spousal Support',
+    'Mediation',
+    'Alternative Dispute Resolution',
+    'Marital Agreements',
+  ],
+};
 ---
 
-<BaseLayout>
+<BaseLayout schema={schema}>
   <!-- Hero Section: Split layout — logo + headline left on cream, image right with overlaid copy -->
   <section class="hero">
     <div class="hero__container">
@@ -20,7 +54,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Right column: full-height image with overlaid supporting copy -->
       <div class="hero__right">
         <!-- TODO: Replace with actual Cherry Creek North photo from client -->
-        <img src="/images/hero-cherry-creek.webp" alt="Cherry Creek North, Denver" class="hero__image" />
+        <img src="/images/km-law-firm-hero-v2.webp" alt="KM Law Firm" class="hero__image" />
         <div class="hero__overlay-text">
           <p class="hero__body">
             <span class="hero__body-sub">As trusted counsel for life's most complex family law matters, we make complex issues manageable.</span>
@@ -140,7 +174,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="team__row team__row--large">
 
         <div class="team__card" data-anim>
-          <img class="team__photo" src="/raj-image.webp" alt="Rajesh (Raj) Kukreja" />
+          <img class="team__photo" src="/images/Rajesh-Kureja-KM-Law-firm-bio.webp" alt="Rajesh (Raj) Kukreja" />
           <div class="team__info">
             <span class="team__name">Rajesh (Raj) Kukreja</span>
             <span class="team__title--role">Equity Member</span>
@@ -149,7 +183,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="team__card" data-anim data-delay="1">
-          <img class="team__photo" src="/kyle-image.webp" alt="Kyle McFarlane" />
+          <img class="team__photo" src="/images/kyle-mcfarlane-RK-Law-firm-bio.webp" alt="Kyle McFarlane" />
           <div class="team__info">
             <span class="team__name">Kyle McFarlane</span>
             <span class="team__title--role">Equity Member</span>
@@ -158,7 +192,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="team__card" data-anim data-delay="2">
-          <img class="team__photo" src="/Kevin-image.webp" alt="Kevin Keyes" />
+          <img class="team__photo" src="/images/kevin-keyes-km-law-firm-bio.webp" alt="Kevin Keyes" />
           <div class="team__info">
             <span class="team__name">Kevin Keyes</span>
             <span class="team__title--role">Equity Member</span>
@@ -419,7 +453,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center 32%;
     display: block;
     opacity: 0;
     animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
@@ -1610,7 +1644,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .hero__container { flex-direction: column; max-height: none; }
     .hero__left { flex: none; padding: 90px 24px 24px; padding-left: 24px; }
     .hero__logo-wrap { display: none; }
-    .hero__right { flex: none; height: 200px; }
+    .hero__right { flex: none; height: 320px; }
 
     .hero__logo { max-width: 180px; max-height: 120px; }
     .hero__headline { font-size: 30px; max-width: 100%; margin-top: 20px; }
@@ -1620,7 +1654,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 480px) {
     .hero__left { padding: 80px 16px 20px; padding-left: 16px; }
-    .hero__right { height: 180px; }
+    .hero__right { height: 260px; }
 
     .hero__logo { max-width: 150px; max-height: 100px; }
     .hero__headline { font-size: 26px; margin-top: 16px; }
@@ -2248,30 +2282,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   /* ============================================================
-     SCROLL ENTRY ANIMATIONS
+     SCROLL ENTRY ANIMATIONS — eyebrow hover transitions only.
+     Base [data-anim] rules and the IntersectionObserver live in BaseLayout.
   ============================================================ */
-  [data-anim] {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-anim].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
-  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
-  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
-  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
-  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
-
-  /* Eyebrow hover transitions — .xxx[data-anim] specificity (0,2,0) beats
-     [data-anim] (0,1,0), so colour + letter-spacing are included alongside
-     the scroll-entry opacity + transform and won't get wiped out. */
   .about__eyebrow[data-anim],
   .team__eyebrow[data-anim],
   .services__eyebrow[data-anim],
@@ -2285,11 +2298,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    [data-anim] {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
     .hero__headline,
     .hero__body {
       animation: none;
@@ -2298,27 +2306,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
-  const rows = document.querySelectorAll('.services__row');
-  rows.forEach(row => {
-    row.addEventListener('click', () => {
-      const isExpanded = row.classList.contains('services__row--expanded');
-      rows.forEach(r => r.classList.remove('services__row--expanded'));
-      if (!isExpanded) {
-        row.classList.add('services__row--expanded');
-      }
+  // Re-bind on every page load so handlers attach after view-transition swaps.
+  // Scroll entry animations are handled globally in BaseLayout.
+  function initServicesRows() {
+    const rows = document.querySelectorAll('.services__row');
+    rows.forEach((row) => {
+      row.addEventListener('click', () => {
+        const isExpanded = row.classList.contains('services__row--expanded');
+        rows.forEach((r) => r.classList.remove('services__row--expanded'));
+        if (!isExpanded) {
+          row.classList.add('services__row--expanded');
+        }
+      });
     });
-  });
+  }
 
-  // Scroll entry animations — IntersectionObserver
-  const animEls = document.querySelectorAll('[data-anim]');
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).classList.add('is-visible');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-
-  animEls.forEach(el => animObserver.observe(el));
+  document.addEventListener('astro:page-load', initServicesRows);
 </script>

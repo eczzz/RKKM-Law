@@ -152,24 +152,18 @@ const { headline, scrollTo = '#member-bio' } = Astro.props;
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const learnMoreLink = document.querySelector('.member-hero__link') as HTMLAnchorElement | null;
+  function initMemberHeroScroll() {
+    const learnMoreLink = document.querySelector<HTMLAnchorElement>('.member-hero__link');
+    if (!learnMoreLink) return;
 
-    if (learnMoreLink) {
-      learnMoreLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = learnMoreLink.getAttribute('href');
-        if (!href) return;
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
+    learnMoreLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = learnMoreLink.getAttribute('href');
+      if (!href) return;
+      const targetEl = document.getElementById(href.substring(1));
+      targetEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    }
-  });
+  document.addEventListener('astro:page-load', initMemberHeroScroll);
 </script>

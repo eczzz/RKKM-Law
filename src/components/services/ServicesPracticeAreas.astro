@@ -764,15 +764,26 @@
 </style>
 
 <script>
-  const photos = document.querySelectorAll('.spa__photo');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+  // Re-bind on every page-load so the observer catches the freshly mounted
+  // photos after Astro view-transition swaps.
+  function initSpaPhotoObserver() {
+    const photos = document.querySelectorAll('.spa__photo');
+    if (photos.length === 0) return;
 
-  photos.forEach((photo) => observer.observe(photo));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    photos.forEach((photo) => {
+      photo.classList.remove('is-visible');
+      observer.observe(photo);
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSpaPhotoObserver);
 </script>

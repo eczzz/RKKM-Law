@@ -3,17 +3,21 @@
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
   description?: string;
   headerTheme?: 'light' | 'dark';
+  /** Optional JSON-LD schema object (or array of objects) for the page. */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = "KM Law — Trusted Counsel for Life's Most Complex Family Law Matters",
   description = 'KM Law brings decades of experience to the families, individuals, and executives who demand both discretion and results.',
   headerTheme = 'light',
+  schema,
 } = Astro.props;
 ---
 
@@ -26,6 +30,10 @@ const {
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    {schema && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+    <ClientRouter />
   </head>
   <body>
     <Header theme={headerTheme} />
@@ -33,3 +41,71 @@ const {
     <Footer />
   </body>
 </html>
+
+<!-- Global scroll-entry animations.
+     Hoisted here so the observer can be re-initialized on every Astro view
+     transition via astro:page-load. Pages no longer need to duplicate this. -->
+<style is:global>
+  [data-anim] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
+  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
+  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
+  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
+  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Disable the default View Transitions root cross-fade so the entire
+     viewport doesn't fade through where the persisted Header / Footer sit.
+     The persisted elements stay completely static and the page content
+     swaps instantly. (transition:animate="none" on Header / Footer covers
+     their named transitions; this rule covers the root capture.) */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+</style>
+
+<script>
+  // Initializes scroll-entry animations. Runs on initial page load AND after
+  // every Astro view-transition swap, so newly mounted [data-anim] elements
+  // are observed each time. The astro:page-load event covers both cases.
+  function initAnimations() {
+    const animEls = document.querySelectorAll<HTMLElement>('[data-anim]');
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('is-visible');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+    animEls.forEach((el) => {
+      // Reset state in case the element was already visible from a previous
+      // page (rare, but safe — the persist-free swap re-creates DOM anyway).
+      el.classList.remove('is-visible');
+      animObserver.observe(el);
+    });
+  }
+
+  document.addEventListener('astro:page-load', initAnimations);
+</script>

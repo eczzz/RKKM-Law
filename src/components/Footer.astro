@@ -2,7 +2,7 @@
 // Footer.astro — Site footer for KM Law
 ---
 
-<footer class="footer">
+<footer class="footer" transition:persist="site-footer" transition:animate="none">
   <div class="footer__inner">
 
     <!-- Top columns -->
@@ -28,6 +28,17 @@
           <a href="/services" class="footer__nav-link">Services</a>
           <a href="/client-page" class="footer__nav-link">Client Page</a>
           <a href="/contact" class="footer__nav-link">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Attorneys column -->
+      <div class="footer__col">
+        <span class="footer__col-heading">Attorneys</span>
+        <nav class="footer__nav">
+          <a href="/team/rajesh-kukreja" class="footer__nav-link">Rajesh (Raj) Kukreja</a>
+          <a href="/team/kyle-mcfarlane" class="footer__nav-link">Kyle McFarlane</a>
+          <a href="/team/non-equity-members" class="footer__nav-link">Non-Equity Members</a>
+          <a href="/team/associate-attorneys" class="footer__nav-link">Associate Attorneys</a>
         </nav>
       </div>
 
@@ -77,7 +88,7 @@
   ============================================================ */
   .footer__columns {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1fr;
     gap: 48px;
     padding-bottom: 48px;
     border-bottom: 1px solid rgba(250, 250, 249, 0.1);

@@ -12,45 +12,73 @@ const members = [
     id: 'allison-derschang',
     fullName: 'Allison Derschang',
     role: 'Associate Attorney',
-    image: '/images/female-placeholder.webp',
+    image: '/images/allison-derschang-rk-law-firm-bio.webp',
     imageAlt: 'Allison Derschang, Associate Attorney at KM Law',
-    // TODO: Replace with real bio content from client.
     bio: [
-      "Allison Derschang is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado.",
-      "Bio content coming soon.",
+      "Allison Derschang is an Associate Attorney at Kukreja McFarlane Law, where she represents clients across all aspects of divorce and parental responsibility matters — including asset division, child custody, financial negotiations, and protection orders. She is driven by the tangible, positive impact her work has on the lives of the people she represents.",
+      "Allison earned her Juris Doctor from the University of Denver Sturm College of Law in 2016 and her Bachelor of Arts in Anthropology from the University of Denver in 2011. While in law school she was selected to D.U.'s highly ranked National Trial Team, where she competed nationally and was coached by Kyle McFarlane and Kevin Keyes.",
+      "Prior to focusing her practice on family law, Allison was an employment litigator at a Centennial, Colorado business law firm, gaining trial experience in both state and federal courts on matters including discrimination, wage, and non-competition disputes. She has also successfully litigated fraud, replevin, partition, and relocation matters on behalf of her clients.",
     ],
   },
   {
     id: 'patricia-martin',
     fullName: 'Patricia Martin',
     role: 'Associate Attorney',
-    image: '/images/female-placeholder.webp',
+    image: '/images/patricia-martin-rk-law-firm-bio.webp',
     imageAlt: 'Patricia Martin, Associate Attorney at KM Law',
-    // TODO: Replace with real bio content from client.
     bio: [
-      "Patricia Martin is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado.",
-      "Bio content coming soon.",
+      "Patricia Martin is an Associate Attorney at Kukreja McFarlane Law, where she represents clients across complex divorce, custody, and parental responsibility matters. She is proud of the part she plays in helping people build an independent future after living through family litigation.",
+      "Patricia earned her Juris Doctor with a Certificate in Child and Family Law from Loyola University Chicago School of Law in 2020. She also holds a Master of Science in International and European Politics from the University of Edinburgh and a Bachelor of Arts in Political Science and French and Francophone Studies from Loyola Marymount University. As an immigrant from Spain, she is fluent in Spanish and proficient in French.",
+      "Prior to joining the firm, Patricia practiced complex divorce at a Denver-area family law firm and previously practiced immigration law, assisting immigrants and families through the immigration process. During law school she clerked at a Chicago family law firm, served on the Civitas Childlaw Center fellowship, and was a senior editor on the Children's Legal Rights Journal.",
     ],
   },
   {
     id: 'kayla-quinn',
     fullName: 'Kayla Quinn',
     role: 'Associate Attorney',
-    image: '/images/female-placeholder.webp',
+    image: '/images/kayla-quinn-RK-law-firm-bio.webp',
     imageAlt: 'Kayla Quinn, Associate Attorney at KM Law',
-    // TODO: Replace with real bio content from client.
     bio: [
-      "Kayla Quinn is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado.",
-      "Bio content coming soon.",
+      "Kayla Quinn is an Associate Attorney at Kukreja McFarlane Law, representing clients in family law matters across Colorado. She joined the firm as a law clerk before being admitted to the bar, where her work focused on motion drafting and legal research.",
+      "Kayla earned her Juris Doctor from the University of Denver Sturm College of Law in 2023. She holds a Bachelor of Arts in English Literature, summa cum laude, and a Bachelor of Arts in Sociology, with distinction, from the University of Colorado, Boulder. While in law school, she was a member of D.U.'s highly ranked and award-winning National Trial Team and received the Scholastic Excellence Award in Litigation Technology.",
+      "Prior to her current role, Kayla served as a County Court intern in the Denver District Attorney's Office, where she managed the daily afternoon arraignment docket and proposed plea offers in misdemeanor cases. She previously volunteered with the Family Violence Unit of the same office.",
     ],
   },
 ];
+
+const description =
+  "Meet Allison Derschang, Patricia Martin, and Kayla Quinn — Associate Attorneys at Kukreja McFarlane Law representing clients in family law matters across Colorado.";
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  url: 'https://www.rkkmlaw.com/team/associate-attorneys',
+  name: 'Associate Attorneys — KM Law',
+  description,
+  isPartOf: { '@id': 'https://www.rkkmlaw.com/#organization' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: members.map((m, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Person',
+        name: m.fullName,
+        jobTitle: m.role,
+        image: `https://www.rkkmlaw.com${m.image}`,
+        url: `https://www.rkkmlaw.com/team/associate-attorneys#${m.id}`,
+        worksFor: { '@id': 'https://www.rkkmlaw.com/#organization' },
+      },
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="Associate Attorneys — KM Law"
-  description="Meet the Associate Attorneys of Kukreja McFarlane Law."
+  description={description}
   headerTheme="dark"
+  schema={schema}
 >
   <TeamMemberHero headline="Associate Attorneys." scrollTo={`#${members[0].id}`} />
 
@@ -70,27 +98,8 @@ const members = [
 </BaseLayout>
 
 <style is:global>
-  /* ---- Scroll-entry animations ---- */
-  [data-anim] {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-anim].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
-  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
-  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
-  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
-  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
-
-  /* Eyebrow transitions need to merge with data-anim */
+  /* Eyebrow transitions need to merge with data-anim. Base [data-anim] rules
+     and the IntersectionObserver live in BaseLayout. */
   .member-bio__eyebrow[data-anim] {
     transition:
       color          0.3s ease,
@@ -103,26 +112,4 @@ const members = [
   .member-bio {
     scroll-margin-top: 100px;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-anim] {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
 </style>
-
-<script>
-  const animEls = document.querySelectorAll('[data-anim]');
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).classList.add('is-visible');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-
-  animEls.forEach(el => animObserver.observe(el));
-</script>

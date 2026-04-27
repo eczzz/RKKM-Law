@@ -3,36 +3,74 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ServicesHero from '../components/services/ServicesHero.astro';
 import ServicesPracticeAreas from '../components/services/ServicesPracticeAreas.astro';
 import ServicesCTA from '../components/services/ServicesCTA.astro';
+
+const description =
+  'High-asset divorce, complex custody, spousal support, and mediation — KM Law\'s family law practice areas, handled by trial-experienced Colorado attorneys.';
+
+// LegalService with offerCatalog of practice areas. provider references the
+// canonical firm record defined on the home page.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  url: 'https://www.rkkmlaw.com/services',
+  name: 'KM Law — Practice Areas',
+  description,
+  provider: { '@id': 'https://www.rkkmlaw.com/#organization' },
+  areaServed: { '@type': 'State', name: 'Colorado' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Family Law Practice Areas',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'High-Asset Divorce',
+          url: 'https://www.rkkmlaw.com/services#high-asset-divorce',
+          serviceType: 'Family Law',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Child Custody & Parenting',
+          url: 'https://www.rkkmlaw.com/services#child-custody',
+          serviceType: 'Family Law',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Spousal Support & Maintenance',
+          url: 'https://www.rkkmlaw.com/services#spousal-support',
+          serviceType: 'Family Law',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Mediation & Alternative Dispute Resolution',
+          url: 'https://www.rkkmlaw.com/services#mediation',
+          serviceType: 'Family Law',
+        },
+      },
+    ],
+  },
+};
 ---
 
-<BaseLayout title="Services — KM Law" headerTheme="dark">
+<BaseLayout title="Services — KM Law" description={description} headerTheme="dark" schema={schema}>
   <ServicesHero />
   <ServicesPracticeAreas />
   <ServicesCTA />
 </BaseLayout>
 
 <style is:global>
-  /* ---- Scroll-entry animations ---- */
-  [data-anim] {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-anim].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
-  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
-  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
-  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
-  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
-
-  /* Eyebrow transitions need to merge with data-anim */
+  /* Eyebrow transitions need to merge with data-anim. Base [data-anim] rules
+     and the IntersectionObserver live in BaseLayout. */
   .sh__eyebrow[data-anim],
   .sr__eyebrow[data-anim] {
     transition:
@@ -75,26 +113,4 @@ import ServicesCTA from '../components/services/ServicesCTA.astro';
       stroke: #FAFAF9;
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-anim] {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
 </style>
-
-<script>
-  const animEls = document.querySelectorAll('[data-anim]');
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).classList.add('is-visible');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-
-  animEls.forEach(el => animObserver.observe(el));
-</script>

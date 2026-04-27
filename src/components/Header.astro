@@ -9,7 +9,11 @@ interface Props {
 const { theme = 'light' } = Astro.props;
 ---
 
-<header class={`header${theme === 'dark' ? ' header--dark' : ''}`}>
+<header
+  class={`header${theme === 'dark' ? ' header--dark' : ''}`}
+  transition:persist="site-header"
+  transition:animate="none"
+>
 
   <!-- ── Top bar (desktop + mobile) ─────────────────── -->
   <div class="header__bar">
@@ -307,12 +311,8 @@ const { theme = 'light' } = Astro.props;
     transform: scaleX(1);
   }
 
-  .header__nav > *:nth-child(1) { animation: hdrFadeDown 0.5s ease 0.08s both; }
-  .header__nav > *:nth-child(2) { animation: hdrFadeDown 0.5s ease 0.14s both; }
-  .header__nav > *:nth-child(3) { animation: hdrFadeDown 0.5s ease 0.20s both; }
-  .header__nav > *:nth-child(4) { animation: hdrFadeDown 0.5s ease 0.26s both; }
-  .header__nav > *:nth-child(5) { animation: hdrFadeDown 0.5s ease 0.32s both; }
-  .header__nav > *:nth-child(6) { animation: hdrFadeDown 0.5s ease 0.38s both; }
+  /* Entry animations removed — they were re-firing on every Astro view
+     transition swap, breaking the "static nav" intent. */
 
   /* ============================================================
      DROPDOWN — Our Team child menu (desktop)
@@ -427,7 +427,6 @@ const { theme = 'light' } = Astro.props;
     cursor: pointer;
     white-space: nowrap;
     transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: hdrFadeDown 0.5s ease 0.38s both;
     flex-shrink: 0;
     border-bottom-color: #FFFFFF;
   }
@@ -524,7 +523,6 @@ const { theme = 'light' } = Astro.props;
     align-items: center;
     position: relative;
     z-index: 10000;
-    animation: hdrFadeDown 0.5s ease 0.38s both;
   }
 
   /* White hamburger lines (matches scrolled state) site-wide */
@@ -543,32 +541,14 @@ const { theme = 'light' } = Astro.props;
     stroke: #ffffff;
   }
 
-  /* ============================================================
-     LOAD ANIMATION
-  ============================================================ */
-  @keyframes hdrFadeDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .header__logo,
-    .header__nav-link,
-    .header__cta,
-    .header__hamburger-wrap {
-      animation: none;
-    }
-
     .header__cta-arrow {
       transition: none;
     }
   }
 
-  /* Hide the bar hamburger once the menu is open — the in-menu one takes over.
-     animation: none removes the hdrFadeDown fill (which holds opacity: 1)
-     so that opacity: 0 can actually take effect. */
+  /* Hide the bar hamburger once the menu is open — the in-menu one takes over. */
   .header--open .header__hamburger-wrap {
-    animation: none;
     opacity: 0;
     pointer-events: none;
   }
@@ -1046,5 +1026,8 @@ const { theme = 'light' } = Astro.props;
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  // Re-sync after every Astro view-transition so the class matches the new
+  // page's scroll position (which Astro resets to top by default).
+  document.addEventListener('astro:page-load', onScroll);
   onScroll();
 </script>

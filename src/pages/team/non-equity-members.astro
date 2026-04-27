@@ -7,14 +7,25 @@ import TeamCTA from '../../components/team/TeamCTA.astro';
 // ---- NON-EQUITY MEMBERS ----------------------------------------------------
 // Each entry renders its own bio section. Replace placeholder bios / photos
 // with real content as it becomes available from the client.
-const members = [
+interface MemberData {
+  id: string;
+  fullName: string;
+  role: string;
+  image: string;
+  imageAlt: string;
+  bio: string[];
+  linkedin?: string;
+}
+
+const members: MemberData[] = [
   {
     id: 'kevin-keyes',
     fullName: 'Kevin Keyes',
     role: 'Non-Equity Member',
-    image: '/Kevin-image.webp',
+    image: '/images/kevin-keyes-km-law-firm-bio.webp',
     imageAlt: 'Kevin Keyes, Non-Equity Member at KM Law',
-    linkedin: 'https://www.linkedin.com/in/kevin-keyes-60631939/',
+    // TODO: Add Kevin's LinkedIn URL when provided by client.
+    // linkedin: 'https://www.linkedin.com/in/kevin-keyes-60631939/',
     bio: [
       "Kevin Keyes is a Non-Equity Member of Kukreja McFarlane Law with a deep commitment to legal advocacy and a diverse background spanning various legal disciplines. Throughout his legal career he has demonstrated a dedication to providing comprehensive and effective representation to all clients.",
       "Kevin earned his Juris Doctor from the University of Denver Sturm College of Law, where he was recognized as Outstanding Graduating Law Student by the Student Bar Association. He went on to obtain an LL.M. in Taxation from the University of Denver Sturm College of Law. Prior to his legal studies, Kevin completed a Bachelor of Arts in Theater from the University of Colorado in Boulder.",
@@ -22,26 +33,55 @@ const members = [
     ],
   },
   {
-    id: 'heather-broxterman',
-    fullName: 'Heather Broxterman',
+    id: 'heather-sanders',
+    fullName: 'Heather Sanders',
     role: 'Non-Equity Member',
-    image: '/images/female-placeholder.webp',
-    imageAlt: 'Heather Broxterman, Non-Equity Member at KM Law',
+    image: '/images/heather-sanders-KM-law-firm-bio.webp',
+    imageAlt: 'Heather Sanders, Non-Equity Member at KM Law',
     // TODO: Add Heather's LinkedIn URL when provided by client.
     // linkedin: '',
-    // TODO: Replace with real bio content from client.
     bio: [
-      "Heather Broxterman is a Non-Equity Member of Kukreja McFarlane Law, bringing experienced perspective to the firm's family law practice.",
-      "Bio content coming soon.",
+      "Heather Sanders is a Non-Equity Member of Kukreja McFarlane Law, bringing patience, understanding, and careful attention to detail to every client she represents. She prides herself on being attentive, responsive, sensitive, and direct with clients navigating some of the most difficult moments of their lives.",
+      "Heather earned her Juris Doctor from Georgetown University Law Center in 2010 and her Bachelor of Arts in Sociology from the University of Virginia, where she wrote her thesis on the changing roles of parenthood in the context of divorce. After law school she clerked for the Honorable James C. Klein of Colorado's Twentieth Judicial District in Boulder.",
+      "Heather has comprehensive experience across dissolution, high-conflict litigation, collaborative cases, mediation, and appellate work, with particular depth in complex financial issues — including the division and valuation of business interests, trusts, privately held stock, and high-level compensation packages.",
     ],
   },
 ];
+
+const description =
+  'Meet Kevin Keyes and Heather Sanders, Non-Equity Members at Kukreja McFarlane Law, supporting the firm\'s family law practice in Denver, Colorado.';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  url: 'https://www.rkkmlaw.com/team/non-equity-members',
+  name: 'Non-Equity Members — KM Law',
+  description,
+  isPartOf: { '@id': 'https://www.rkkmlaw.com/#organization' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: members.map((m, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Person',
+        name: m.fullName,
+        jobTitle: m.role,
+        image: `https://www.rkkmlaw.com${m.image}`,
+        url: `https://www.rkkmlaw.com/team/non-equity-members#${m.id}`,
+        worksFor: { '@id': 'https://www.rkkmlaw.com/#organization' },
+        ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
+      },
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="Non-Equity Members — KM Law"
-  description="Meet the Non-Equity Members of Kukreja McFarlane Law."
+  description={description}
   headerTheme="dark"
+  schema={schema}
 >
   <TeamMemberHero headline="Non-Equity Members." scrollTo={`#${members[0].id}`} />
 
@@ -62,27 +102,8 @@ const members = [
 </BaseLayout>
 
 <style is:global>
-  /* ---- Scroll-entry animations ---- */
-  [data-anim] {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-anim].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  [data-anim][data-delay="1"] { transition-delay: 0.10s; }
-  [data-anim][data-delay="2"] { transition-delay: 0.20s; }
-  [data-anim][data-delay="3"] { transition-delay: 0.30s; }
-  [data-anim][data-delay="4"] { transition-delay: 0.40s; }
-  [data-anim][data-delay="5"] { transition-delay: 0.50s; }
-
-  /* Eyebrow transitions need to merge with data-anim */
+  /* Eyebrow transitions need to merge with data-anim. Base [data-anim] rules
+     and the IntersectionObserver live in BaseLayout. */
   .member-bio__eyebrow[data-anim] {
     transition:
       color          0.3s ease,
@@ -95,26 +116,5 @@ const members = [
   .member-bio {
     scroll-margin-top: 100px;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-anim] {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
 </style>
 
-<script>
-  const animEls = document.querySelectorAll('[data-anim]');
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).classList.add('is-visible');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-
-  animEls.forEach(el => animObserver.observe(el));
-</script>

@@ -144,18 +144,18 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const link = document.querySelector('.client-hero__link') as HTMLAnchorElement | null;
-    if (link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        if (!href) return;
-        const target = document.getElementById(href.substring(1));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    }
-  });
+  function initClientHeroScroll() {
+    const link = document.querySelector<HTMLAnchorElement>('.client-hero__link');
+    if (!link) return;
+
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      if (!href) return;
+      const target = document.getElementById(href.substring(1));
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initClientHeroScroll);
 </script>
