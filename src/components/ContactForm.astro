@@ -32,11 +32,11 @@
     <div class="contact__right" data-anim data-delay="2">
       <iframe
         class="contact__map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12271.392706856588!2d-104.9970305!3d39.7494058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78d2e79a031d%3A0x1039ddb42dc3a9ea!2sDenver%2C%20CO!5e0!3m2!1sen!2sus!4v1711828800000!5m2!1sen!2sus"
+        src="https://www.google.com/maps?q=3300+East+First+Avenue+Suite+390+Denver+CO+80206&output=embed"
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="KM Law — Denver, Colorado"
+        title="KM Law — 3300 East First Avenue, Suite 390, Denver, Colorado 80206"
       ></iframe>
     </div>
 
@@ -56,14 +56,14 @@
       <div class="contact__icon-box">
         <i class="contact__icon fa-solid fa-phone"></i>
       </div>
-      <a href="tel:+7201234567" class="contact__info-text contact__info-link">+720 123 4567</a>
+      <a href="tel:+13033316432" class="contact__info-text contact__info-link">(303) 331-6432</a>
     </div>
 
     <div class="contact__info-row">
       <div class="contact__icon-box">
         <i class="contact__icon fa-solid fa-location-dot"></i>
       </div>
-      <span class="contact__info-text">Office Address TBD Denver, CO 80205</span>
+      <span class="contact__info-text">3300 East First Avenue, Suite 390, Denver, CO 80206</span>
     </div>
 
     <div class="contact__info-row">
@@ -230,12 +230,10 @@
   .contact__info-bar {
     background: #1B3B49;
     padding: 32px 40px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    gap: 24px;
+    gap: 28px 32px;
     max-width: 1600px;
     margin: 40px auto 0;
     width: 100%;
@@ -302,19 +300,22 @@
     .contact__fields { width: 100%; }
     .contact__right { width: 100%; }
     .contact__map { min-height: 260px; }
-    .contact__info-bar { flex-direction: column; align-items: flex-start; }
+    .contact__info-bar {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px 24px;
+    }
   }
 
   @media (max-width: 768px) {
     .contact { padding: 40px 24px; }
     .contact__heading { font-size: 24px; }
-    .contact__info-bar { padding: 28px 32px; }
+    .contact__info-bar { padding: 28px 32px; grid-template-columns: 1fr; gap: 20px; }
     .contact__map { min-height: 240px; }
   }
 
   @media (max-width: 480px) {
     .contact { padding: 32px 16px; }
-    .contact__info-bar { padding: 24px; }
+    .contact__info-bar { padding: 24px; grid-template-columns: 1fr; gap: 18px; }
     .contact__info-text { font-size: 14px; }
     .contact__map { min-height: 200px; }
   }
