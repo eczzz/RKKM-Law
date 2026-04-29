@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Thank You — KM Law"
+  description="Your message has been received. An attorney from Kukreja McFarlane Law will be in touch with you shortly."
+  headerTheme="dark"
+  noIndex
+>
+  <!-- ── Hero ────────────────────────────────────────────────── -->
+  <section class="ty-hero">
+    <div class="ty-hero__bottom">
+      <h1 class="ty-hero__headline">Thank You.</h1>
+    </div>
+  </section>
+
+  <!-- ── Confirmation body ───────────────────────────────────── -->
+  <section class="ty-body">
+    <div class="ty-body__inner">
+
+      <div class="ty-body__header">
+        <span class="ty-body__eyebrow">Confirmation</span>
+        <h2 class="ty-body__heading">Your message has been received.</h2>
+        <p class="ty-body__lead">
+          An attorney from our team will be in touch with you shortly. We treat
+          every inquiry with the discretion and attention it deserves.
+        </p>
+      </div>
+
+      <ul class="ty-body__points">
+        <li class="ty-body__point">
+          <span class="ty-body__dash" aria-hidden="true"></span>
+          <span class="ty-body__point-text">Expect a response within one business day.</span>
+        </li>
+        <li class="ty-body__point">
+          <span class="ty-body__dash" aria-hidden="true"></span>
+          <span class="ty-body__point-text">Your inquiry is fully confidential.</span>
+        </li>
+        <li class="ty-body__point">
+          <span class="ty-body__dash" aria-hidden="true"></span>
+          <span class="ty-body__point-text">We'll review your details and reach out via your preferred contact method.</span>
+        </li>
+      </ul>
+
+      <div class="ty-body__actions">
+        <a href="/" class="ty-body__cta">
+          Return to Home
+          <svg class="ty-body__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/team" class="ty-body__cta ty-body__cta--secondary">
+          Meet the Team
+          <svg class="ty-body__cta-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ── Hero ────────────────────────────────────────────────── */
+  .ty-hero {
+    width: 100%;
+    height: 520px;
+    background: #1B3B49;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 max(80px, calc((100vw - 1600px) / 2));
+    box-sizing: border-box;
+  }
+
+  .ty-hero__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+    flex-grow: 1;
+    padding-bottom: calc(40px + 4rem);
+    max-width: 1600px;
+  }
+
+  .ty-hero__headline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* ── Body ────────────────────────────────────────────────── */
+  .ty-body {
+    width: 100%;
+    background: #F5F5F4;
+    padding: 64px 80px;
+    box-sizing: border-box;
+  }
+
+  .ty-body__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .ty-body__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #78716C;
+    width: 100%;
+    max-width: 720px;
+  }
+
+  .ty-body__eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #78716C;
+    margin-bottom: 12px;
+  }
+
+  .ty-body__heading {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: #1C1917;
+  }
+
+  .ty-body__lead {
+    margin: 16px 0 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 170%;
+    letter-spacing: -0.02em;
+    color: #44403C;
+    max-width: 640px;
+  }
+
+  /* ── Sage-dash bullets — same arrow + scale hover as the home About bullets ── */
+  .ty-body__points {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 640px;
+  }
+
+  .ty-body__point {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .ty-body__dash {
+    width: 40px;
+    height: 2px;
+    flex-shrink: 0;
+    position: relative;
+    background-color: #597B60;
+    transform-origin: left center;
+    will-change: transform;
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.35s ease;
+  }
+
+  .ty-body__dash::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #597B60;
+    transition: border-left-color 0.35s ease;
+  }
+
+  .ty-body__point:hover .ty-body__dash {
+    transform: scaleX(1.38);
+    background-color: #1B3B49;
+  }
+
+  .ty-body__point:hover .ty-body__dash::after {
+    border-left-color: #1B3B49;
+  }
+
+  .ty-body__point-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.35s ease;
+  }
+
+  .ty-body__point:hover .ty-body__point-text {
+    color: #1B3B49;
+  }
+
+  /* ── Actions ─────────────────────────────────────────────── */
+  .ty-body__actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px 40px;
+    margin-top: 56px;
+  }
+
+  .ty-body__cta {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    gap: 24px;
+    border-bottom: 1px solid #1B3B49;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    color: #1C1917;
+    transition: color 0.3s ease;
+  }
+
+  .ty-body__cta:hover {
+    color: #1B3B49;
+  }
+
+  .ty-body__cta--secondary {
+    border-bottom-color: #78716C;
+    color: #57534E;
+  }
+
+  .ty-body__cta--secondary:hover {
+    color: #1C1917;
+    border-bottom-color: #1B3B49;
+  }
+
+  .ty-body__cta-arrow {
+    width: 14px;
+    height: 14px;
+    color: #1B3B49;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ty-body__cta--secondary .ty-body__cta-arrow {
+    color: #78716C;
+  }
+
+  .ty-body__cta--secondary:hover .ty-body__cta-arrow {
+    color: #1B3B49;
+  }
+
+  .ty-body__cta:hover .ty-body__cta-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 1200px) {
+    .ty-hero { padding: 0 60px; }
+    .ty-body { padding: 56px 60px; }
+  }
+
+  @media (max-width: 1024px) {
+    .ty-hero { padding: 0 40px; }
+    .ty-hero__headline { font-size: 60px; }
+    .ty-body { padding: 48px 40px; }
+    .ty-body__heading { font-size: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .ty-hero {
+      padding: 0 24px;
+      height: auto;
+      min-height: 380px;
+      justify-content: flex-end;
+    }
+    .ty-hero__bottom {
+      padding-top: 24px;
+      padding-bottom: 32px;
+      flex-grow: 0;
+    }
+    .ty-hero__headline { font-size: 44px; }
+
+    .ty-body { padding: 40px 24px; }
+    .ty-body__heading { font-size: 26px; }
+    .ty-body__lead { font-size: 15px; }
+    .ty-body__points { gap: 16px; }
+    .ty-body__actions { gap: 20px; flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    .ty-hero { padding: 0 16px; min-height: 340px; }
+    .ty-hero__headline { font-size: 36px; }
+
+    .ty-body { padding: 32px 16px; }
+    .ty-body__heading { font-size: 24px; }
+    .ty-body__dash { width: 28px; }
+  }
+</style>
