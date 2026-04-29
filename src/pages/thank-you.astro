@@ -131,7 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 32px;
     line-height: 110%;
     letter-spacing: -0.03em;
     color: #1C1917;
@@ -284,9 +284,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 1024px) {
     .ty-hero { padding: 0 40px; }
-    .ty-hero__headline { font-size: 60px; }
+    .ty-hero__headline { font-size: 52px; }
     .ty-body { padding: 48px 40px; }
-    .ty-body__heading { font-size: 32px; }
   }
 
   @media (max-width: 768px) {
@@ -301,21 +300,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       padding-bottom: 32px;
       flex-grow: 0;
     }
-    .ty-hero__headline { font-size: 44px; }
+    .ty-hero__headline { font-size: 30px; }
 
     .ty-body { padding: 40px 24px; }
+    .ty-body__header { padding-bottom: 24px; }
     .ty-body__heading { font-size: 26px; }
-    .ty-body__lead { font-size: 15px; }
-    .ty-body__points { gap: 16px; }
-    .ty-body__actions { gap: 20px; flex-direction: column; }
+    .ty-body__lead { font-size: 15px; margin-top: 12px; }
+    .ty-body__points { gap: 16px; margin-top: 32px; }
+    .ty-body__point-text { font-size: 15px; }
+    .ty-body__actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      margin-top: 40px;
+    }
   }
 
   @media (max-width: 480px) {
     .ty-hero { padding: 0 16px; min-height: 340px; }
-    .ty-hero__headline { font-size: 36px; }
+    .ty-hero__headline { font-size: 26px; }
 
     .ty-body { padding: 32px 16px; }
     .ty-body__heading { font-size: 24px; }
+    .ty-body__lead { font-size: 14.5px; }
+    .ty-body__point-text { font-size: 14.5px; }
     .ty-body__dash { width: 28px; }
   }
 </style>
