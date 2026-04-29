@@ -87,9 +87,41 @@ const {
   ::view-transition-new(root) {
     animation: none;
   }
+
+  /* ─── Post-first-load: skip entry animations on view-transition swaps ───
+     After the first page load, `astro-after-first-load` is set on <html>.
+     That kills CSS keyframe entry animations (the staggered hero fade-up
+     delays were causing 500–700ms blank holes on every navigation) AND
+     forces [data-anim] elements to render at their visible state immediately
+     (otherwise IntersectionObserver lag caused content to "flash" in via the
+     0.65s opacity transition). Hover transitions on those same elements
+     still work because we don't override `transition` itself. */
+  .astro-after-first-load *,
+  .astro-after-first-load *::before,
+  .astro-after-first-load *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+
+  .astro-after-first-load [data-anim] {
+    opacity: 1;
+    transform: none;
+  }
 </style>
 
 <script>
+  // The first time the user navigates between pages, mark <html> with
+  // `astro-after-first-load`. That class disables hero CSS keyframe entry
+  // animations (which had 500–700ms delays that re-fired on every view
+  // transition) and forces [data-anim] elements to render at their visible
+  // state immediately — eliminating the "content flashes in" effect. The
+  // class is added on astro:before-preparation so the new page's CSS sees
+  // it before any layout/paint happens. astro:before-preparation only fires
+  // for view-transition navigations, never on the very first load.
+  document.addEventListener('astro:before-preparation', () => {
+    document.documentElement.classList.add('astro-after-first-load');
+  });
+
   // Initializes scroll-entry animations. Runs on initial page load AND after
   // every Astro view-transition swap, so newly mounted [data-anim] elements
   // are observed each time. The astro:page-load event covers both cases.
