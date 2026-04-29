@@ -1,5 +1,5 @@
-/* === Google Fonts — must be first === */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Google Fonts (Poppins) is loaded via <link> in BaseLayout's <head>
+   alongside preconnect hints, which is faster than @import here. */
 
 /* === CSS Reset === */
 *,

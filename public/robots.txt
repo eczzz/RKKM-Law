@@ -1,3 +1,11 @@
+# robots.txt for Kukreja McFarlane Law (rkkmlaw.com)
+#
+# All crawlers may visit any page that isn't explicitly noindex'd in HTML.
+# Utility pages like /thank-you carry <meta name="robots" content="noindex,nofollow">
+# rather than a Disallow rule here, because Disallow blocks crawl entirely
+# and prevents Google from seeing the noindex tag — which can leave the URL
+# listed in search results without a snippet. The HTML approach is cleaner.
+
 User-agent: *
 Allow: /
 

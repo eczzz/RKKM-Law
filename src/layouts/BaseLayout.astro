@@ -14,6 +14,9 @@ interface Props {
   /** When true, emits <meta name="robots" content="noindex,nofollow"> — used
       for utility pages like /thank-you that shouldn't be indexed. */
   noIndex?: boolean;
+  /** Absolute path to an above-the-fold image to preload (e.g. /images/hero.webp).
+      Skip on pages where the LCP isn't a single hero image. */
+  preloadImage?: string;
 }
 
 const {
@@ -22,6 +25,7 @@ const {
   headerTheme = 'light',
   schema,
   noIndex = false,
+  preloadImage,
 } = Astro.props;
 ---
 
@@ -33,8 +37,24 @@ const {
     <meta name="description" content={description} />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
     <title>{title}</title>
+
+    {/* Connection hints — open early to the third-party origins we depend on
+        so font + icon downloads start before the parser reaches the <link>. */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    {/* Above-the-fold image preload (e.g. home hero). */}
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+
+    {/* Site-wide stylesheets */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
     {schema && (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
