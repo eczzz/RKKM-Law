@@ -14,17 +14,32 @@
         <p class="contact__subtext" data-anim data-delay="2">Your matter is confidential. Reach out to schedule a consultation and one of our attorneys will be in touch shortly.</p>
       </div>
 
-      <div class="contact__fields" data-anim data-delay="3">
-        <input class="contact__input" type="text" placeholder="Full Name*" />
-        <input class="contact__input" type="text" placeholder="Phone Number*" />
-        <input class="contact__input" type="email" placeholder="Email Address*" />
-        <textarea class="contact__input contact__textarea" placeholder="Message*" rows="5"></textarea>
-      </div>
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="contact__form"
+      >
+        {/* Required for Netlify Forms detection on static / SPA-style sites */}
+        <input type="hidden" name="form-name" value="contact" />
+        {/* Honeypot — hidden from real users, bots fill it and get rejected */}
+        <p class="contact__honeypot">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
 
-      <div class="contact__submit" data-anim data-delay="4">
-        Request A Consultation
-        <svg class="contact__submit-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+        <div class="contact__fields" data-anim data-delay="3">
+          <input class="contact__input" type="text" name="name" placeholder="Full Name*" required />
+          <input class="contact__input" type="tel" name="phone" placeholder="Phone Number*" required />
+          <input class="contact__input" type="email" name="email" placeholder="Email Address*" required />
+          <textarea class="contact__input contact__textarea" name="message" placeholder="Message*" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="contact__submit" data-anim data-delay="4">
+          Request A Consultation
+          <svg class="contact__submit-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
 
     </div>
 
@@ -49,7 +64,7 @@
       <div class="contact__icon-box">
         <i class="contact__icon fa-solid fa-envelope"></i>
       </div>
-      <span class="contact__info-text">info@kmlaw.com</span>
+      <span class="contact__info-text">info@rkkmlaw.com</span>
     </div>
 
     <div class="contact__info-row">
@@ -177,6 +192,13 @@
   }
 
   .contact__submit {
+    /* Reset native button chrome so the styling reads like the original div */
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    appearance: none;
+    -webkit-appearance: none;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -192,6 +214,15 @@
     letter-spacing: -0.02em;
     color: #1C1917;
     transition: color 0.3s ease;
+  }
+
+  /* Honeypot — visually hidden but accessible to bots */
+  .contact__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   .contact__submit:hover { color: #1B3B49; }
