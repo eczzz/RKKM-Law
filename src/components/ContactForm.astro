@@ -17,13 +17,11 @@
       <form
         name="contact"
         method="POST"
-        action="/thank-you"
-        data-netlify="true"
+        action="/.netlify/functions/contact"
         netlify-honeypot="bot-field"
+        accept-charset="UTF-8"
         class="contact__form"
       >
-        {/* Required for Netlify Forms detection on static / SPA-style sites */}
-        <input type="hidden" name="form-name" value="contact" />
         {/* Honeypot — hidden from real users, bots fill it and get rejected */}
         <p class="contact__honeypot">
           <label>Don't fill this out if you're human: <input name="bot-field" /></label>
