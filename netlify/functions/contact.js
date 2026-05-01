@@ -22,6 +22,28 @@ function isValidEmail(value = '') {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
 
+function getRequestBody(event) {
+  const rawBody = event.body || '';
+
+  if (event.isBase64Encoded) {
+    return Buffer.from(rawBody, 'base64').toString('utf8');
+  }
+
+  return rawBody;
+}
+
+function parseFormParams(event) {
+  const body = getRequestBody(event);
+  const contentType = event.headers?.['content-type'] || event.headers?.['Content-Type'] || '';
+
+  if (contentType.includes('application/json')) {
+    const parsed = JSON.parse(body || '{}');
+    return new URLSearchParams(Object.entries(parsed));
+  }
+
+  return new URLSearchParams(body);
+}
+
 function buildPlainText({ name, phone, email, message, submittedAt }) {
   return [
     'New website contact form submission',
@@ -127,7 +149,18 @@ export const handler = async (event) => {
     return response(405, 'Method Not Allowed', { Allow: 'POST' });
   }
 
-  const params = new URLSearchParams(event.body || '');
+  let params;
+
+  try {
+    params = parseFormParams(event);
+  } catch (error) {
+    console.error('Could not parse contact form submission body:', error);
+    return response(
+      400,
+      '<p>Sorry, we could not read your message. Please call us directly at (303) 331-6432.</p>',
+    );
+  }
+
   const botField = params.get('bot-field') || '';
 
   if (botField.trim()) {
