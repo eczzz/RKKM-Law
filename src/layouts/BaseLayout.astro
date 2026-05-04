@@ -32,6 +32,40 @@ const {
 <!doctype html>
 <html lang="en">
   <head>
+    {/* Google tag (gtag.js) — placed first so the initial page_view fires
+        before anything else. is:inline keeps Astro from bundling/transforming
+        the third-party script. */}
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WK2QH0KN2K"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-WK2QH0KN2K');
+    </script>
+
+    {/* Track SPA pageviews on every Astro view-transition swap. The initial
+        page_view is auto-sent by gtag('config'), so skip the first
+        astro:page-load to avoid double-counting. */}
+    <script is:inline>
+      (() => {
+        let isFirstLoad = true;
+        document.addEventListener('astro:page-load', () => {
+          if (isFirstLoad) { isFirstLoad = false; return; }
+          if (typeof gtag === 'function') {
+            gtag('event', 'page_view', {
+              page_path: location.pathname + location.search,
+              page_location: location.href,
+              page_title: document.title,
+            });
+          }
+        });
+      })();
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
