@@ -1,4 +1,5 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const DEFAULT_FROM = 'RKKM Law Website <forms@rkkmlaw.com>';
 const DEFAULT_SUBJECT = 'RKKM Law Website Contact Form Submission';
 
@@ -20,6 +21,69 @@ function parseRecipients(value = '') {
 
 function isValidEmail(value = '') {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+function getHeader(event, name) {
+  const targetName = name.toLowerCase();
+  const entries = Object.entries(event.headers || {});
+  const match = entries.find(([key]) => key.toLowerCase() === targetName);
+  return match?.[1] || '';
+}
+
+function getClientIp(event) {
+  const forwardedFor = getHeader(event, 'x-forwarded-for');
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim();
+  }
+
+  return getHeader(event, 'x-nf-client-connection-ip') || event.requestContext?.identity?.sourceIp || '';
+}
+
+async function verifyTurnstile({ token, remoteIp }) {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+
+  if (!secret) {
+    console.error('Missing TURNSTILE_SECRET_KEY environment variable.');
+    return false;
+  }
+
+  if (!token) {
+    return false;
+  }
+
+  const formData = new URLSearchParams({
+    secret,
+    response: token,
+  });
+
+  if (remoteIp) {
+    formData.set('remoteip', remoteIp);
+  }
+
+  try {
+    const turnstileResponse = await fetch(TURNSTILE_VERIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData,
+    });
+
+    if (!turnstileResponse.ok) {
+      const errorBody = await turnstileResponse.text();
+      console.error('Turnstile verification request failed:', turnstileResponse.status, errorBody);
+      return false;
+    }
+
+    const result = await turnstileResponse.json();
+
+    if (!result.success) {
+      console.warn('Turnstile verification failed:', result['error-codes']);
+    }
+
+    return Boolean(result.success);
+  } catch (error) {
+    console.error('Turnstile verification error:', error);
+    return false;
+  }
 }
 
 function getRequestBody(event) {
@@ -169,6 +233,19 @@ export const handler = async (event) => {
       headers: { Location: '/thank-you' },
       body: '',
     };
+  }
+
+  const turnstileToken = (params.get('cf-turnstile-response') || '').trim();
+  const isHuman = await verifyTurnstile({
+    token: turnstileToken,
+    remoteIp: getClientIp(event),
+  });
+
+  if (!isHuman) {
+    return response(
+      400,
+      '<p>Please complete the verification challenge before submitting the form.</p><p><a href="/contact">Back to contact form</a></p>',
+    );
   }
 
   const name = (params.get('name') || '').trim();
