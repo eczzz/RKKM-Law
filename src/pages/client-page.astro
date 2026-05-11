@@ -5,7 +5,7 @@ import ClientResources from '../components/client/ClientResources.astro';
 import ClientLearnMore from '../components/client/ClientLearnMore.astro';
 
 const description =
-  'Client portal for Kukreja McFarlane Law — share documents, pay invoices, and access firm resources. For current clients only.';
+  'Client portal for Kukreja McFarlane Law — share documents, pay invoices, and access firm resources. For current Colorado family law clients only.';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -21,7 +21,7 @@ const schema = {
 };
 ---
 
-<BaseLayout title="Client Page — KM Law" description={description} headerTheme="dark" schema={schema}>
+<BaseLayout title="Client Portal — Documents, Payments & Resources | KM Law" description={description} headerTheme="dark" schema={schema}>
   <ClientHero />
   <ClientResources />
   <ClientLearnMore />
