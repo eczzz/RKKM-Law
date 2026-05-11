@@ -27,6 +27,10 @@ const {
   noIndex = false,
   preloadImage,
 } = Astro.props;
+
+// Self-referencing canonical, resolved against Astro.site so it's always the
+// production www origin regardless of the host the page was rendered on.
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -47,6 +51,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
 
     {/* Connection hints — open early to the third-party origins we depend on
