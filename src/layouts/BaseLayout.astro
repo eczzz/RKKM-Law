@@ -29,7 +29,7 @@ const {
 } = Astro.props;
 
 // Self-referencing canonical, resolved against Astro.site so it's always the
-// production www origin regardless of the host the page was rendered on.
+// production origin regardless of the host the page was rendered on.
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 

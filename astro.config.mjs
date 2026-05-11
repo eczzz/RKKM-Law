@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   // Production site URL — required for sitemap generation and absolute URLs.
-  site: 'https://www.rkkmlaw.com',
+  site: 'https://rkkmlaw.com',
   integrations: [
     sitemap({
       // Utility pages like /thank-you carry noindex,nofollow and shouldn't

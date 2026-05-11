@@ -9,4 +9,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rkkmlaw.com/sitemap-index.xml
+Sitemap: https://rkkmlaw.com/sitemap-index.xml

@@ -54,10 +54,10 @@ const description =
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  url: 'https://www.rkkmlaw.com/team/non-equity-members',
+  url: 'https://rkkmlaw.com/team/non-equity-members',
   name: 'Non-Equity Members — KM Law',
   description,
-  isPartOf: { '@id': 'https://www.rkkmlaw.com/#organization' },
+  isPartOf: { '@id': 'https://rkkmlaw.com/#organization' },
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: members.map((m, i) => ({
@@ -67,9 +67,9 @@ const schema = {
         '@type': 'Person',
         name: m.fullName,
         jobTitle: m.role,
-        image: `https://www.rkkmlaw.com${m.image}`,
-        url: `https://www.rkkmlaw.com/team/non-equity-members#${m.id}`,
-        worksFor: { '@id': 'https://www.rkkmlaw.com/#organization' },
+        image: `https://rkkmlaw.com${m.image}`,
+        url: `https://rkkmlaw.com/team/non-equity-members#${m.id}`,
+        worksFor: { '@id': 'https://rkkmlaw.com/#organization' },
         ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
       },
     })),
