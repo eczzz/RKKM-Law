@@ -32,38 +32,15 @@ const {
 <!doctype html>
 <html lang="en">
   <head>
-    {/* Google tag (gtag.js) — placed first so the initial page_view fires
-        before anything else. is:inline keeps Astro from bundling/transforming
-        the third-party script. */}
-    <script
-      is:inline
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-WK2QH0KN2K"
-    ></script>
+    {/* Google Tag Manager — placed first so the container loads before any
+        other script. is:inline keeps Astro from bundling/transforming the
+        third-party snippet. */}
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-WK2QH0KN2K');
-    </script>
-
-    {/* Track SPA pageviews on every Astro view-transition swap. The initial
-        page_view is auto-sent by gtag('config'), so skip the first
-        astro:page-load to avoid double-counting. */}
-    <script is:inline>
-      (() => {
-        let isFirstLoad = true;
-        document.addEventListener('astro:page-load', () => {
-          if (isFirstLoad) { isFirstLoad = false; return; }
-          if (typeof gtag === 'function') {
-            gtag('event', 'page_view', {
-              page_path: location.pathname + location.search,
-              page_location: location.href,
-              page_title: document.title,
-            });
-          }
-        });
-      })();
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PLLFNFJ');
     </script>
 
     <meta charset="UTF-8" />
@@ -95,6 +72,16 @@ const {
     <ClientRouter />
   </head>
   <body>
+    {/* Google Tag Manager (noscript) — must be the first child of <body>. */}
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PLLFNFJ"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
     <Header theme={headerTheme} />
     <slot />
     <Footer />
