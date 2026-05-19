@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { blogPosts, formatPublishedDate } from '../../data/blogPosts';
+import { blogPosts, formatPublishedDate, sanitizeBlogBody } from '../../data/blogPosts';
 
 export async function getStaticPaths() {
   return blogPosts.map((post) => ({
@@ -21,7 +21,8 @@ function slugifyHeading(text: string): string {
 // Pull h2 headings out of the body to build the TOC, and inject ids back
 // in so the anchor links work.
 const tocItems: { id: string; text: string }[] = [];
-const bodyWithIds = post.body.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (_match, attrs, inner) => {
+const sanitizedBody = sanitizeBlogBody(post.body);
+const bodyWithIds = sanitizedBody.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (_match, attrs, inner) => {
   const text = inner.replace(/<[^>]*>/g, '').trim();
   const id = slugifyHeading(text);
   tocItems.push({ id, text });
