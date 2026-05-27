@@ -10,10 +10,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Utility pages like /thank-you carry noindex,nofollow and shouldn't
-      // appear in the sitemap submitted to Google Search Console. The blog
-      // is also excluded for now — it's built but not yet linked publicly.
-      filter: (page) =>
-        !page.includes('/thank-you') && !page.includes('/blog'),
+      // appear in the sitemap submitted to Google Search Console.
+      filter: (page) => !page.includes('/thank-you'),
     }),
   ],
 });
