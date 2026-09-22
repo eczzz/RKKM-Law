@@ -47,16 +47,30 @@ const members: MemberData[] = [
       "Recognized in Best Lawyers in America (Denver, CO) for Family Law, Family Law Arbitration, and Family Law Mediation 2020-2027.",
     ],
   },
+  {
+    id: 'hannah-taylor',
+    fullName: 'Hannah Taylor',
+    role: 'Of Counsel',
+    image: '/images/hannah-taylor-km-law-firm-bio.webp',
+    imageAlt: 'Hannah Taylor, Of Counsel at KM Law',
+    // TODO: Add Hannah's LinkedIn URL when provided by client.
+    // linkedin: '',
+    bio: [
+      "Hannah advises high net worth individuals, families, and family offices on the full range of issues involved when a marriage begins and ends, including pre-marital and cohabitation agreements; divorce and allocation of parental responsibilities; and post-decree disputes, guardianships, and protection orders. She approaches each client with compassion and crafts solutions designed to stabilize their financial future and the overall wellbeing of their family. Hannah specializes in high conflict parenting cases and those involving domestic violence.",
+      "Hannah is a skilled courtroom advocate. When disputes cannot be resolved through negotiation and mediation, she leverages her trial and motions experience gained through four years as a Deputy District Attorney and five years in private family law practice to achieve her client’s goals.",
+      "Before joining Kukreja McFarlane, Hannah practiced at Holland & Hart and Sherman & Howard (now Taft Law).",
+    ],
+  },
 ];
 
 const description =
-  'Meet Kevin Keyes and Heather Sanders, Non-Equity Members at Kukreja McFarlane Law — Denver family law attorneys with deep trial and ADR experience.';
+  'Meet Kevin Keyes, Heather Sanders, and Hannah Taylor — Non-Equity Members and Of Counsel at Kukreja McFarlane Law, Denver family law attorneys with deep trial and ADR experience.';
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   url: 'https://rkkmlaw.com/team/non-equity-members',
-  name: 'Non-Equity Members — KM Law',
+  name: 'Non-Equity Members / Of Counsel — KM Law',
   description,
   isPartOf: { '@id': 'https://rkkmlaw.com/#organization' },
   mainEntity: {
@@ -79,12 +93,12 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Non-Equity Members — Kevin Keyes & Heather Sanders | KM Law"
+  title="Non-Equity Members / Of Counsel — Kevin Keyes, Heather Sanders & Hannah Taylor | KM Law"
   description={description}
   headerTheme="dark"
   schema={schema}
 >
-  <TeamMemberHero headline="Non-Equity Members." scrollTo={`#${members[0].id}`} />
+  <TeamMemberHero headline="Non-Equity Members / Of Counsel." scrollTo={`#${members[0].id}`} />
 
   {members.map((m, i) => (
     <TeamMemberBio
