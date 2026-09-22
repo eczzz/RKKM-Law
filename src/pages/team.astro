@@ -5,9 +5,9 @@ import TeamSection from '../components/team/TeamSection.astro';
 import TeamCTA from '../components/team/TeamCTA.astro';
 
 const description =
-  'Meet the Kukreja McFarlane Law attorneys — Equity Members, Non-Equity Members, Associate Attorneys, and staff representing Colorado family law clients.';
+  'Meet the Kukreja McFarlane Law attorneys — Equity Members, Non-Equity Members / Of Counsel, Associate Attorneys, and staff representing Colorado family law clients.';
 
-// CollectionPage with the four Equity / Non-Equity attorneys as ListItems.
+// CollectionPage with the five Equity / Non-Equity / Of Counsel attorneys as ListItems.
 // Each Person is referenced by @id so detail pages can extend the same record.
 const schema = {
   '@context': 'https://schema.org',
@@ -59,6 +59,16 @@ const schema = {
           name: 'Heather Sanders',
           jobTitle: 'Non-Equity Member',
           url: 'https://rkkmlaw.com/team/non-equity-members#heather-sanders',
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        item: {
+          '@type': 'Person',
+          name: 'Hannah Taylor',
+          jobTitle: 'Of Counsel',
+          url: 'https://rkkmlaw.com/team/non-equity-members#hannah-taylor',
         },
       },
     ],
