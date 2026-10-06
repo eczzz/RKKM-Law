@@ -1,0 +1,18 @@
+# Dependabot (GitHub's free update bot), per Bullfinch managed hosting.
+# Security fixes arrive as one grouped PR as soon as a patched release exists;
+# routine updates are bundled monthly. Every PR gets a Netlify deploy preview,
+# is reviewed against production, and is merged by a person.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    groups:
+      security-fixes:
+        applies-to: security-updates
+        patterns: ["*"]
+      minor-and-patch:
+        applies-to: version-updates
+        update-types: [minor, patch]
