@@ -1,5 +1,6 @@
 ---
 // BaseLayout.astro — Base HTML shell for KM Law
+import '../styles/fonts.css';
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -17,6 +18,12 @@ interface Props {
   /** Absolute path to an above-the-fold image to preload (e.g. /images/hero.webp).
       Skip on pages where the LCP isn't a single hero image. */
   preloadImage?: string;
+  /** srcset/sizes for preloadImage when the page serves it responsively. */
+  preloadImageSrcset?: string;
+  preloadImageSizes?: string;
+  /** Load the Font Awesome icon stylesheet. Only the contact form, attorney
+      bios and blog posts use icons, so other pages skip the render-blocking CSS. */
+  fontAwesome?: boolean;
 }
 
 const {
@@ -26,6 +33,9 @@ const {
   schema,
   noIndex = false,
   preloadImage,
+  preloadImageSrcset,
+  preloadImageSizes,
+  fontAwesome = false,
 } = Astro.props;
 
 // Self-referencing canonical, resolved against Astro.site so it's always the
@@ -56,20 +66,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
     {/* Connection hints — open early to the third-party origins we depend on
         so font + icon downloads start before the parser reaches the <link>. */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    {fontAwesome && <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />}
 
     {/* Above-the-fold image preload (e.g. home hero). */}
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} imagesrcset={preloadImageSrcset} imagesizes={preloadImageSizes} />
+    )}
 
     {/* Site-wide stylesheets */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    {fontAwesome && (
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    )}
 
     {schema && (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

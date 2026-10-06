@@ -36,9 +36,18 @@ const schema = {
     'Marital Agreements',
   ],
 };
+
+// Phones get the 800px hero; wider screens keep the original.
+const heroSrcset = '/images/km-law-firm-hero-v2-800.webp 800w, /images/km-law-firm-hero-v2.webp 1067w';
+const heroSizes = '(max-width: 768px) 100vw, 50vw';
 ---
 
-<BaseLayout schema={schema} preloadImage="/images/km-law-firm-hero-v2.webp">
+<BaseLayout
+  schema={schema}
+  preloadImage="/images/km-law-firm-hero-v2.webp"
+  preloadImageSrcset={heroSrcset}
+  preloadImageSizes={heroSizes}
+>
   <!-- Hero Section: Split layout — logo + headline left on cream, image right with overlaid copy -->
   <section class="hero">
     <div class="hero__container">
@@ -56,7 +65,7 @@ const schema = {
       <!-- Right column: full-height image with overlaid supporting copy -->
       <div class="hero__right">
         <!-- TODO: Replace with actual Cherry Creek North photo from client -->
-        <img src="/images/km-law-firm-hero-v2.webp" alt="KM Law Firm" class="hero__image" />
+        <img src="/images/km-law-firm-hero-v2.webp" srcset={heroSrcset} sizes={heroSizes} alt="KM Law Firm" class="hero__image" />
         <div class="hero__overlay-text">
           <p class="hero__body">
             <span class="hero__body-sub">As trusted counsel for life's most complex family law matters, we make complex issues manageable.</span>
@@ -96,7 +105,7 @@ const schema = {
             </a>
 
             <a href="https://www.bestlawyers.com/firms/kukreja-mcfarlane-law/82222/US" class="about__badge" data-anim data-delay="3">
-              <img src="https://www.bestlawyers.com/Logos/ListedFirm/82222/US/33/O/Basic.png" title="Best Lawyers - Firm Logo" alt="Best Lawyers - Firm Logo" />
+              <img src="https://www.bestlawyers.com/Logos/ListedFirm/82222/US/33/O/Basic.png" loading="lazy" decoding="async" title="Best Lawyers - Firm Logo" alt="Best Lawyers - Firm Logo" />
             </a>
           </div>
         </div>
